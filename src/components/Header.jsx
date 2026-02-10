@@ -24,7 +24,7 @@ export default function Header() {
   const [selectedLang, setSelectedLang] = useState('es')
 
   return (
-    <header className='fixed bg-white border-b border-gray-200 flex justify-center w-full'>
+    <header className='fixed bg-white border-b border-gray-200 flex justify-center w-full z-10'>
       <nav className="flex items-center justify-evenly p-5 w-full">
         {/* Logo */} 
         <Link className='flex items-center' to="/">
