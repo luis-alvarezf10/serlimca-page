@@ -2,7 +2,7 @@ import HeroSection from './components/HeroSection'
 
 export default function Home() {
   return (
-    <div className='flex flex-col items-center justify-center'>
+    <div className='w-full'>
       <HeroSection/>
       {/* Servicios Section */}
       <section className="py-16 px-8 max-w-7xl mx-auto">

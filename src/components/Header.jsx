@@ -1,42 +1,51 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import logo from '../assets/logo.svg'
+import { useLanguage } from '../context/LanguageContext'
+import logo from '../assets/normal-logo.svg'
+import logoWhite from '../assets/white-logo.svg'
 import 'flag-icons/css/flag-icons.min.css'
-
-const navLinks = [
-  { to: '/', label: 'Inicio' },
-  { to: '/aboutus', label: 'Nosotros' },
-  { to: '/services', label: 'Servicios' },
-  { to: '/coverage', label: 'Cobertura' },
-  { to: '/galley', label: 'Galería' },
-  // { to: '/contacto', label: 'Contacto' }
-]
 
 const languages = [
   { code: 'es', flag: 've', name: 'Español' },
-  { code: 'en', flag: 'us', name: 'English' },
-  { code: 'ch', flag: 'cn', name: '中文'}
+  { code: 'en', flag: 'us', name: 'English' }
 ]
 
 export default function Header() {
+  const [isScrolled, setIsScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [langDropdownOpen, setLangDropdownOpen] = useState(false)
-  const [selectedLang, setSelectedLang] = useState('es')
+  const { language, setLanguage, t } = useLanguage()
+
+  const navLinks = [
+    { to: '/', label: t('nav.home') },
+    { to: '/aboutus', label: t('nav.about') },
+    { to: '/services', label: t('nav.services') },
+    { to: '/coverage', label: t('nav.coverage') },
+    { to: '/galley', label: t('nav.gallery') }
+  ]
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
-    <header className='fixed bg-white border-b border-gray-200 flex justify-center w-full z-10'>
-      <nav className="flex items-center justify-evenly p-5 w-full">
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'bg-white backdrop-blur-md shadow-xl shadow-black/50' : 'bg-gradient-to-b from-black/50 to-transparent'}`}>
+      <nav className="flex items-center justify-evenly w-full">
         {/* Logo */} 
         <Link className='flex items-center' to="/">
-          <img src={logo} alt="logo de empresa" className="w-auto h-12" />
-          <span className='font-[times-new-roman] font-bold italic text-black w-10[10%] underline'>SERLIMCA</span>
+          <img src={ isScrolled ? logo : logoWhite} alt="logo de empresa" className="w-auto h-20" />
         </Link>
 
         {/* Desktop Menu */}
 
         <div className="flex gap-10">
           {navLinks.map((link) => (
-            <Link className='hover:bg-gray-100 px-2 py-1 rounded-lg' key={link.to} to={link.to}>
+            <Link className={`px-2 py-1 font-semibold rounded-lg tracking-wide ${isScrolled ? 'hover:bg-gray-300' : 'text-white hover:bg-white/10'}`} key={link.to} to={link.to}>
               {link.label}
             </Link>
           ))}
@@ -48,11 +57,11 @@ export default function Header() {
           <div className="relative ">
             <button
               onClick={() => setLangDropdownOpen(!langDropdownOpen)}
-              className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-lg border hover:bg-gray-100"
+              className={`inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-lg border hover:bg-gray-100 ${isScrolled ? '' : 'text-gray-100'}`}
               type="button"
             >
-              <span className={`fi fi-${languages.find(lang => lang.code === selectedLang)?.flag} mr-2`}></span>
-              {selectedLang.toUpperCase()}
+              <span className={`fi fi-${languages.find(lang => lang.code === language)?.flag} mr-2`}></span>
+              {language.toUpperCase()}
               <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 9-7 7-7-7" />
               </svg>
@@ -67,9 +76,9 @@ export default function Header() {
                         <input
                           type="radio"
                           value={lang.code}
-                          checked={selectedLang === lang.code}
+                          checked={language === lang.code}
                           onChange={(e) => {
-                            setSelectedLang(e.target.value)
+                            setLanguage(e.target.value)
                             setLangDropdownOpen(false)
                           }}
                           className="w-4 h-4"
@@ -86,7 +95,7 @@ export default function Header() {
 
           <div>
             <Link className='bg-primary px-5 py-2 font-bold text-black rounded-full tracking-wide' to="/contacto">
-              Solicitar Cotización
+              {t('hero.cta.quote')}
             </Link>
           </div>
         </div>

@@ -6,9 +6,9 @@ import Contacto from './pages/Contacto'
 
 function App() {
   return (
-    <div>
+    <div className="w-full">
       <Header />
-      <main>
+      <main className="w-full">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/servicios" element={<Servicios />} />
