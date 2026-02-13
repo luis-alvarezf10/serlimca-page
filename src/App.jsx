@@ -1,4 +1,5 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
+import { useEffect } from 'react'
 import Header from './components/Header'
 import Home from './pages/home/Home'
 import About from './pages/About'
@@ -6,6 +7,12 @@ import Servicios from './pages/Servicios'
 import Contacto from './pages/Contacto'
 
 function App() {
+  const location = useLocation()
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [location.pathname])
+
   return (
     <div className="w-full">
       <Header />
