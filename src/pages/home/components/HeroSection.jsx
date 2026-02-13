@@ -75,7 +75,7 @@ const HeroSection = () => {
       <div className="relative container mx-auto px-4 pt-32 pb-20">
         <div className="max-w-4xl">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 bg-primary/20 backdrop-blur-sm rounded-full px-2 py-1 mb-8 animate-fade-up border border-primary/30 text-primary">
+          <div className="inline-flex items-center gap-2 bg-primary/20 backdrop-blur-sm rounded-full px-2 py-1 mb-8 animate-fade-up border border-primary/30 text-primary cursor-default">
             <HiBookmark />
             <span className=" font-medium text-sm">
               {t('why.experience')}
@@ -83,13 +83,13 @@ const HeroSection = () => {
           </div>
 
           {/* Title */}
-          <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl font-black text-primary-foreground mb-4 animate-fade-up text-white" style={{ animationDelay: '0.1s' }}>
+          <h1 className="font-heading text-3xl md:text-5xl lg:text-7xl font-black text-primary-foreground mb-4 animate-fade-up text-white" style={{ animationDelay: '0.1s' }}>
             {t('hero.title')}
             <span className="block text-shimmer text-primary">{t('hero.subtitle')}</span>
           </h1>
 
           {/* Description */}
-          <p className="text-xl md:text-xl text-gray-400 max-w-2xl mb-10 leading-relaxed animate-fade-up " style={{ animationDelay: '0.2s' }}>
+          <p className="text-xl md:text-xl text-white md:text-gray-400 max-w-2xl mb-10 leading-relaxed animate-fade-up " style={{ animationDelay: '0.2s' }}>
             {t('hero.description')}
           </p>
 
@@ -109,7 +109,7 @@ const HeroSection = () => {
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-3 gap-8 mt-16 pt-8 border-t border-primary-foreground/20 animate-fade-up text-white cursor-default" style={{ animationDelay: '0.4s' }}>
+          <div className="grid grid-cols-3 gap-8 mt-16 pt-8 border-t border-primary-foreground/20 animate-fade-up text-white text-center cursor-default" style={{ animationDelay: '0.4s' }}>
             <div className="group">
               <div className="font-heading text-4xl md:text-5xl font-black group-hover:scale-110 transition-transform duration-300">
                 +{counters.years}
@@ -133,10 +133,12 @@ const HeroSection = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <Link className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce text-primary"  to="/contacto">
-        <HiChevronDoubleDown />
-        <span className="text-xs uppercase tracking-widest">Ver más</span>
-      </Link>
+      <div className='absolute bottom-8 w-full flex justify-center'>
+        <Link className="flex flex-col items-center gap-2 animate-bounce text-primary font-semibold"  to="/contacto">
+          <HiChevronDoubleDown />
+          <span className="uppercase tracking-widest">Ver más</span>
+        </Link>
+      </div>
     </section>
   );
 };

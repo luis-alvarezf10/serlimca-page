@@ -4,6 +4,7 @@ import { useLanguage } from '../context/LanguageContext'
 import logo from '../assets/normal-logo.svg'
 import logoWhite from '../assets/white-logo.svg'
 import 'flag-icons/css/flag-icons.min.css'
+import { HiMenu } from "react-icons/hi";
 
 const languages = [
   { code: 'es', flag: 've', name: 'Español' },
@@ -35,7 +36,7 @@ export default function Header() {
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'bg-white backdrop-blur-md shadow-xl shadow-black/50' : 'bg-gradient-to-b from-black/50 to-transparent'}`}>
-      <nav className="flex items-center justify-evenly w-full">
+      <nav className="flex items-center justify-around  w-full">
         {/* Logo */} 
         <Link className='flex items-center' to="/">
           <img src={ isScrolled ? logo : logoWhite} alt="logo de empresa" className="w-auto h-20" />
@@ -43,7 +44,7 @@ export default function Header() {
 
         {/* Desktop Menu */}
 
-        <div className="flex gap-10">
+        <div className="flex gap-5 hidden md:flex md:block">
           {navLinks.map((link) => (
             <Link className={`px-2 py-1 font-semibold rounded-lg tracking-wide ${isScrolled ? 'hover:bg-gray-300' : 'text-white hover:bg-white/10'}`} key={link.to} to={link.to}>
               {link.label}
@@ -54,10 +55,10 @@ export default function Header() {
         <div className='flex items-center justify-center gap-5'>
         {/* Language Dropdown */}
 
-          <div className="relative ">
+          <div className="relative hidden lg:block">
             <button
               onClick={() => setLangDropdownOpen(!langDropdownOpen)}
-              className={`inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-lg border hover:bg-gray-100 ${isScrolled ? '' : 'text-gray-100'}`}
+              className={`inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-lg border animation-color duration-200 ${isScrolled ? 'hover:bg-gray-100 ' : 'text-gray-100 hover:bg-gray-100/10'}`}
               type="button"
             >
               <span className={`fi fi-${languages.find(lang => lang.code === language)?.flag} mr-2`}></span>
@@ -94,15 +95,15 @@ export default function Header() {
           </div>
 
           <div>
-            <Link className='bg-primary px-5 py-2 font-bold text-black rounded-full tracking-wide' to="/contacto">
-              {t('hero.cta.quote')}
+            <Link className='bg-primary px-5 py-2 font-bold text-black rounded-full tracking-wide hidden md:block' to="/contacto">
+              {t('nav.contact')}
             </Link>
           </div>
         </div>
 
         {/* Mobile Menu Button */}
-        <button className="md:hidden" onClick={() => setMenuOpen(!menuOpen)}>
-          ☰
+        <button className="md:hidden bg-primary p-3 rounded-lg text-black text-2xl" onClick={() => setMenuOpen(!menuOpen)}>
+          <HiMenu />
         </button>
       </nav>
 

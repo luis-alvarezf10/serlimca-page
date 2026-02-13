@@ -7,7 +7,7 @@ export const translations = {
   'nav.services': { es: 'Servicios', en: 'Services' },
   'nav.coverage': { es: 'Cobertura', en: 'Coverage' },
   'nav.gallery': { es: 'Galería', en: 'Gallery' },
-  'nav.contact': { es: 'Contacto', en: 'Contact' },
+  'nav.contact': { es: 'Contáctanos', en: 'Contact Us' },
 
   // Hero
   'hero.title': { es: 'Soluciones integrales', en: 'Comprehensive solutions' },
