@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useLanguage } from '../context/LanguageContext'
 import logo from '../assets/normal-logo.svg'
 import logoWhite from '../assets/white-logo.svg'
@@ -16,14 +16,37 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [langDropdownOpen, setLangDropdownOpen] = useState(false)
   const { language, setLanguage, t } = useLanguage()
+  const location = useLocation()
+  const navigate = useNavigate()
 
   const navLinks = [
-    { to: '/', label: t('nav.home') },
-    { to: '/aboutus', label: t('nav.about') },
-    { to: '/services', label: t('nav.services') },
-    { to: '/coverage', label: t('nav.coverage') },
-    { to: '/galley', label: t('nav.gallery') }
+    { to: '/', label: t('nav.home'), type: 'route' },
+    { to: '#nosotros', label: t('nav.about'), type: 'scroll' },
+    { to: '/services', label: t('nav.services'), type: 'route' },
+    { to: '/coverage', label: t('nav.coverage'), type: 'route' },
+    { to: '/galley', label: t('nav.gallery'), type: 'route' }
   ]
+
+  const handleNavClick = (e, link) => {
+    if (link.type === 'scroll') {
+      e.preventDefault()
+      if (location.pathname !== '/') {
+        navigate('/')
+        setTimeout(() => {
+          const element = document.querySelector(link.to)
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+          }
+        }, 100)
+      } else {
+        const element = document.querySelector(link.to)
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+      }
+      setMenuOpen(false)
+    }
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,11 +68,52 @@ export default function Header() {
         {/* Desktop Menu */}
 
         <div className="flex gap-5 hidden md:flex md:block">
-          {navLinks.map((link) => (
-            <Link className={`px-2 py-1 font-semibold rounded-lg tracking-wide ${isScrolled ? 'hover:bg-gray-300' : 'text-white hover:bg-white/10'}`} key={link.to} to={link.to}>
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = link.type === 'scroll' 
+              ? location.pathname === '/' && location.hash === link.to
+              : location.pathname === link.to
+            
+            if (link.type === 'scroll') {
+              return (
+                <a
+                  href={link.to}
+                  onClick={(e) => handleNavClick(e, link)}
+                  className={`relative px-2 py-1 font-semibold rounded-lg tracking-wide transition-colors cursor-pointer ${
+                    isActive 
+                      ? 'text-primary' 
+                      : isScrolled 
+                        ? 'hover:bg-gray-300' 
+                        : 'text-white hover:bg-white/10'
+                  }`} 
+                  key={link.to}
+                >
+                  {link.label}
+                  {isActive && (
+                    <span className="absolute bottom-0 left-0 right-0 h-1 bg-primary rounded-full"></span>
+                  )}
+                </a>
+              )
+            }
+            
+            return (
+              <Link 
+                className={`relative px-2 py-1 font-semibold rounded-lg tracking-wide transition-colors ${
+                  isActive 
+                    ? 'text-primary' 
+                    : isScrolled 
+                      ? 'hover:bg-gray-300' 
+                      : 'text-white hover:bg-white/10'
+                }`} 
+                key={link.to} 
+                to={link.to}
+              >
+                {link.label}
+                {isActive && (
+                  <span className="absolute bottom-0 left-0 right-0 h-1 bg-primary rounded-full"></span>
+                )}
+              </Link>
+            )
+          })}
         </div>
 
         <div className='flex items-center justify-center gap-5'>
@@ -109,12 +173,46 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div>
-          {navLinks.map((link) => (
-            <Link key={link.to} to={link.to} onClick={() => setMenuOpen(false)}>
-              {link.label}
-            </Link>
-          ))}
+        <div className="md:hidden bg-white shadow-lg">
+          {navLinks.map((link) => {
+            const isActive = link.type === 'scroll'
+              ? location.pathname === '/' && location.hash === link.to
+              : location.pathname === link.to
+            
+            if (link.type === 'scroll') {
+              return (
+                <a
+                  key={link.to}
+                  href={link.to}
+                  onClick={(e) => handleNavClick(e, link)}
+                  className={`relative block px-6 py-3 font-semibold cursor-pointer ${
+                    isActive ? 'text-primary bg-gray-100' : 'hover:bg-gray-50'
+                  }`}
+                >
+                  {link.label}
+                  {isActive && (
+                    <span className="absolute bottom-0 left-0 right-0 h-1 bg-primary"></span>
+                  )}
+                </a>
+              )
+            }
+            
+            return (
+              <Link 
+                key={link.to} 
+                to={link.to} 
+                onClick={() => setMenuOpen(false)}
+                className={`relative block px-6 py-3 font-semibold ${
+                  isActive ? 'text-primary bg-gray-100' : 'hover:bg-gray-50'
+                }`}
+              >
+                {link.label}
+                {isActive && (
+                  <span className="absolute bottom-0 left-0 right-0 h-1 bg-primary"></span>
+                )}
+              </Link>
+            )
+          })}
         </div>
       )}
     </header>
