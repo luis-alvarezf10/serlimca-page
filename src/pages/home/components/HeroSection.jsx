@@ -1,7 +1,7 @@
 import { useLanguage } from '../../../context/LanguageContext';
 import { useEffect, useState } from 'react';
 import heroBg from '../../../assets/imagen-1.webp';
-import { HiCheckCircle, HiStar } from "react-icons/hi";
+import { HiCheckCircle, HiStar, HiBookmark } from "react-icons/hi";
 import OutlinedButton from '../../../components/buttons.jsx/OutlinedButton';
 import GeneralButton from '../../../components/buttons.jsx/GeneralButton';
 import { Link } from 'react-router-dom'
@@ -75,12 +75,12 @@ const HeroSection = () => {
       <div className="relative container mx-auto px-4 pt-32 pb-20">
         <div className="max-w-4xl">
           {/* Badge */}
-          {/* <div className="inline-flex items-center gap-2 bg-primary/20 backdrop-blur-sm rounded-full px-5 py-2.5 mb-8 animate-fade-up border border-primary/30">
-            <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            <span className="text-primary font-medium text-sm">
+          <div className="inline-flex items-center gap-2 bg-primary/20 backdrop-blur-sm rounded-full px-2 py-1 mb-8 animate-fade-up border border-primary/30 text-primary">
+            <HiBookmark />
+            <span className=" font-medium text-sm">
               {t('why.experience')}
             </span>
-          </div> */}
+          </div>
 
           {/* Title */}
           <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl font-black text-primary-foreground mb-4 animate-fade-up text-white" style={{ animationDelay: '0.1s' }}>
@@ -109,7 +109,7 @@ const HeroSection = () => {
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-3 gap-8 mt-16 pt-8 border-t border-primary-foreground/20 animate-fade-up text-white" style={{ animationDelay: '0.4s' }}>
+          <div className="grid grid-cols-3 gap-8 mt-16 pt-8 border-t border-primary-foreground/20 animate-fade-up text-white cursor-default" style={{ animationDelay: '0.4s' }}>
             <div className="group">
               <div className="font-heading text-4xl md:text-5xl font-black group-hover:scale-110 transition-transform duration-300">
                 +{counters.years}
