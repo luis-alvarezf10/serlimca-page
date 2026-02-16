@@ -1,15 +1,55 @@
 import { useLanguage } from '../../../context/LanguageContext';
 import { useEffect, useState } from 'react';
 import heroBg from '../../../assets/imagen-1.webp';
-import { HiCheckCircle, HiStar, HiBookmark } from "react-icons/hi";
+import heroBg2 from '../../../assets/imagen-2.jpeg';
+import heroBg3 from '../../../assets/imagen-3.jpeg';
+import heroBg4 from '../../../assets/imagen-4.jpeg';
+import heroBg5 from '../../../assets/imagen-5.jpeg';
+
+
+
+import { HiCheckCircle, HiStar, HiBookmark, HiChevronLeft, HiChevronRight } from "react-icons/hi";
 import OutlinedButton from '../../../components/buttons.jsx/OutlinedButton';
 import GeneralButton from '../../../components/buttons.jsx/GeneralButton';
-import { Link } from 'react-router-dom'
 import { HiChevronDoubleDown } from "react-icons/hi";
+
+// Array de imágenes para el carrusel
+const heroImages = [
+  heroBg,
+  heroBg2,
+  heroBg3,
+  heroBg4,
+  heroBg5,
+];
 
 const HeroSection = () => {
   const { t } = useLanguage();
   const [counters, setCounters] = useState({ years: 0, projects: 0 });
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  // Auto-play del carrusel
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextImage();
+    }, 5000); // Cambia cada 5 segundos
+
+    return () => clearInterval(interval);
+  }, [currentImageIndex]);
+
+  const nextImage = () => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
+    setTimeout(() => setIsTransitioning(false), 500);
+  };
+
+  const prevImage = () => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setCurrentImageIndex((prev) => (prev - 1 + heroImages.length) % heroImages.length);
+    setTimeout(() => setIsTransitioning(false), 500);
+  };
 
   useEffect(() => {
     // Animate counters
@@ -43,16 +83,62 @@ const HeroSection = () => {
 
   return (
     <section id="hero" className="relative w-full min-h-screen flex items-center overflow-hidden">
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat scale-105 animate-[scale-in_1.5s_ease-out] blur-sm"
-        style={{
-          backgroundImage: `url(${heroBg})`,
-          backgroundSize: 'cover',
-          width: '100vw',
-          height: '100%'
-        }}
-      />
+      {/* Background Images Carousel */}
+      <div className="absolute inset-0 w-full h-full">
+        {heroImages.map((image, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat transition-opacity duration-500 blur-sm ${
+              index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+            }`}
+            style={{
+              backgroundImage: `url(${image})`,
+              backgroundSize: 'cover',
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Navigation Buttons */}
+      <button
+        onClick={prevImage}
+        disabled={isTransitioning}
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-30 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-all duration-300 hover:scale-110 disabled:opacity-50 hidden md:block"
+        aria-label="Imagen anterior"
+      >
+        <HiChevronLeft className="w-6 h-6" />
+      </button>
+      
+      <button
+        onClick={nextImage}
+        disabled={isTransitioning}
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-30 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-all duration-300 hover:scale-110 disabled:opacity-50 hidden md:block"
+        aria-label="Imagen siguiente"
+      >
+        <HiChevronRight className="w-6 h-6" />
+      </button>
+
+      {/* Indicators */}
+      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 z-30 flex gap-2">
+        {heroImages.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => {
+              if (!isTransitioning) {
+                setIsTransitioning(true);
+                setCurrentImageIndex(index);
+                setTimeout(() => setIsTransitioning(false), 500);
+              }
+            }}
+            className={`w-2 h-2 rounded-full transition-all duration-300 ${
+              index === currentImageIndex 
+                ? 'bg-primary w-8' 
+                : 'bg-white/50 hover:bg-white/80'
+            }`}
+            aria-label={`Ir a imagen ${index + 1}`}
+          />
+        ))}
+      </div>
 
       {/* Animated Overlay con gradiente bonito */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-primary/30" />
