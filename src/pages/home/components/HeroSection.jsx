@@ -133,7 +133,7 @@ const HeroSection = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <div className='absolute z-20 bottom-8 w-full flex justify-center'>
+      <div className='absolute z-20 bottom-5 w-full flex justify-center'>
         <a 
           href="#nosotros"
           onClick={(e) => {
@@ -147,8 +147,8 @@ const HeroSection = () => {
         </a>
       </div>
 
-      <div className="z-99 absolute w-full h-5 bg-primary/5 bottom-0 "></div>
-      <div className="absolute w-40 h-20 rounded-t-full bg-primary/5 left-1/2 -translate-x-1/2 bottom-5 "></div>
+      <div className="z-99 absolute w-full h-3 bg-primary/5 bottom-0 "></div>
+      <div className="absolute w-40 h-20 rounded-t-full bg-primary/5 left-1/2 -translate-x-1/2 bottom-3 "></div>
     </section>
   );
 };
