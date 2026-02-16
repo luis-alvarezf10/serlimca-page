@@ -1,4 +1,6 @@
 import HeroSection from './components/HeroSection'
+import AboutUsSection from './components/AboutUsSection'
+
 import { Link } from 'react-router-dom'
 
 export default function Home() {
@@ -7,30 +9,7 @@ export default function Home() {
       <HeroSection/>
       
       {/* Nosotros Section */}
-      <section id="nosotros" className="py-16 px-8 max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="bg-gray-200 h-96 rounded-xl flex items-center justify-center">
-            <span className="text-8xl">🏢</span>
-          </div>
-          
-          <div>
-            <h2 className="text-4xl font-bold mb-6">Sobre Nosotros</h2>
-            <p className="text-lg leading-relaxed mb-4">
-              Somos una empresa comprometida con la excelencia y la calidad en cada uno de nuestros servicios.
-            </p>
-            <p className="text-lg leading-relaxed mb-6">
-              Con años de experiencia en el sector, nos hemos consolidado como líderes, 
-              ofreciendo soluciones confiables y profesionales que superan las expectativas de nuestros clientes.
-            </p>
-            <Link 
-              to="/aboutus" 
-              className="inline-block bg-primary text-black px-8 py-3 rounded-full font-bold hover:bg-primary/90 transition-colors"
-            >
-              Ver más
-            </Link>
-          </div>
-        </div>
-      </section>
+      <AboutUsSection/>
 
       {/* Servicios Section */}
       <section className="py-16 px-8 max-w-7xl mx-auto">
