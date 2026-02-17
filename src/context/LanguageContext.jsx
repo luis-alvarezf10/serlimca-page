@@ -19,8 +19,9 @@ export const translations = {
   // About
   'about.title': { es: 'Sobre Nosotros', en: 'About Us' },
   'about.subtitle': { es: 'Nuestro camino al éxito', en: 'Our journey to success' },
-  'about.shortdescription': { es: 'Somos \"SERVICIOS D\'LIMA C.A (SERLIMCA)"\ una empresa de servicios petroleros, comprometidos con la excelencia y la calidad en cada uno de nuestros servicios.', en: 'We are  \"SERVICIOS D\'LIMA C.A (SERLIMCA)"\ an oil services company, committed to excellence and quality in each of our services.' },
+  'about.shortdescription': { es: 'Somos  \"SERVICIOS D\'LIMA C.A (SERLIMCA)"\ una empresa de servicios petroleros, comprometidos con la excelencia y la calidad en cada uno de nuestros servicios.', en: 'We are  \"SERVICIOS D\'LIMA C.A (SERLIMCA)"\ an oil services company, committed to excellence and quality in each of our services.' },
   'about.description': { es: ' Con años de experiencia en el sector, nos hemos consolidado como líderes, ofreciendo soluciones confiables y profesionales que superan las expectativas de nuestros clientes.', en: 'With years of experience in the sector, we have established ourselves as leaders, offering reliable and professional solutions that exceed our clients' },
+  'about.legend': { es: 'Conoce nuestra historia, misión y el equipo que hace posible nuestro servicio', en: 'Learn about our history, mission and the team that makes our service possible'},
   'about.mission.title': { es: 'Misión', en: 'Mission' },
   'about.mission.text': { es: 'Brindar servicios de transporte y mantenimiento de alta calidad, garantizando la seguridad, eficiencia y satisfacción de nuestros clientes.', en: 'Provide high-quality transport and maintenance services, ensuring safety, efficiency, and customer satisfaction.' },
   'about.vision.title': { es: 'Visión', en: 'Vision' },

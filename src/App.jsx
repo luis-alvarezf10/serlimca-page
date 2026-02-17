@@ -2,7 +2,7 @@ import { Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import Header from './components/Header'
 import Home from './pages/home/Home'
-import About from './pages/About'
+import About from './pages/about/About'
 import Servicios from './pages/Servicios'
 import Contacto from './pages/Contacto'
 

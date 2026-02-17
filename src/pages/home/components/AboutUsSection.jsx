@@ -5,7 +5,7 @@ import { useLanguage } from '../../../context/LanguageContext'
 
 
 const Information = [
-  { title: "+20 Experiencia", description: "Forjando nuestro trabajo" },
+  { title: "+20 años", description: "Forjando nuestro trabajo" },
   { title: "+50 Clientes", description: "Que confian en nosotros" },
   { title: "+45 Proyectos", description: "Finalizados exitosamente" },
   { title: "+20 Empleados", description: "Trabajando duro por ti" },
@@ -61,9 +61,9 @@ const AboutUsSection = () => {
         >
           <div>
             <span className="font-semibold tracking-wide text-gray-400">{t('about.title')}</span>
-            <h2 className="text-5xl font-bold">{t('about.subtitle')}</h2>
+            <h2 className="text-3xl md:text-5xl font-bold">{t('about.subtitle')}</h2>
           </div>
-          <div className="grid gap-2 text-lg leading-relaxed text-gray-500 font-semibold">
+          <div className="grid gap-2 text-lg leading-relaxed text-gray-500 font-semibold text-justify md:text-left">
             <p>
              {t('about.shortdescription')}
             </p>
@@ -71,10 +71,10 @@ const AboutUsSection = () => {
               {t('about.description')}
             </p>
           </div>
-          <div className="grid grid-cols-2 gap-4 pt-4">
+          <div className="grid grid-cols-2 gap-5 pt-4">
             {Information.map((item, index) => (
               <div key={index} className="flex flex-col border-t-2 border-primary p-3">
-                <span className="text-3xl font-bold">{item.title}</span>
+                <span className="text-xl md:text-3xl font-bold">{item.title}</span>
                 <span className="text-gray-500">{item.description}</span>
               </div>
             ))}
