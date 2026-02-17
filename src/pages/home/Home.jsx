@@ -1,7 +1,6 @@
 import HeroSection from './components/HeroSection'
 import AboutUsSection from './components/AboutUsSection'
-
-import { Link } from 'react-router-dom'
+import ServicesSection from './components/ServicesSection'
 import Footer from '../../components/Footer'
 
 export default function Home() {
@@ -11,7 +10,7 @@ export default function Home() {
       
       {/* Nosotros Section */}
       <AboutUsSection/>
-
+      <ServicesSection/>
       {/* Servicios Section */}
       <section className="py-16 px-8 max-w-7xl mx-auto">
         <h2 className="text-4xl font-bold text-center mb-12">

@@ -19,19 +19,26 @@ export default function Header() {
 
   const navLinks = [
     { to: '/', label: t('nav.home'), type: 'route' },
-    { to: '/aboutus', label: t('nav.about'), type: 'route', scrollTo: '#nosotros' },
-    { to: '/services', label: t('nav.services'), type: 'route' },
+    { to: '/aboutus', label: t('nav.about'), type: 'route', scrollTo: '#nosotros', scrollPage: '/' },
+    { to: '/services', label: t('nav.services'), type: 'route', scrollTo: '#servicios', scrollPage: '/' },
     { to: '/coverage', label: t('nav.coverage'), type: 'route' },
     { to: '/galley', label: t('nav.gallery'), type: 'route' }
   ]
 
   const handleNavClick = (e, link) => {
-    // En desktop, si estamos en Home y el link tiene scrollTo, hacer scroll
-    if (link.scrollTo && location.pathname === '/' && window.innerWidth >= 768) {
+    // En desktop, si el link tiene scrollTo
+    if (link.scrollTo && window.innerWidth >= 768) {
       e.preventDefault()
-      const element = document.querySelector(link.scrollTo)
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      
+      // Si estamos en la página correcta, hacer scroll
+      if (location.pathname === link.scrollPage) {
+        const element = document.querySelector(link.scrollTo)
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+      } else {
+        // Si no estamos en la página correcta, navegar primero
+        window.location.href = `${link.scrollPage}${link.scrollTo}`
       }
     }
     // Siempre cerrar el menú después de hacer clic
