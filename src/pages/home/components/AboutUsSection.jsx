@@ -1,16 +1,18 @@
 import { useEffect, useRef, useState } from 'react'
 import PrimaryButton from '../../../components/buttons.jsx/PrimaryButton'
 import image from '../../../assets/imagen-8.jpeg';
+import { useLanguage } from '../../../context/LanguageContext'
 
 
 const Information = [
-  { title: "+15 Experiencia", description: "Forjando nuestro trabajo" },
+  { title: "+20 Experiencia", description: "Forjando nuestro trabajo" },
   { title: "+50 Clientes", description: "Que confian en nosotros" },
   { title: "+45 Proyectos", description: "Finalizados exitosamente" },
   { title: "+20 Empleados", description: "Trabajando duro por ti" },
 ];
 
 const AboutUsSection = () => {
+  const { t } = useLanguage();
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
 
@@ -58,16 +60,15 @@ const AboutUsSection = () => {
             }`}
         >
           <div>
-            <span className="font-semibold tracking-wide text-gray-400">Sobre Nosotros</span>
-            <h2 className="text-5xl font-bold">Nuestro camino al éxito</h2>
+            <span className="font-semibold tracking-wide text-gray-400">{t('about.title')}</span>
+            <h2 className="text-5xl font-bold">{t('about.subtitle')}</h2>
           </div>
           <div className="grid gap-2 text-lg leading-relaxed text-gray-500 font-semibold">
             <p>
-              Somos una empresa comprometida con la excelencia y la calidad en cada uno de nuestros servicios.
+             {t('about.shortdescription')}
             </p>
             <p>
-              Con años de experiencia en el sector, nos hemos consolidado como líderes,
-              ofreciendo soluciones confiables y profesionales que superan las expectativas de nuestros clientes.
+              {t('about.description')}
             </p>
           </div>
           <div className="grid grid-cols-2 gap-4 pt-4">

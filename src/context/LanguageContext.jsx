@@ -17,9 +17,10 @@ export const translations = {
   'hero.cta.services': { es: 'Nuestros Servicios', en: 'Our Services' },
 
   // About
-  'about.title': { es: 'Quiénes Somos', en: 'About Us' },
-  'about.subtitle': { es: 'Experiencia y compromiso al servicio del sector petrolero', en: 'Experience and commitment serving the oil sector' },
-  'about.description': { es: 'SERVICIOS D\' LIMA, C.A (SERLIMCA) es una empresa de servicios petroleros fundada en el Tigre edo. Anzoátegui en el año 2003, con especial experiencia en izamiento y transporte de cargas pesadas, mantenimiento y reparación de Balancines y Rotaflex, así como en mudanza de equipos de perforación Workover y Cabilleros. Nacionalmente conocidos por brindar un servicio competitivo y de alta calidad con especial atención en la puntualidad, compromiso, resolución de problemas y orientación al cliente.', en: 'SERVICIOS D\' LIMA, C.A (SERLIMCA) is an oil services company founded in El Tigre, Anzoátegui state in 2003, with special expertise in heavy load lifting and transport, maintenance and repair of Beam Pumps and Rotaflex, as well as relocation of Workover and Rod drilling equipment. Nationally known for providing competitive, high-quality service with special attention to punctuality, commitment, problem-solving, and customer orientation.' },
+  'about.title': { es: 'Sobre Nosotros', en: 'About Us' },
+  'about.subtitle': { es: 'Nuestro camino al éxito', en: 'Our journey to success' },
+  'about.shortdescription': { es: 'Somos \"SERVICIOS D\'LIMA C.A (SERLIMCA)"\ una empresa de servicios petroleros, comprometidos con la excelencia y la calidad en cada uno de nuestros servicios.', en: 'We are  \"SERVICIOS D\'LIMA C.A (SERLIMCA)"\ an oil services company, committed to excellence and quality in each of our services.' },
+  'about.description': { es: ' Con años de experiencia en el sector, nos hemos consolidado como líderes, ofreciendo soluciones confiables y profesionales que superan las expectativas de nuestros clientes.', en: 'With years of experience in the sector, we have established ourselves as leaders, offering reliable and professional solutions that exceed our clients' },
   'about.mission.title': { es: 'Misión', en: 'Mission' },
   'about.mission.text': { es: 'Brindar servicios de transporte y mantenimiento de alta calidad, garantizando la seguridad, eficiencia y satisfacción de nuestros clientes.', en: 'Provide high-quality transport and maintenance services, ensuring safety, efficiency, and customer satisfaction.' },
   'about.vision.title': { es: 'Visión', en: 'Vision' },
