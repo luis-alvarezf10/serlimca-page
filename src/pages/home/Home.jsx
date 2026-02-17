@@ -2,6 +2,7 @@ import HeroSection from './components/HeroSection'
 import AboutUsSection from './components/AboutUsSection'
 
 import { Link } from 'react-router-dom'
+import Footer from '../../components/Footer'
 
 export default function Home() {
   return (
@@ -97,9 +98,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 px-8 text-center">
-        <p>&copy; 2024 SERLIMCA - Todos los derechos reservados</p>
-      </footer>
+      <Footer/>
     </div>
   )
 }
