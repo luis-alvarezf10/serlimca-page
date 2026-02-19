@@ -2,7 +2,7 @@ import Footer from '../components/Footer'
 
 export default function Contacto() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-x-hidden">
       {/* Hero */}
       <section className="relative py-20 overflow-hidden" style={{
         background: 'linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 50%, #1a1a1a 100%)'

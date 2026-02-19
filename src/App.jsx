@@ -14,9 +14,9 @@ function App() {
   }, [location.pathname])
 
   return (
-    <div className="w-full">
+    <div className="w-full overflow-x-hidden">
       <Header />
-      <main className="w-full">
+      <main className="w-full overflow-x-hidden">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/aboutus" element={<About />} />

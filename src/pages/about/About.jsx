@@ -5,7 +5,7 @@ function About() {
   const { t } = useLanguage()
 
   return (
-    <div className="w-full">
+    <div className="w-full overflow-x-hidden">
       {/* Hero Section */}
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
         {/* Background Image */}
