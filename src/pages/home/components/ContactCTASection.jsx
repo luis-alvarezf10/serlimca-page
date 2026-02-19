@@ -36,17 +36,6 @@ const ContactCTASection = () => {
         background: 'linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 50%, #1a1a1a 100%)'
       }}
     >
-      {/* Animated Grid Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div 
-          className="absolute inset-0" 
-          style={{
-            backgroundImage: `repeating-linear-gradient(0deg, transparent, transparent 50px, var(--primary, #FFD700) 50px, var(--primary, #FFD700) 51px),
-                             repeating-linear-gradient(90deg, transparent, transparent 50px, var(--primary, #FFD700) 50px, var(--primary, #FFD700) 51px)`
-          }} 
-        />
-      </div>
-
       {/* Floating Orbs with Glow */}
       <div className="absolute top-1/4 left-10 w-96 h-96 bg-primary/30 rounded-full blur-3xl animate-float" 
         style={{ boxShadow: '0 0 150px 80px rgba(255, 215, 0, 0.3)' }} 
