@@ -11,47 +11,7 @@ export default function Home() {
       {/* Nosotros Section */}
       <AboutUsSection/>
       <ServicesSection/>
-      {/* Servicios Section */}
-      <section className="py-16 px-8 max-w-7xl mx-auto">
-        <h2 className="text-4xl font-bold text-center mb-12">
-          Nuestros Servicios
-        </h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Servicio 1 */}
-          <div className="p-8 rounded-xl transition-all hover:scale-105">
-            <div className="text-5xl mb-4">🚚</div>
-            <h3 className="text-2xl font-semibold mb-4">
-              Transporte
-            </h3>
-            <p className="leading-relaxed">
-              Servicio de transporte confiable y seguro para tus necesidades logísticas.
-            </p>
-          </div>
-
-          {/* Servicio 2 */}
-          <div className="p-8 rounded-xl transition-all hover:scale-105">
-            <div className="text-5xl mb-4">🔧</div>
-            <h3 className="text-2xl font-semibold mb-4">
-              Mantenimiento
-            </h3>
-            <p className="leading-relaxed">
-              Mantenimiento preventivo y correctivo para mantener tus equipos en óptimas condiciones.
-            </p>
-          </div>
-
-          {/* Servicio 3 */}
-          <div className="p-8 rounded-xl transition-all hover:scale-105">
-            <div className="text-5xl mb-4">⚙️</div>
-            <h3 className="text-2xl font-semibold mb-4">
-              Reparación
-            </h3>
-            <p className="leading-relaxed">
-              Reparaciones especializadas con personal calificado y repuestos de calidad.
-            </p>
-          </div>
-        </div>
-      </section>
+      
 
       {/* Por qué elegirnos */}
       <section className="py-16 px-8">

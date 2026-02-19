@@ -90,3 +90,75 @@ body {
 .animate-shine {
   animation: shine 0.5s linear;
 }
+
+
+/* Animaciones para el carousel de servicios */
+@keyframes slide-in-right {
+  0% {
+    opacity: 0;
+    transform: translateX(60px) scale(0.95);
+    filter: brightness(3);
+  }
+  15% {
+    filter: brightness(1);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    filter: brightness(1);
+  }
+}
+
+@keyframes slide-in-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-60px) scale(0.95);
+    filter: brightness(3);
+  }
+  15% {
+    filter: brightness(1);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    filter: brightness(1);
+  }
+}
+
+@keyframes slide-out-left {
+  0% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-60px) scale(0.95);
+  }
+}
+
+@keyframes slide-out-right {
+  0% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(60px) scale(0.95);
+  }
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slide-out-left {
+  animation: slide-out-left 1.5s cubic-bezier(0.6, 0, 0.8, 0.2) forwards;
+}
+
+.animate-slide-out-right {
+  animation: slide-out-right 1.5s cubic-bezier(0.6, 0, 0.8, 0.2) forwards;
+}
