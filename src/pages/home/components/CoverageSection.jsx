@@ -43,7 +43,7 @@ const CoverageSection = () => {
 
   return (
     <section id="coverage" ref={sectionRef} className="py-24 relative overflow-hidden" style={{
-      background: 'linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 50%, #1a1a1a 100%)'
+      background: 'linear-gradient(135deg, #1a1a1a 0%, #2f2f2f 50%, #ffd034bd 100%)'
     }}>
       {/* Animated Grid Pattern */}
       <div className="absolute inset-0 opacity-10">
