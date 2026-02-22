@@ -18,7 +18,7 @@ export default function Header() {
   const location = useLocation()
 
   const navLinks = [
-    { to: '/', label: t('nav.home'), type: 'route' },
+    { to: '/', label: t('nav.home'), type: 'route', scrollTo: '#hero', scrollPage: '/' },
     { to: '/aboutus', label: t('nav.about'), type: 'route', scrollTo: '#nosotros', scrollPage: '/' },
     { to: '/services', label: t('nav.services'), type: 'route', scrollTo: '#servicios', scrollPage: '/' },
     { to: '/coverage', label: t('nav.coverage'), type: 'route', scrollTo: '#cobertura', scrollPage: '/'},
