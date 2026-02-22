@@ -53,7 +53,7 @@ const GallerySection = () => {
 
   return (
     <section 
-      id="gallery" 
+      id="galeria" 
       ref={sectionRef} 
       className="py-24 relative overflow-hidden bg-white"
     >

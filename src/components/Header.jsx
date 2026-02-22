@@ -21,8 +21,8 @@ export default function Header() {
     { to: '/', label: t('nav.home'), type: 'route' },
     { to: '/aboutus', label: t('nav.about'), type: 'route', scrollTo: '#nosotros', scrollPage: '/' },
     { to: '/services', label: t('nav.services'), type: 'route', scrollTo: '#servicios', scrollPage: '/' },
-    { to: '/coverage', label: t('nav.coverage'), type: 'route' },
-    { to: '/galley', label: t('nav.gallery'), type: 'route' }
+    { to: '/coverage', label: t('nav.coverage'), type: 'route', scrollTo: '#cobertura', scrollPage: '/'},
+    { to: '/gallery', label: t('nav.gallery'), type: 'route', scrollTo: '#galeria', scrollPage: '/' }
   ]
 
   const handleNavClick = (e, link) => {
