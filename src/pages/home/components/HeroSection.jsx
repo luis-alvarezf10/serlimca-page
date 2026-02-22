@@ -226,7 +226,7 @@ const HeroSection = () => {
             e.preventDefault();
             scrollToSection('#nosotros');
           }}
-          className="flex flex-col items-center gap-2 animate-bounce text-primary font-semibold cursor-pointer"
+          className="text-xs flex flex-col items-center gap-2 animate-bounce text-primary font-semibold cursor-pointer"
         >
           <HiChevronDoubleDown />
           <span className="uppercase tracking-widest">Ver más</span>
@@ -234,7 +234,7 @@ const HeroSection = () => {
       </div>
 
       <div className="z-99 absolute w-full h-3 bg-primary/5 bottom-0 "></div>
-      <div className="absolute w-40 h-20 rounded-t-full bg-primary/5 left-1/2 -translate-x-1/2 bottom-3 "></div>
+      <div className="absolute w-28 h-14 rounded-t-full bg-primary/5 left-1/2 -translate-x-1/2 bottom-3 "></div>
     </section>
   );
 };
