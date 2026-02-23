@@ -64,7 +64,7 @@ export default function Header() {
 
         {/* Desktop Menu */}
 
-        <div className="flex gap-5 hidden md:flex md:block">
+        <div className="flex gap-5 hidden lg:flex lg:block">
           {navLinks.map((link) => {
             const isActive = location.pathname === link.to
             
@@ -93,7 +93,7 @@ export default function Header() {
         <div className='flex items-center justify-center gap-5'>
         {/* Language Dropdown */}
 
-          <div className="relative hidden lg:block">
+          <div className="relative hidden md:block">
             <button
               onClick={() => setLangDropdownOpen(!langDropdownOpen)}
               className={`inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-lg border animation-color duration-200 ${isScrolled ? 'hover:bg-gray-100 ' : 'text-gray-100 hover:bg-gray-100/10'}`}
@@ -133,41 +133,40 @@ export default function Header() {
           </div>
 
           <div>
-            <Link className='bg-primary px-5 py-2 font-bold text-black rounded-full tracking-wide hidden md:block' to="/contacto">
+            <Link className='bg-primary px-5 py-2 font-bold text-black rounded-full tracking-wide hidden lg:block' to="/contacto">
               {t('nav.contact')}
             </Link>
           </div>
+          <button 
+            className="lg:hidden relative w-10 h-10 flex flex-col items-center justify-center gap-1.5 z-[60]" 
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
+          >
+            <span className={`block w-6 h-0.5 transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-2 bg-black' : isScrolled ? 'bg-black' : 'bg-white'}`}></span>
+            <span className={`block w-6 h-0.5 transition-all duration-300 ${menuOpen ? 'opacity-0' : 'opacity-100'} ${isScrolled ? 'bg-black' : 'bg-white'}`}></span>
+            <span className={`block w-6 h-0.5 transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-2 bg-black' : isScrolled ? 'bg-black' : 'bg-white'}`}></span>
+          </button>
         </div>
 
         {/* Mobile Menu Button */}
-        <button 
-          className="md:hidden relative w-10 h-10 flex flex-col items-center justify-center gap-1.5 z-[60]" 
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
-        >
-          <span className={`block w-6 h-0.5 transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-2 bg-black' : isScrolled ? 'bg-black' : 'bg-white'}`}></span>
-          <span className={`block w-6 h-0.5 transition-all duration-300 ${menuOpen ? 'opacity-0' : 'opacity-100'} ${isScrolled ? 'bg-black' : 'bg-white'}`}></span>
-          <span className={`block w-6 h-0.5 transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-2 bg-black' : isScrolled ? 'bg-black' : 'bg-white'}`}></span>
-        </button>
       </nav>
 
       {/* Mobile Menu Overlay */}
       <div 
-        className={`md:hidden fixed inset-0 h-screen bg-black/50 backdrop-blur-sm transition-opacity duration-300 z-[45] ${
+        className={`lg:hidden fixed inset-0 h-screen bg-black/50 backdrop-blur-sm transition-opacity duration-300 z-[45] ${
           menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
         onClick={() => setMenuOpen(false)}
       ></div>
 
       {/* Mobile Menu */}
-      <div className={`md:hidden fixed top-0 right-0 h-screen w-72 bg-white shadow-2xl transform transition-transform duration-300 ease-in-out z-[55] ${
+      <div className={`lg:hidden fixed top-0 right-0 h-screen w-72 bg-white shadow-2xl transform transition-transform duration-300 ease-in-out z-[55] ${
         menuOpen ? 'translate-x-0' : 'translate-x-full'
       }`}>
         <div className="flex flex-col h-full">
           {/* Menu Header */}
           <div className="flex items-center justify-between p-6 border-b">
             <h2 className="text-xl font-bold">Menú</h2>
-          
           </div>
 
           {/* Menu Links */}
@@ -182,19 +181,12 @@ export default function Header() {
                   onClick={(e) => handleNavClick(e, link)}
                   className={`relative block px-6 py-4 font-semibold transition-all duration-200 ${
                     isActive 
-                      ? 'text-primary bg-primary/10 border-l-4 border-primary' 
+                      ? ' bg-primary/50 border-l-8 border-primary' 
                       : 'hover:bg-gray-50 border-l-4 border-transparent'
                   }`}
                   style={{ animationDelay: `${index * 50}ms` }}
                 >
-                  <span className="flex items-center justify-between">
                     {link.label}
-                    {isActive && (
-                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg>
-                    )}
-                  </span>
                 </Link>
               )
             })}

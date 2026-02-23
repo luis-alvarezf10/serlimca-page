@@ -169,24 +169,26 @@ const HeroSection = () => {
           </div>
 
           {/* Title */}
-          <h1 className="xl:text-6xl 2xl:text-7xl font-heading font-black text-primary-foreground mb-4 animate-fade-up text-white" style={{ animationDelay: '0.1s' }}>
+          <h1 className="text-2xl md:text-4xl xl:text-6xl 2xl:text-7xl font-heading font-black text-primary-foreground mb-4 animate-fade-up text-white" style={{ animationDelay: '0.1s' }}>
             {t('hero.title')}
             <span className="block text-shimmer text-primary">{t('hero.subtitle')}</span>
           </h1>
 
           {/* Description */}
-          <p className="lg:text-lg text-white md:text-gray-400 max-w-2xl mb-10 leading-relaxed animate-fade-up " style={{ animationDelay: '0.2s' }}>
+          <p className="text-md lg:text-lg text-white md:text-gray-400 max-w-2xl mb-10 leading-relaxed animate-fade-up " style={{ animationDelay: '0.2s' }}>
             {t('hero.description')}
           </p>
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 animate-fade-up" style={{ animationDelay: '0.3s' }}>
-            <GeneralButton>
+            <GeneralButton 
+              onClick={() => scrollToSection('#contacto')}
+            >
               {t('hero.cta.quote')}
               <HiCheckCircle/>
             </GeneralButton>
             <OutlinedButton 
-              onClick={() => scrollToSection('#services')}
+              onClick={() => scrollToSection('#servicios')}
               className="inline-flex items-center justify-center gap-3 text-lg"
             >
               {t('hero.cta.services')}
@@ -197,22 +199,22 @@ const HeroSection = () => {
           {/* Stats */}
           <div className="grid grid-cols-3 gap-8 mt-16 pt-8 border-t border-primary-foreground/20 animate-fade-up text-white text-center cursor-default" style={{ animationDelay: '0.4s' }}>
             <div className="group">
-              <div className="font-heading xl:text-4xl 2xl:text-5xl font-black group-hover:scale-110 transition-transform duration-300">
+              <div className="font-heading text-2xl md:text-2xl xl:text-4xl 2xl:text-5xl font-black group-hover:scale-110 transition-transform duration-300">
                 +{counters.years}
               </div>
-           <div className="text-gray-400 text-sm font-semibold tracking-wide mt-1">Años de experiencia</div>
+           <div className="text-gray-400 te text-xs md:t-sm font-semibold tracking-wide mt-1">Años de experiencia</div>
             </div>
             <div className="group">
-              <div className="font-heading xl:text-4xl 2xl:text-5xl font-black text-secondary group-hover:scale-110 transition-transform duration-300">
+              <div className="font-heading text-2xl md:text-2xl xl:text-4xl 2xl:text-5xl font-black text-secondary group-hover:scale-110 transition-transform duration-300">
                 +{counters.projects}
               </div>
-              <div className="text-gray-400 text-sm font-semibold tracking-wide mt-1">Proyectos completados</div>
+              <div className="text-gray-400 text-xs md:text-sm font-semibold tracking-wide mt-1">Proyectos completados</div>
             </div>
             <div className="group">
-              <div className="font-heading xl:text-4xl 2xl:text-5xl font-black group-hover:scale-110 transition-transform duration-300">
+              <div className="font-heading text-2xl md:text-2xl xl:text-4xl 2xl:text-5xl font-black group-hover:scale-110 transition-transform duration-300">
                 24/7
               </div>
-              <div className="text-gray-400 text-sm font-semibold tracking-wide mt-1">Soporte técnico</div>
+              <div className="text-gray-400 text-xs md:text-sm font-semibold tracking-wide mt-1">Soporte técnico</div>
             </div>
           </div>
         </div>

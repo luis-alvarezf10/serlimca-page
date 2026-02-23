@@ -63,7 +63,7 @@ const ContactCTASection = () => {
 
   return (
     <section 
-      id="contact-cta" 
+      id="contacto" 
       ref={sectionRef} 
       className="py-24 relative overflow-hidden"
       style={{
