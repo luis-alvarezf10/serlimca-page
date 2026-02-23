@@ -57,21 +57,21 @@ const GallerySection = () => {
       ref={sectionRef} 
       className="py-24 relative overflow-hidden bg-white"
     >
-      <div className="container mx-auto px-8 relative max-w-7xl">
+      <div className="container mx-auto px-6 md:px-16 lg:px-24 xl:px-32 relative max-w-7xl">
         {/* Header */}
         <div className={`mb-12 transform transition-all duration-1000 ${
           isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
         }`}>
           <div className="flex items-center gap-4 mb-6">
             <div className="w-12 h-1 bg-primary" />
-            <span className="text-sm font-semibold tracking-wider text-gray-500 uppercase">Galería</span>
+            <span className="font-semibold tracking-wide text-gray-400">Galería</span>
           </div>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
             <div>
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              <h2 className="text-2xl xl:text-4xl 2xl:text-5xl font-bold mb-4">
                 Nuestros Proyectos
               </h2>
-              <p className="text-lg text-gray-600 max-w-2xl">
+              <p className=" text-gray-500 font-semibold text-justify md:text-left">
                 Experiencia comprobada en soluciones industriales y logísticas de alto nivel
               </p>
             </div>
@@ -87,7 +87,7 @@ const GallerySection = () => {
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`px-6 py-2.5 rounded-full font-medium transition-all duration-300 ${
+              className={`px-6 py-1 rounded-full font-semibold tracking-wide transition-all duration-300 text-sm ${
                 activeCategory === category
                   ? 'bg-primary text-black shadow-lg scale-105'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
