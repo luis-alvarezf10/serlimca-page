@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { HiPhone, HiMail, HiArrowRight, HiLocationMarker, HiClock, HiCheckCircle } from 'react-icons/hi'
+import { HiPhone, HiMail, HiArrowRight, HiLocationMarker, HiClock, HiCheck } from 'react-icons/hi'
+import OutlinedButton from '../../../components/buttons.jsx/OutlinedButton';
+import GeneralButton from '../../../components/buttons.jsx/GeneralButton';
+import { useNavigate } from 'react-router-dom'
 
 const ContactCTASection = () => {
   const [isVisible, setIsVisible] = useState(false)
@@ -61,6 +64,8 @@ const ContactCTASection = () => {
     'Atención en todo el país'
   ]
 
+  const navigate = useNavigate()
+
   return (
     <section 
       id="contacto" 
@@ -87,7 +92,7 @@ const ContactCTASection = () => {
         style={{ animationDelay: '2s' }} 
       />
 
-      <div className="container mx-auto px-8 relative max-w-7xl">
+      <div className="container mx-auto px-6 md:px-16 lg:px-24 xl:px-3relative max-w-7xl">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Side - Content */}
           <div className={`transform transition-all duration-1000 ${
@@ -100,12 +105,12 @@ const ContactCTASection = () => {
             </div>
 
             {/* Title */}
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            <h2 className="text-2xl xl:text-4xl 2xl:text-5xl font-bold text-white mb-6 leading-tight">
               ¿Listo para Comenzar tu Proyecto?
             </h2>
 
             {/* Description */}
-            <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+            <p className="xl:text-lg 2xl:text-xl text-gray-300 mb-8 leading-relaxed">
               Nuestro equipo de expertos está preparado para ofrecerte soluciones 
               personalizadas que se adapten a tus necesidades específicas.
             </p>
@@ -121,31 +126,34 @@ const ContactCTASection = () => {
                   style={{ transitionDelay: `${index * 100 + 300}ms` }}
                 >
                   <div className="flex-shrink-0 w-6 h-6 bg-primary rounded-full flex items-center justify-center">
-                    <HiCheckCircle className="w-5 h-5 text-black" />
+                    <HiCheck className="w-5 h-5 text-black" />
                   </div>
-                  <span className="text-gray-300">{benefit}</span>
+                  <span className="text-white tracking-wide">{benefit}</span>
                 </div>
               ))}
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-wrap gap-4">
-              <Link 
-                to="/contacto"
-                className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-black text-lg font-bold rounded-full hover:shadow-2xl hover:scale-105 transition-all duration-300 group"
-                style={{ boxShadow: '0 10px 40px rgba(255, 215, 0, 0.4)' }}
+            <div className="flex flex-col sm:flex-row gap-4 animate-fade-up" style={{ animationDelay: '0.3s' }}>
+              <GeneralButton
+                onClick={
+                  () => navigate('/contacto')
+                }
+                className='hover:shadow-2xl hover:scale-105 transition-all duration-300 group'
               >
                 Solicitar Cotización
                 <HiArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" />
-              </Link>
+              </GeneralButton>
               
-              <a 
-                href="tel:+584241234567"
-                className="inline-flex items-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white text-lg font-semibold rounded-full hover:bg-white/20 hover:border-primary/50 transition-all duration-300"
+              <OutlinedButton
+                onClick={
+                  window.open('https://wa.me/584241234567', '_blank')
+                }
+                className='inline-flex items-center justify-center gap-3 text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300'
               >
-                <HiPhone className="w-5 h-5" />
-                Llamar Ahora
-              </a>
+                Contactar ahora
+               <HiPhone className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" />
+              </OutlinedButton>
             </div>
           </div>
 
@@ -165,8 +173,9 @@ const ContactCTASection = () => {
                 >
                   <div className="flex items-start gap-4">
                     {/* Icon */}
-                    <div className={`flex-shrink-0 w-14 h-14 bg-gradient-to-br ${method.color} rounded-xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg`}>
-                      <method.icon className="w-7 h-7 text-white" />
+                    <div className={`flex-shrink-0 w-14 h-14 bg-primary/25 group-hover:bg-primary text-primary group-hover:text-white rounded-xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg`}>
+                      <method.icon className="w-7 h-7" />
+                      <div className="absolute inset-0 rounded-2xl border-2 border-primary opacity-0 group-hover:opacity-100 group-hover:animate-ping" />
                     </div>
 
                     {/* Content */}
@@ -180,11 +189,8 @@ const ContactCTASection = () => {
                       <p className="text-primary font-semibold mb-3">
                         {method.info}
                       </p>
-                      <span className="text-sm text-gray-300 group-hover:text-white transition-colors duration-300 flex items-center gap-2">
-                        {method.action}
-                        <HiArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                      </span>
                     </div>
+                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-1 bg-primary group-hover:w-1/2 transition-all duration-500 rounded-full" />
                   </div>
                 </div>
               ))}
@@ -197,7 +203,7 @@ const ContactCTASection = () => {
               >
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0 w-14 h-14 bg-primary rounded-xl flex items-center justify-center">
-                    <HiClock className="w-7 h-7 text-black" />
+                    <HiClock className="w-7 h-7 text-white" />
                   </div>
                   <div>
                     <h3 className="text-white text-lg font-bold mb-2">
@@ -205,7 +211,7 @@ const ContactCTASection = () => {
                     </h3>
                     <div className="space-y-1 text-gray-300">
                       <p className="text-sm">Lunes - Viernes: 8:00 AM - 6:00 PM</p>
-                      <p className="text-sm">Sábados: 9:00 AM - 2:00 PM</p>
+                      <p className="text-sm">Sábados-Domingos: 9:00 AM - 2:00 PM</p>
                       <p className="text-sm font-semibold text-primary">Emergencias 24/7</p>
                     </div>
                   </div>
@@ -220,14 +226,14 @@ const ContactCTASection = () => {
           isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
         }`}>
           {[
-            { value: '<2h', label: 'Tiempo de Respuesta' },
+            { value: '<24h', label: 'Tiempo de Respuesta' },
             { value: '24/7', label: 'Soporte Disponible' },
             { value: '100%', label: 'Confidencialidad' },
-            { value: '15+', label: 'Años de Experiencia' }
+            { value: '+20', label: 'Años de Experiencia' }
           ].map((stat, index) => (
-            <div key={index} className="text-center p-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl hover:bg-white/10 hover:border-primary/30 transition-all duration-300">
+            <div key={index} className="text-center p-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl hover:bg-white/10 hover:border-primary/30 transition-all duration-300 cursor-default">
               <div className="text-3xl md:text-4xl font-bold text-primary mb-2">{stat.value}</div>
-              <div className="text-sm text-gray-400">{stat.label}</div>
+              <div className="text-sm font-semibold text-gray-400 tracking-wide">{stat.label}</div>
             </div>
           ))}
         </div>

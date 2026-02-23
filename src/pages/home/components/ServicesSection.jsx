@@ -246,7 +246,7 @@ const ServicesSection = () => {
                           {service.description}
                         </p>
                       </div>
-                       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-1 bg-primary group-hover:w-1/2 transition-all duration-500 rounded-full" />
+                      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-1 bg-primary group-hover:w-1/2 transition-all duration-500 rounded-full" />
                     </div>
                   </div>
                 </div>

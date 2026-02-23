@@ -2,7 +2,7 @@ export default function OutlinedButton({ children, onClick, className = '' }) {
   return (
     <button
       onClick={onClick}
-      className={`relative p-3 md:p-2 xl:p-3 2xl:p-5 border-2 border-white text-white font-semibold rounded-lg bg-white/10
+      className={`relative p-3 md:p-2 xl:p-3 2xl:p-5 border-2 border-white text-white font-semibold rounded-lg bg-white/10 flex gap-3
         overflow-hidden transition-all duration-300 ease-in-out
         hover:bg-white hover:text-black hover:shadow-[0_0_20px_5px_rgba(255,255,255,0.4)]
         active:shadow-none
