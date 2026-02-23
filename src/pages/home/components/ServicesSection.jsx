@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import PrimaryButton from '../../../components/buttons.jsx/PrimaryButton'
 import { useLanguage } from '../../../context/LanguageContext'
-import { HiChevronLeft, HiChevronRight } from 'react-icons/hi'
+import { HiChevronLeft, HiChevronRight, HiOutlineTruck, HiOutlineCog, HiOutlineCube, HiOutlineChat, HiOutlineClock, HiOutlineBriefcase} from 'react-icons/hi'
 
 // Importa tus imágenes aquí
 import image1 from '../../../assets/imagen-1.webp'
@@ -16,42 +16,42 @@ const services = [
     id: 1,
     title: 'Transporte de Carga',
     description: 'Servicio de transporte confiable y seguro para tus necesidades logísticas.',
-    icon: '🚚',
+    icon: <HiOutlineTruck />,
     image: image1
   },
   {
     id: 2,
     title: 'Mantenimiento Industrial',
     description: 'Mantenimiento preventivo y correctivo para mantener tus equipos en óptimas condiciones.',
-    icon: '🔧',
+    icon: <HiOutlineBriefcase />,
     image: image2
   },
   {
     id: 3,
     title: 'Reparación Especializada',
     description: 'Reparaciones especializadas con personal calificado y repuestos de calidad.',
-    icon: '⚙️',
+    icon: <HiOutlineCog />,
     image: image3
   },
   {
     id: 4,
     title: 'Logística Integral',
     description: 'Soluciones logísticas completas para optimizar tu cadena de suministro.',
-    icon: '📦',
+    icon: <HiOutlineCube />,
     image: image4
   },
   {
     id: 5,
     title: 'Consultoría Técnica',
     description: 'Asesoramiento experto para mejorar tus procesos industriales.',
-    icon: '💼',
+    icon: <HiOutlineChat />,
     image: image5
   },
   {
     id: 6,
     title: 'Soporte 24/7',
     description: 'Atención continua para resolver cualquier emergencia operativa.',
-    icon: '🛠️',
+    icon: <HiOutlineClock />,
     image: image6
   }
 ]
@@ -85,10 +85,10 @@ const ServicesSection = () => {
         setItemsPerView(3);
       }
     };
-    
+
     checkScreenSize();
     window.addEventListener('resize', checkScreenSize);
-    
+
     return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
 
@@ -154,15 +154,15 @@ const ServicesSection = () => {
   const visibleServices = getVisibleServices();
 
   return (
-    <section id="servicios" ref={sectionRef} className="py-16 bg-gradient-to-t from-gray-100 to-white w-full">
-      <div className="max-w-7xl mx-auto w-full px-8">
+    <section id="servicios" ref={sectionRef} className="min-h-screen  bg-gradient-to-t from-gray-100 to-white max-w-7xl">
+      <div className="max-w-7xl mx-auto w-full px-6 md:px-16 lg:px-24 xl:px-32 py-20 ">
         {/* Header */}
         <div className="flex items-center justify-between w-full mb-12">
           <div>
             <span className="font-semibold tracking-wide text-gray-400">Servicios</span>
-            <h2 className="text-3xl md:text-5xl font-bold">¿Qué hacemos?</h2>
+            <h2 className="text-2xl xl:text-4xl 2xl:text-5xl font-bold">¿Qué hacemos?</h2>
           </div>
-          <PrimaryButton to="/servicios">
+          <PrimaryButton to="/servicios" className='hidden md:block'>
             Explorar más
           </PrimaryButton>
         </div>
@@ -187,23 +187,21 @@ const ServicesSection = () => {
           </button>
 
           {/* Cards Grid */}
-          <div className={`grid gap-6 overflow-visible relative z-10 ${
-            isMobile ? 'grid-cols-1' : isTablet ? 'grid-cols-2' : 'grid-cols-3'
-          }`}>
+          <div className={`grid gap-6 overflow-visible relative z-10 ${isMobile ? 'grid-cols-1' : isTablet ? 'grid-cols-2' : 'grid-cols-3'
+            }`}>
             {visibleServices.map((service, index) => {
-              const slideClass = isTransitioning 
-                ? animationDirection === 'next' 
-                  ? 'animate-slide-in-right' 
+              const slideClass = isTransitioning
+                ? animationDirection === 'next'
+                  ? 'animate-slide-in-right'
                   : 'animate-slide-in-left'
                 : '';
-              
+
               return (
                 <div
                   key={`${service.id}-${currentIndex}-${index}`}
-                  className={`relative h-[450px] rounded-2xl overflow-visible group cursor-pointer transform transition-all duration-1000 ease-out ${slideClass} ${
-                    isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-                  }`}
-                  style={{ 
+                  className={`relative h-[450px] rounded-2xl overflow-visible group cursor-pointer transform transition-all duration-1000 ease-out ${slideClass} ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+                    }`}
+                  style={{
                     transitionDelay: `${index * 120}ms`,
                     animationDelay: `${index * 120}ms`,
                     perspective: '1000px',
@@ -211,14 +209,14 @@ const ServicesSection = () => {
                   }}
                 >
                   {/* Image Container */}
-                  <div className="relative h-[400px] rounded-2xl overflow-hidden">
+                  <div className="relative h-[375px] rounded-2xl overflow-hidden">
                     {/* Image */}
                     <img
                       src={service.image}
                       alt={service.title}
                       className="w-full h-full object-cover transition-all duration-[1200ms] ease-out group-hover:scale-110 group-hover:brightness-110"
                     />
-                    
+
                     {/* Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent transition-all duration-700 ease-out group-hover:from-black/75 group-hover:via-black/40" />
 
@@ -235,20 +233,20 @@ const ServicesSection = () => {
 
                   {/* Service Card - Sobresale por debajo */}
                   <div className="absolute bottom-14 left-4 right-4 transform translate-y-12 z-20">
-                    <div className="bg-white backdrop-blur-sm rounded-xl p-6 shadow-2xl h-[150px] flex items-center transform transition-all duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03] group-hover:shadow-[0_20px_60px_rgba(0,0,0,0.3)] group-hover:-translate-y-2">
-                      <div className="flex items-start gap-4 w-full">
-                        {/* <div className="text-4xl flex-shrink-0 transform transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:scale-125 group-hover:rotate-[15deg]">
-                          {service.icon}
-                        </div> */}
-                        <div className="flex-1 min-w-0">
-                          <h3 className="text-xl font-bold mb-2 transition-all duration-500 ease-out group-hover:text-primary group-hover:translate-x-1 line-clamp-2">
-                            {service.title}
-                          </h3>
-                          <p className="text-gray-600 text-sm leading-relaxed transition-all duration-500 ease-out group-hover:text-gray-800 line-clamp-3">
-                            {service.description}
-                          </p>
-                        </div>
+                    <div className="bg-white backdrop-blur-sm rounded-xl p-6 shadow-2xl h-[225px] flex flex-col gap-5 items-center transform transition-all duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03] group-hover:shadow-[0_20px_60px_rgba(0,0,0,0.3)] group-hover:-translate-y-2">
+                      <div className="text-4xl bg-primary/25 group-hover:bg-primary text-primary group-hover:text-white p-2 rounded-lg flex-shrink-0 transform transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:scale-110 group-hover:rotate-[5deg]">
+                        {service.icon}
+                         <div className="absolute inset-0 rounded-2xl border-2 border-primary opacity-0 group-hover:opacity-100 group-hover:animate-ping" />
                       </div>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="md:text-lg xl:text-xl 2xl:text-2xl font-bold mb-2 transition-all duration-500 ease-out group-hover:text-primary group-hover:translate-x-1 line-clamp-2">
+                          {service.title}
+                        </h3>
+                        <p className="text-gray-500  leading-relaxed transition-all duration-500 ease-out group-hover:text-gray-800 line-clamp-3">
+                          {service.description}
+                        </p>
+                      </div>
+                       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-1 bg-primary group-hover:w-1/2 transition-all duration-500 rounded-full" />
                     </div>
                   </div>
                 </div>
@@ -261,7 +259,7 @@ const ServicesSection = () => {
             {Array.from({ length: totalPages }).map((_, index) => {
               const pageIndex = index * itemsPerView;
               const isActive = currentIndex === pageIndex;
-              
+
               return (
                 <button
                   key={index}
@@ -272,11 +270,10 @@ const ServicesSection = () => {
                       setTimeout(() => setIsTransitioning(false), 800);
                     }
                   }}
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    isActive
+                  className={`h-2 rounded-full transition-all duration-300 ${isActive
                       ? 'bg-primary w-8'
                       : 'bg-gray-300 w-2 hover:bg-gray-400'
-                  }`}
+                    }`}
                 />
               );
             })}
