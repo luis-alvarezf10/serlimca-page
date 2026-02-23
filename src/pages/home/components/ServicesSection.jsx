@@ -242,7 +242,7 @@ const ServicesSection = () => {
                         <h3 className="md:text-lg xl:text-xl 2xl:text-2xl font-bold mb-2 transition-all duration-500 ease-out group-hover:text-primary group-hover:translate-x-1 line-clamp-2">
                           {service.title}
                         </h3>
-                        <p className="text-gray-500  leading-relaxed transition-all duration-500 ease-out group-hover:text-gray-800 line-clamp-3">
+                        <p className="text-gray-500 font-medium leading-relaxed transition-all duration-500 ease-out group-hover:text-gray-800 line-clamp-3">
                           {service.description}
                         </p>
                       </div>
@@ -277,6 +277,11 @@ const ServicesSection = () => {
                 />
               );
             })}
+          </div>
+          <div className='flex items-center justify-center p-10 md:p-0'>
+            <PrimaryButton to="/servicios" className='block md:hidden'>
+              Explorar más
+            </PrimaryButton>
           </div>
         </div>
       </div>
