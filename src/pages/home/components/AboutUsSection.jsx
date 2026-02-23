@@ -38,10 +38,10 @@ const AboutUsSection = () => {
   }, []);
 
   return (
-    <section id="nosotros" ref={sectionRef} className="md:h-[100dvh] flex items-center max-w-7xl mx-auto">
-      <div className="grid md:grid-cols-2 gap-12 items-center px-10">
+    <section id="nosotros" ref={sectionRef} className="min-h-screen  flex items-center max-w-7xl mx-auto">
+      <div className=" px-6 md:px-16 lg:px-24 xl:px-32 py-20 xl:py-0 grid md:grid-cols-2 md:gap-12 items-center px-10">
         <div
-          className={`bg-gray-200 h-3/4 rounded-xl flex items-center justify-center overflow-hidden transform transition-all duration-1000 ${isVisible
+          className={`bg-gray-200 h-1/2 md:h-3/5 lg:h-1/2 xl:h-3/4 rounded-xl flex items-center justify-center overflow-hidden transform transition-all duration-1000 ${isVisible
               ? 'opacity-100 translate-x-0 scale-100'
               : 'opacity-0 -translate-x-20 scale-95'
             }`}
@@ -61,9 +61,9 @@ const AboutUsSection = () => {
         >
           <div>
             <span className="font-semibold tracking-wide text-gray-400">{t('about.title')}</span>
-            <h2 className="text-3xl md:text-5xl font-bold">{t('about.subtitle')}</h2>
+            <h2 className="text-2xl xl:text-4xl 2xl:text-5xl font-bold">{t('about.subtitle')}</h2>
           </div>
-          <div className="grid gap-2 text-lg leading-relaxed text-gray-500 font-semibold text-justify md:text-left">
+          <div className="grid gap-2 2xl:text-lg leading-relaxed text-gray-500 font-semibold text-justify md:text-left">
             <p>
              {t('about.shortdescription')}
             </p>
@@ -74,8 +74,8 @@ const AboutUsSection = () => {
           <div className="grid grid-cols-2 gap-5 pt-4">
             {Information.map((item, index) => (
               <div key={index} className="flex flex-col border-t-2 border-primary p-3">
-                <span className="text-xl lg:text-2xl xl:text-3xl font-bold">{item.title}</span>
-                <span className="text-gray-500">{item.description}</span>
+                <span className="text-md lg:text-2xl 2xl:text-3xl font-bold">{item.title}</span>
+                <span className="text-sm xl:text-lg font-semibold text-gray-500">{item.description}</span>
               </div>
             ))}
           </div>
