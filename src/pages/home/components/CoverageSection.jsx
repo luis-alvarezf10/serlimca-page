@@ -77,10 +77,10 @@ const CoverageSection = () => {
             isVisible ? 'translate-x-0 opacity-100' : '-translate-x-20 opacity-0'
           }`}>
             <div className="w-16 h-1 bg-primary rounded-full mb-6" />
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            <h2 className="text-2xl xl:text-4xl 2xl:text-5xl font-bold text-white mb-6">
               Cobertura Nacional
             </h2>
-            <p className="text-xl text-gray-300 mb-8">
+            <p className="text-lg xl:text-xl text-gray-300 mb-8">
               Presencia en las principales regiones del país.
             </p>
             <p className="text-gray-400 leading-relaxed mb-8">
