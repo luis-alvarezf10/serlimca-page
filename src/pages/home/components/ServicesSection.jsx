@@ -1,13 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
 import PrimaryButton from '../../../components/buttons.jsx/PrimaryButton'
-import { useLanguage } from '../../../context/LanguageContext'
-import { HiChevronLeft, HiChevronRight, HiOutlineTruck, HiOutlineCog, HiOutlineCube, HiOutlineChat, HiOutlineClock, HiOutlineBriefcase} from 'react-icons/hi'
+import { HiOutlineTruck, HiOutlineCog, HiOutlineCube, HiOutlineChat, HiOutlineClock, HiOutlineBriefcase} from 'react-icons/hi'
 
 // Importa tus imágenes aquí
 import image1 from '../../../assets/imagen-1.webp'
-import image2 from '../../../assets/imagen-2.jpeg' // Reemplaza con tus imágenes reales
-import image3 from '../../../assets/imagen-3.jpeg' // Reemplaza con tus imágenes reales
-import image4 from '../../../assets/imagen-4.jpeg' // Agrega más imágenes
+import image2 from '../../../assets/imagen-2.jpeg'
+import image3 from '../../../assets/imagen-3.jpeg'
+import image4 from '../../../assets/imagen-4.jpeg'
 import image5 from '../../../assets/imagen-5.jpeg'
 import image6 from '../../../assets/imagen-6.jpeg'
 
@@ -15,274 +14,153 @@ const services = [
   {
     id: 1,
     title: 'Transporte de Carga',
-    description: 'Servicio de transporte confiable y seguro para tus necesidades logísticas.',
+    description: 'Servicio de transporte confiable y seguro para tus necesidades logísticas. Contamos con una flota moderna y personal capacitado para garantizar la entrega oportuna de tus productos.',
     icon: <HiOutlineTruck />,
     image: image1
   },
   {
     id: 2,
     title: 'Mantenimiento Industrial',
-    description: 'Mantenimiento preventivo y correctivo para mantener tus equipos en óptimas condiciones.',
+    description: 'Mantenimiento preventivo y correctivo para mantener tus equipos en óptimas condiciones. Nuestro equipo de expertos asegura el funcionamiento continuo de tu operación.',
     icon: <HiOutlineBriefcase />,
     image: image2
   },
   {
     id: 3,
     title: 'Reparación Especializada',
-    description: 'Reparaciones especializadas con personal calificado y repuestos de calidad.',
+    description: 'Reparaciones especializadas con personal calificado y repuestos de calidad. Diagnóstico preciso y soluciones efectivas para minimizar tiempos de inactividad.',
     icon: <HiOutlineCog />,
     image: image3
   },
   {
     id: 4,
     title: 'Logística Integral',
-    description: 'Soluciones logísticas completas para optimizar tu cadena de suministro.',
+    description: 'Soluciones logísticas completas para optimizar tu cadena de suministro. Desde almacenamiento hasta distribución, manejamos cada detalle de tu operación.',
     icon: <HiOutlineCube />,
     image: image4
   },
   {
     id: 5,
     title: 'Consultoría Técnica',
-    description: 'Asesoramiento experto para mejorar tus procesos industriales.',
+    description: 'Asesoramiento experto para mejorar tus procesos industriales. Análisis detallado y recomendaciones personalizadas para aumentar tu eficiencia operativa.',
     icon: <HiOutlineChat />,
     image: image5
   },
   {
     id: 6,
     title: 'Soporte 24/7',
-    description: 'Atención continua para resolver cualquier emergencia operativa.',
+    description: 'Atención continua para resolver cualquier emergencia operativa. Nuestro equipo está disponible en todo momento para brindarte asistencia inmediata.',
     icon: <HiOutlineClock />,
     image: image6
   }
 ]
 
 const ServicesSection = () => {
-  const { t } = useLanguage();
-  const [isVisible, setIsVisible] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [visibleItems, setVisibleItems] = useState([]);
   const sectionRef = useRef(null);
-
-  const [animationDirection, setAnimationDirection] = useState('next');
-  const [isMobile, setIsMobile] = useState(false);
-  const [isTablet, setIsTablet] = useState(false);
-  const [itemsPerView, setItemsPerView] = useState(3);
-
-  useEffect(() => {
-    const checkScreenSize = () => {
-      const width = window.innerWidth;
-      if (width < 768) {
-        setIsMobile(true);
-        setIsTablet(false);
-        setItemsPerView(1);
-      } else if (width >= 768 && width < 1024) {
-        setIsMobile(false);
-        setIsTablet(true);
-        setItemsPerView(2);
-      } else {
-        setIsMobile(false);
-        setIsTablet(false);
-        setItemsPerView(3);
-      }
-    };
-
-    checkScreenSize();
-    window.addEventListener('resize', checkScreenSize);
-
-    return () => window.removeEventListener('resize', checkScreenSize);
-  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = parseInt(entry.target.dataset.index);
+            setVisibleItems((prev) => [...new Set([...prev, index])]);
+          }
+        });
       },
       { threshold: 0.2 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
+    const items = document.querySelectorAll('.service-item');
+    items.forEach((item) => observer.observe(item));
 
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
+    return () => observer.disconnect();
   }, []);
 
-  // Auto-play del carousel
-  useEffect(() => {
-    const interval = setInterval(() => {
-      nextSlide();
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [currentIndex]);
-
-  const nextSlide = () => {
-    if (isTransitioning) return;
-    setAnimationDirection('next');
-    setIsTransitioning(true);
-    setCurrentIndex((prev) => (prev + itemsPerView) % services.length);
-    setTimeout(() => setIsTransitioning(false), 1200);
-  };
-
-  const prevSlide = () => {
-    if (isTransitioning) return;
-    setAnimationDirection('prev');
-    setIsTransitioning(true);
-    setCurrentIndex((prev) => (prev - itemsPerView + services.length) % services.length);
-    setTimeout(() => setIsTransitioning(false), 1200);
-  };
-
-  // Obtener los servicios visibles según el tamaño de pantalla
-  const getVisibleServices = () => {
-    const visible = [];
-    for (let i = 0; i < itemsPerView; i++) {
-      const index = (currentIndex + i) % services.length;
-      visible.push(services[index]);
-    }
-    return visible;
-  };
-
-  // Calcular el número de páginas/indicadores
-  const totalPages = Math.ceil(services.length / itemsPerView);
-
-  const visibleServices = getVisibleServices();
-
   return (
-    <section id="servicios" ref={sectionRef} className="min-h-screen  bg-gradient-to-t from-gray-100 to-white max-w-7xl">
-      <div className="max-w-7xl mx-auto w-full px-6 md:px-16 lg:px-24 xl:px-32 py-20 ">
+    <section id="servicios" ref={sectionRef} className="py-20 bg-gradient-to-b from-white to-gray-50">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
         {/* Header */}
-        <div className="flex items-center justify-between w-full mb-12">
-          <div>
-            <span className="font-semibold tracking-wide text-gray-400">Servicios</span>
-            <h2 className="text-2xl xl:text-4xl 2xl:text-5xl font-bold">¿Qué hacemos?</h2>
-          </div>
-          <PrimaryButton to="/servicios" className='hidden md:block'>
-            Explorar más
-          </PrimaryButton>
+        <div className="text-center mb-16">
+          <span className="text-sm font-semibold tracking-wide text-gray-400 uppercase">Servicios</span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mt-2 mb-4">
+            ¿Qué hacemos?
+          </h2>
+          <p className="text-gray-500 max-w-2xl mx-auto">
+            Nuestro equipo de expertos está dedicado a ayudarte a alcanzar tus objetivos industriales y logísticos.
+          </p>
         </div>
 
-        {/* Carousel - 3 imágenes visibles */}
-        <div className="relative">
-          {/* Navigation Buttons */}
-          <button
-            onClick={prevSlide}
-            disabled={isTransitioning}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white hover:bg-gray-50 text-black p-3 rounded-full shadow-lg transition-all duration-600 hover:scale-110 disabled:opacity-50 z-20"
-          >
-            <HiChevronLeft className="w-6 h-6" />
-          </button>
+        {/* Services List */}
+        <div className="space-y-24 md:space-y-32">
+          {services.map((service, index) => {
+            const isEven = index % 2 === 0;
+            const isVisible = visibleItems.includes(index);
 
-          <button
-            onClick={nextSlide}
-            disabled={isTransitioning}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white hover:bg-gray-50 text-black p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 disabled:opacity-50 z-20"
-          >
-            <HiChevronRight className="w-6 h-6" />
-          </button>
-
-          {/* Cards Grid */}
-          <div className={`grid gap-6 overflow-visible relative z-10 ${isMobile ? 'grid-cols-1' : isTablet ? 'grid-cols-2' : 'grid-cols-3'
-            }`}>
-            {visibleServices.map((service, index) => {
-              const slideClass = isTransitioning
-                ? animationDirection === 'next'
-                  ? 'animate-slide-in-right'
-                  : 'animate-slide-in-left'
-                : '';
-
-              return (
-                <div
-                  key={`${service.id}-${currentIndex}-${index}`}
-                  className={`relative h-[450px] rounded-2xl overflow-visible group cursor-pointer transform transition-all duration-1000 ease-out ${slideClass} ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-                    }`}
-                  style={{
-                    transitionDelay: `${index * 120}ms`,
-                    animationDelay: `${index * 120}ms`,
-                    perspective: '1000px',
-                    transformStyle: 'preserve-3d'
-                  }}
-                >
-                  {/* Image Container */}
-                  <div className="relative h-[375px] rounded-2xl overflow-hidden">
-                    {/* Image */}
-                    <img
-                      src={service.image}
-                      alt={service.title}
-                      className="w-full h-full object-cover transition-all duration-[1200ms] ease-out group-hover:scale-110 group-hover:brightness-110"
-                    />
-
-                    {/* Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent transition-all duration-700 ease-out group-hover:from-black/75 group-hover:via-black/40" />
-
-                    {/* Shine effect on hover */}
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out pointer-events-none">
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-[1800ms] ease-out" />
+            return (
+              <div
+                key={service.id}
+                data-index={index}
+                className={`service-item flex flex-col ${
+                  isEven ? 'md:flex-row' : 'md:flex-row-reverse'
+                } items-center gap-8 md:gap-12 lg:gap-16 transition-all duration-1000 ease-out ${
+                  isVisible 
+                    ? 'opacity-100 translate-x-0' 
+                    : isEven 
+                      ? 'opacity-0 -translate-x-20' 
+                      : 'opacity-0 translate-x-20'
+                }`}
+              >
+                {/* Image Circle */}
+                <div className="w-full md:w-1/2 flex justify-center">
+                  <div className="relative group">
+                    {/* Background blob */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 rounded-3xl blur-3xl scale-110 group-hover:scale-125 transition-transform duration-700" />
+                    
+                    {/* Image container */}
+                    <div className="relative w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-3xl overflow-hidden shadow-2xl group-hover:shadow-primary/20 transition-all duration-500">
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      />
+                      {/* Overlay gradient */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     </div>
 
-                    {/* Glow effect */}
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out pointer-events-none">
-                      <div className="absolute inset-0 shadow-[inset_0_0_60px_rgba(255,215,0,0.3)] rounded-2xl" />
-                    </div>
-                  </div>
-
-                  {/* Service Card - Sobresale por debajo */}
-                  <div className="absolute bottom-14 left-4 right-4 transform translate-y-12 z-20">
-                    <div className="bg-white backdrop-blur-sm rounded-xl p-6 shadow-2xl h-[225px] flex flex-col gap-5 items-center transform transition-all duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03] group-hover:shadow-[0_20px_60px_rgba(0,0,0,0.3)] group-hover:-translate-y-2">
-                      <div className="text-4xl bg-primary/25 group-hover:bg-primary text-primary group-hover:text-white p-2 rounded-lg flex-shrink-0 transform transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:scale-110 group-hover:rotate-[5deg]">
-                        {service.icon}
-                         <div className="absolute inset-0 rounded-2xl border-2 border-primary opacity-0 group-hover:opacity-100 group-hover:animate-ping" />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <h3 className="md:text-lg xl:text-xl 2xl:text-2xl font-bold mb-2 transition-all duration-500 ease-out group-hover:text-primary group-hover:translate-x-1 line-clamp-2">
-                          {service.title}
-                        </h3>
-                        <p className="text-gray-500 font-medium leading-relaxed transition-all duration-500 ease-out group-hover:text-gray-800 line-clamp-3">
-                          {service.description}
-                        </p>
-                      </div>
-                      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-1 bg-primary group-hover:w-1/2 transition-all duration-500 rounded-full" />
-                    </div>
+                    {/* Decorative ring */}
+                    <div className="absolute inset-0 rounded-3xl border-4 border-primary/50 scale-105 group-hover:scale-110 group-hover:border-primary/70 transition-all duration-500" />
                   </div>
                 </div>
-              );
-            })}
-          </div>
 
-          {/* Indicators */}
-          <div className="flex justify-center gap-2 mt-16 relative z-0">
-            {Array.from({ length: totalPages }).map((_, index) => {
-              const pageIndex = index * itemsPerView;
-              const isActive = currentIndex === pageIndex;
+                {/* Content */}
+                <div className="w-full md:w-1/2 text-center md:text-left">
+                  {/* Icon */}
+                  <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary/10 text-primary text-3xl mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-300 ${
+                    isEven ? 'md:ml-0' : 'md:mr-0'
+                  }`}>
+                    {service.icon}
+                  </div>
 
-              return (
-                <button
-                  key={index}
-                  onClick={() => {
-                    if (!isTransitioning) {
-                      setIsTransitioning(true);
-                      setCurrentIndex(pageIndex);
-                      setTimeout(() => setIsTransitioning(false), 800);
-                    }
-                  }}
-                  className={`h-2 rounded-full transition-all duration-300 ${isActive
-                      ? 'bg-primary w-8'
-                      : 'bg-gray-300 w-2 hover:bg-gray-400'
-                    }`}
-                />
-              );
-            })}
-          </div>
-          <div className='flex items-center justify-center p-10 md:p-0'>
-            <PrimaryButton to="/servicios" className='block md:hidden'>
-              Explorar más
-            </PrimaryButton>
-          </div>
+                  {/* Title */}
+                  <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 group-hover:text-primary transition-colors duration-300">
+                    {service.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-gray-600 leading-relaxed mb-6 text-base md:text-lg">
+                    {service.description}
+                  </p>
+
+                  {/* Learn More Button */}
+                  <PrimaryButton to="/servicios" className="inline-flex">
+                    Conocer más
+                  </PrimaryButton>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
