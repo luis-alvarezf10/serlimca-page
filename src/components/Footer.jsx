@@ -17,8 +17,9 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 py-16 border-b border-gray-200">
           {/* Company Info */}
           <div className="lg:col-span-1">
-            <Link to="/" className="inline-block mb-6">
-              <img src={logo} alt="Logo" className="h-12 w-auto" />
+            <Link to="/" className="flex items-center gap-2 inline-block mb-6">
+              <img src={logo} alt="Logo" className="h-20 w-auto" />
+              <span className='text-black text-xs font-semibold'>J-31016439-8</span>
             </Link>
             <p className="text-gray-600 text-sm leading-relaxed mb-6">
               Soluciones industriales y logísticas de excelencia. Comprometidos con la calidad y el servicio profesional en toda Venezuela.

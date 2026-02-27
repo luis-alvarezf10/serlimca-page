@@ -58,8 +58,9 @@ export default function Header() {
     <header className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${isScrolled ? 'bg-white backdrop-blur-md shadow-xl shadow-black/50' : 'bg-gradient-to-b from-black/50 to-transparent'}`}>
       <nav className="flex items-center justify-around  w-full">
         {/* Logo */} 
-        <Link className='flex items-center' to="/">
-          <img src={ isScrolled ? logo : logoWhite} alt="logo de empresa" className="w-auto h-20" />
+        <Link className='flex items-center gap-2' to="/">
+          <img src={logo} alt="logo de empresa" className="w-auto h-20" />
+          <span className='text-black text-xs font-semibold'>J-31016439-8</span>
         </Link>
 
         {/* Desktop Menu */}
