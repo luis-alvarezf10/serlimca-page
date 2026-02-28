@@ -59,7 +59,7 @@ export default function Header() {
       <nav className="flex items-center justify-evenly w-full relative">
         {/* Div blanco de fondo */}
         <div 
-          className={`absolute top-0 left-0 bottom-0 w-[70%] md:w-[55%] lg:w-[30%] bg-gradient-to-r from-white/50 to-primary/30 transition-all duration-500 ease-in-out ${
+          className={`absolute top-0 left-0 bottom-0 w-[70%] md:w-[55%] lg:w-[30%] bg-gradient-to-r from-black/20 to-white/50 transition-all duration-500 ease-in-out ${
             isScrolled ? 'opacity-0 scale-95' : 'opacity-100 scale-120'
           }`}
           style={{
