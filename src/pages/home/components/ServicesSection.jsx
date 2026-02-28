@@ -39,20 +39,20 @@ const services = [
     icon: <HiOutlineCube />,
     image: image4
   },
-  {
-    id: 5,
-    title: 'Consultoría Técnica',
-    description: 'Asesoramiento experto para mejorar tus procesos industriales. Análisis detallado y recomendaciones personalizadas para aumentar tu eficiencia operativa.',
-    icon: <HiOutlineChat />,
-    image: image5
-  },
-  {
-    id: 6,
-    title: 'Soporte 24/7',
-    description: 'Atención continua para resolver cualquier emergencia operativa. Nuestro equipo está disponible en todo momento para brindarte asistencia inmediata.',
-    icon: <HiOutlineClock />,
-    image: image6
-  }
+  // {
+  //   id: 5,
+  //   title: 'Consultoría Técnica',
+  //   description: 'Asesoramiento experto para mejorar tus procesos industriales. Análisis detallado y recomendaciones personalizadas para aumentar tu eficiencia operativa.',
+  //   icon: <HiOutlineChat />,
+  //   image: image5
+  // },
+  // {
+  //   id: 6,
+  //   title: 'Soporte 24/7',
+  //   description: 'Atención continua para resolver cualquier emergencia operativa. Nuestro equipo está disponible en todo momento para brindarte asistencia inmediata.',
+  //   icon: <HiOutlineClock />,
+  //   image: image6
+  // }
 ]
 
 const ServicesSection = () => {
