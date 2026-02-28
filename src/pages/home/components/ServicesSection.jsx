@@ -82,7 +82,7 @@ const ServicesSection = () => {
         {/* Header */}
         <div className="text-center mb-12 sm:mb-14 md:mb-16 lg:mb-20">
           <span className="text-xs sm:text-sm font-semibold tracking-wide text-gray-400 uppercase">Servicios</span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mt-2 mb-3 sm:mb-4 px-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mt-2 mb-3 sm:mb-4 px-4">
             ¿Qué hacemos?
           </h2>
           <p className="text-sm sm:text-base text-gray-500 max-w-2xl mx-auto px-4">
@@ -140,7 +140,7 @@ const ServicesSection = () => {
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 hover:text-primary transition-colors duration-300">
+                  <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 hover:text-primary transition-colors duration-300">
                     {service.title}
                   </h3>
 
