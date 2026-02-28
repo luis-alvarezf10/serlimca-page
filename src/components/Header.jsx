@@ -56,10 +56,18 @@ export default function Header() {
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${isScrolled ? 'bg-white backdrop-blur-md shadow-xl shadow-black/50' : 'bg-gradient-to-b from-black/50 to-transparent'}`}>
-      <nav className="flex items-center justify-around  w-full">
+      <nav className="flex items-center justify-evenly w-full relative">
+        {/* Div blanco de fondo */}
+        <div 
+          className={`absolute top-0 left-0 bottom-0 transition-all duration-500  w-[70%] md:w-[55%] lg:w-[30%] ${isScrolled ? '' : 'bg-gradient-to-r from-white/50 to-primary/30'}`}
+          style={{
+            clipPath: 'polygon(0 0, calc(100% - 1rem) 0, calc(100% - 5rem) 100%, 0 100%)'
+          }}
+        ></div>
+        
         {/* Logo */} 
-        <Link className='flex items-center gap-2' to="/">
-          <img src={logo} alt="logo de empresa" className="w-auto h-20" />
+        <Link className='relative z-10 flex items-center gap-4 px-6 py-3' to="/">
+          <img src={logo} alt="logo de empresa" className="w-auto h-16" />
           <span className='text-black text-xs font-semibold'>J-31016439-8</span>
         </Link>
 
