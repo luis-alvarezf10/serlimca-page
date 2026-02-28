@@ -74,7 +74,7 @@ const AboutUsSection = () => {
           <div className="grid grid-cols-2 gap-5 pt-4">
             {Information.map((item, index) => (
               <div key={index} className="flex flex-col border-t-2 border-primary p-3">
-                <span className="text-md lg:text-2xl 2xl:text-3xl font-bold">{item.title}</span>
+                <span className="text-md lg:text-2xl 2xl:text-2xl font-bold">{item.title}</span>
                 <span className="text-sm xl:text-lg font-semibold text-gray-500">{item.description}</span>
               </div>
             ))}
