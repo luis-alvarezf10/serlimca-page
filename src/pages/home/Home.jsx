@@ -1,5 +1,6 @@
 import HeroSection from './components/HeroSection'
 import AboutUsSection from './components/AboutUsSection'
+import MarqueeText from './components/MarqueeText'
 import ServicesSection from './components/ServicesSection'
 import CoverageSection from './components/CoverageSection'
 import GallerySection from './components/GallerySection'
@@ -11,6 +12,7 @@ export default function Home() {
     <div className='w-full overflow-x-hidden'>
       <HeroSection/>
       <AboutUsSection/>
+      <MarqueeText/>
       <ServicesSection/>
       <CoverageSection/>
       <GallerySection/>
