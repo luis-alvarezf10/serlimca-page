@@ -4,6 +4,7 @@ import { useLanguage } from '../context/LanguageContext'
 import logo from '../assets/normal-logo.svg'
 import logoWhite from '../assets/white-logo.svg'
 import 'flag-icons/css/flag-icons.min.css'
+import PrimaryButton from '../components/buttons.jsx/PrimaryButton'
 
 const languages = [
   { code: 'es', flag: 've', name: 'Español' },
@@ -21,7 +22,7 @@ export default function Header() {
     { to: '/', label: t('nav.home'), type: 'route', scrollTo: '#hero', scrollPage: '/' },
     { to: '/aboutus', label: t('nav.about'), type: 'route', scrollTo: '#nosotros', scrollPage: '/' },
     { to: '/services', label: t('nav.services'), type: 'route', scrollTo: '#servicios', scrollPage: '/' },
-    { to: '/coverage', label: t('nav.coverage'), type: 'route', scrollTo: '#cobertura', scrollPage: '/'},
+    { to: '/coverage', label: t('nav.coverage'), type: 'route', scrollTo: '#cobertura', scrollPage: '/' },
     { to: '/gallery', label: t('nav.gallery'), type: 'route', scrollTo: '#galeria', scrollPage: '/' }
   ]
 
@@ -29,7 +30,7 @@ export default function Header() {
     // En desktop, si el link tiene scrollTo
     if (link.scrollTo && window.innerWidth >= 768) {
       e.preventDefault()
-      
+
       // Si estamos en la página correcta, hacer scroll
       if (location.pathname === link.scrollPage) {
         const element = document.querySelector(link.scrollTo)
@@ -58,16 +59,15 @@ export default function Header() {
     <header className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${isScrolled ? 'bg-white backdrop-blur-md shadow-xl shadow-black/50' : 'bg-gradient-to-b from-black/50 to-transparent'}`}>
       <nav className="flex items-center justify-evenly w-full relative">
         {/* Div blanco de fondo */}
-        <div 
-          className={`absolute top-0 left-0 bottom-0 w-[70%] md:w-[55%] lg:w-[30%] bg-gradient-to-r from-black/20 to-white/50 transition-all duration-500 ease-in-out ${
-            isScrolled ? 'opacity-0 scale-95' : 'opacity-100 scale-120'
-          }`}
+        <div
+          className={`absolute top-0 left-0 bottom-0 w-[70%] md:w-[55%] lg:w-[30%] bg-gradient-to-r from-black/20 to-white/50 transition-all duration-500 ease-in-out ${isScrolled ? 'opacity-0 scale-95' : 'opacity-100 scale-120'
+            }`}
           style={{
             clipPath: 'polygon(0 0, calc(100% - 1rem) 0, calc(100% - 5rem) 100%, 0 100%)'
           }}
         ></div>
-        
-        {/* Logo */} 
+
+        {/* Logo */}
         <Link className='relative z-10 flex items-center gap-4 px-6 py-3' to="/">
           <img src={logo} alt="logo de empresa" className="w-auto h-16" />
           <span className='text-black text-xs font-semibold'>J-31016439-8</span>
@@ -78,18 +78,17 @@ export default function Header() {
         <div className="flex gap-5 hidden lg:flex lg:block">
           {navLinks.map((link) => {
             const isActive = location.pathname === link.to
-            
+
             return (
-              <Link 
+              <Link
                 onClick={(e) => handleNavClick(e, link)}
-                className={`relative px-2 py-1 font-semibold rounded-lg tracking-wide transition-colors ${
-                  isActive 
-                    ? 'text-primary' 
-                    : isScrolled 
-                      ? 'hover:bg-gray-300' 
+                className={`relative px-2 py-1 font-semibold rounded-lg tracking-wide transition-colors ${isActive
+                    ? 'text-primary'
+                    : isScrolled
+                      ? 'hover:bg-gray-300'
                       : 'text-white hover:bg-white/10'
-                }`} 
-                key={link.to} 
+                  }`}
+                key={link.to}
                 to={link.to}
               >
                 {link.label}
@@ -102,7 +101,7 @@ export default function Header() {
         </div>
 
         <div className='flex items-center justify-center gap-5'>
-        {/* Language Dropdown */}
+          {/* Language Dropdown */}
 
           <div className="relative hidden md:block">
             <button
@@ -144,12 +143,12 @@ export default function Header() {
           </div>
 
           <div>
-            <Link className='bg-primary px-5 py-2 font-bold text-black rounded-full tracking-wide hidden lg:block' to="/contacto">
+            <PrimaryButton to="/contacto">
               {t('nav.contact')}
-            </Link>
+            </PrimaryButton>
           </div>
-          <button 
-            className="lg:hidden relative w-10 h-10 flex flex-col items-center justify-center gap-1.5 z-[60]" 
+          <button
+            className="lg:hidden relative w-10 h-10 flex flex-col items-center justify-center gap-1.5 z-[60]"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
           >
@@ -163,17 +162,15 @@ export default function Header() {
       </nav>
 
       {/* Mobile Menu Overlay */}
-      <div 
-        className={`lg:hidden fixed inset-0 h-screen bg-black/50 backdrop-blur-sm transition-opacity duration-300 z-[45] ${
-          menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-        }`}
+      <div
+        className={`lg:hidden fixed inset-0 h-screen bg-black/50 backdrop-blur-sm transition-opacity duration-300 z-[45] ${menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+          }`}
         onClick={() => setMenuOpen(false)}
       ></div>
 
       {/* Mobile Menu */}
-      <div className={`lg:hidden fixed top-0 right-0 h-screen w-72 bg-white shadow-2xl transform transition-transform duration-300 ease-in-out z-[55] ${
-        menuOpen ? 'translate-x-0' : 'translate-x-full'
-      }`}>
+      <div className={`lg:hidden fixed top-0 right-0 h-screen w-72 bg-white shadow-2xl transform transition-transform duration-300 ease-in-out z-[55] ${menuOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}>
         <div className="flex flex-col h-full">
           {/* Menu Header */}
           <div className="flex items-center justify-between p-6 border-b">
@@ -184,20 +181,19 @@ export default function Header() {
           <nav className="flex-1 overflow-y-auto py-4">
             {navLinks.map((link, index) => {
               const isActive = location.pathname === link.to
-              
+
               return (
-                <Link 
-                  key={link.to} 
-                  to={link.to} 
+                <Link
+                  key={link.to}
+                  to={link.to}
                   onClick={(e) => handleNavClick(e, link)}
-                  className={`relative block px-6 py-4 font-semibold transition-all duration-200 ${
-                    isActive 
-                      ? ' bg-primary/50 border-l-8 border-primary' 
+                  className={`relative block px-6 py-4 font-semibold transition-all duration-200 ${isActive
+                      ? ' bg-primary/50 border-l-8 border-primary'
                       : 'hover:bg-gray-50 border-l-4 border-transparent'
-                  }`}
+                    }`}
                   style={{ animationDelay: `${index * 50}ms` }}
                 >
-                    {link.label}
+                  {link.label}
                 </Link>
               )
             })}
@@ -213,11 +209,10 @@ export default function Header() {
                   <button
                     key={lang.code}
                     onClick={() => setLanguage(lang.code)}
-                    className={`flex items-center gap-2 px-3 py-2 rounded-lg border transition-colors ${
-                      language === lang.code 
-                        ? 'bg-primary text-black border-primary' 
+                    className={`flex items-center gap-2 px-3 py-2 rounded-lg border transition-colors ${language === lang.code
+                        ? 'bg-primary text-black border-primary'
                         : 'bg-white hover:bg-gray-50 border-gray-300'
-                    }`}
+                      }`}
                   >
                     <span className={`fi fi-${lang.flag}`}></span>
                     <span className="text-sm font-medium">{lang.code.toUpperCase()}</span>
@@ -227,8 +222,8 @@ export default function Header() {
             </div>
 
             {/* Contact Button */}
-            <Link 
-              to="/contacto" 
+            <Link
+              to="/contacto"
               onClick={() => setMenuOpen(false)}
               className="block w-full bg-primary text-black text-center px-6 py-3 rounded-full font-bold hover:bg-primary/90 transition-colors"
             >
