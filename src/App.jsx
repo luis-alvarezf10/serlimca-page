@@ -5,6 +5,7 @@ import Home from './pages/home/Home'
 import About from './pages/about/About'
 import Servicios from './pages/Servicios'
 import Contacto from './pages/Contacto'
+import ScrollToTopButton from './components/buttons.jsx/ScrollToTopButton'
 
 function App() {
   const location = useLocation()
@@ -24,6 +25,8 @@ function App() {
           <Route path="/contacto" element={<Contacto />} />
         </Routes>
       </main>
+
+      <ScrollToTopButton />
     </div>
   )
 }

@@ -146,9 +146,7 @@ const ContactCTASection = () => {
               </GeneralButton>
               
               <OutlinedButton
-                onClick={
-                  window.open('https://wa.me/584241234567', '_blank')
-                }
+                onClick={() => window.open('https://wa.me/584241234567', '_blank')}
                 className='inline-flex items-center justify-center gap-3 text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300'
               >
                 Contactar ahora
