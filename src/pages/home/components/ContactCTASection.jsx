@@ -12,14 +12,14 @@ const ContactCTASection = () => {
     {
       icon: HiPhone,
       title: 'Línea Directa',
-      info: '+58 424-XXX-XXXX',
+      info: '0426-5831206',
       sub: 'Atención técnica inmediata',
       color: 'primary'
     },
     {
       icon: HiMail,
       title: 'Email Corporativo',
-      info: 'proyectos@empresa.com',
+      info: 'serlimca@gmail.com. ',
       sub: 'Solicitudes de licitación',
       color: 'white'
     }
@@ -27,31 +27,31 @@ const ContactCTASection = () => {
 
   return (
     <section id="contacto" className="relative py-32 overflow-hidden bg-[#050505]">
-      
+
       {/* Fondo Industrial: Grid y Luces de Advertencia sutiles */}
-       <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(216,178,54,0.15),transparent_70%)]" />
-        <div 
-          className="absolute inset-0 opacity-[0.03]" 
+        <div
+          className="absolute inset-0 opacity-[0.03]"
           style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 30 L30 0 M0 30 L30 30' fill='none' stroke='white' stroke-width='1'/%3E%3C/svg%3E")` }}
         />
       </div>
 
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
         <div className="grid lg:grid-cols-12 gap-16 items-start">
-          
+
           {/* Columna Izquierda: El Gancho (5/12) */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className="lg:col-span-5"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary text-black font-black text-[10px] tracking-[.3em] uppercase rounded-sm mb-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/70 border border-primary rounded-full text-black font-black text-[10px] tracking-[.3em] uppercase mb-6">
               <HiShieldCheck className="text-sm" />
               Soporte Industrial Activo
             </div>
-            
+
             <h2 className="text-4xl md:text-6xl font-black text-white mb-8 leading-[1.1]">
               Impulse su <span className="text-primary italic">Operación</span> Hoy
             </h2>
@@ -76,8 +76,8 @@ const ContactCTASection = () => {
                 Iniciar Cotización
                 <HiArrowRight className="group-hover:translate-x-1 transition-transform" />
               </GeneralButton>
-              <OutlinedButton onClick={() => window.open('https://wa.me/58424XXXXXX')} className="flex items-center gap-2">
-                <FaWhatsapp className="text-xl text-green-500" />
+              <OutlinedButton onClick={() => window.open('https://wa.me/584146690263')} className="flex items-center gap-2">
+                <FaWhatsapp className="text-xl" />
                 WhatsApp Directo
               </OutlinedButton>
             </div>
@@ -85,7 +85,7 @@ const ContactCTASection = () => {
 
           {/* Columna Derecha: Tarjetas de Acción (7/12) */}
           <div className="lg:col-span-7 grid md:grid-cols-2 gap-6">
-            
+
             {/* Tarjetas de Contacto */}
             {contactMethods.map((method, idx) => (
               <motion.div
@@ -113,11 +113,13 @@ const ContactCTASection = () => {
             >
               <div className="flex items-center gap-6">
                 <div className="w-16 h-16 bg-primary rounded-xl flex items-center justify-center shadow-lg shadow-primary/20">
-                  <HiClock className="text-black text-3xl" />
+                  <HiClock className="text-black text-2xl" />
                 </div>
                 <div>
                   <h4 className="text-white font-bold text-xl uppercase tracking-tight">Centro de Operaciones</h4>
-                  <p className="text-slate-400 text-sm">Lunes a Viernes: 08:00 - 18:00</p>
+                  <p className="text-slate-400 text-sm"> Calle Codazzi cruce con calle el Carmen Local 1, Zona Industrial – San José de Guanipa- Edo. Anzoátegui </p>
+
+                  <p className="text-slate-200 text-sm">Lunes a Viernes: 08:00 - 18:00</p>
                   <p className="text-primary text-xs font-black mt-1">EMERGENCIAS: DISPONIBILIDAD 24/7</p>
                 </div>
               </div>
