@@ -133,7 +133,7 @@ export default function Header() {
           style={{ clipPath: 'polygon(0 0, 100% 0, 85% 100%, 0 100%)' }}
         />
 
-        <nav className="container mx-auto px-6 flex items-center md:justify-between relative z-10">
+        <nav className="container mx-auto px-6 flex items-center justify-between relative z-10">
 
           <NavHashLink smooth to="/#hero" className="flex items-center transition-transform hover:scale-105">
             <img src={logo} alt="Logo" className={`transition-all duration-500 ${isScrolled ? 'h-12' : 'h-14 lg:h-16'}`} />
