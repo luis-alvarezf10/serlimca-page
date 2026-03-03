@@ -26,7 +26,7 @@ function ScrollToHashElement() {
       const performScroll = () => {
         const element = document.getElementById(targetId);
         if (element) {
-          const yOffset = -100;
+          const yOffset = -50;
           const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
           window.scrollTo({ top: y, behavior: 'smooth' });
           return true; // Éxito
