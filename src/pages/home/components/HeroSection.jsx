@@ -68,7 +68,6 @@ const HeroSection = () => {
           />
         </AnimatePresence>
 
-        {/* Gradientes más suaves para que la imagen respire */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/60 to-transparent z-10" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent z-10" />
       </div>
