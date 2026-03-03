@@ -128,19 +128,19 @@ export default function Header() {
 
         {/* PLACA DE CONTRASTE */}
         <div
-          className={`absolute top-0 left-0 h-full bg-white transition-all duration-700 ease-in-out z-0 ${isScrolled ? 'w-0 opacity-0' : 'w-[45%] md:w-[35%] lg:w-[25%] opacity-100 shadow-2xl'
+          className={`absolute top-0 left-0 h-full bg-white transition-all duration-700 ease-in-out z-0 ${isScrolled ? 'w-0 opacity-0' : 'w-[45%] md:w-[30%] lg:w-[24%] xl:w-[25%] 2xl:w-[25%] opacity-100 shadow-2xl'
             }`}
           style={{ clipPath: 'polygon(0 0, 100% 0, 85% 100%, 0 100%)' }}
         />
 
-        <nav className="container mx-auto px-6 flex items-center justify-between relative z-10">
+        <nav className="container mx-auto px-6 flex items-center md:justify-between relative z-10">
 
           <NavHashLink smooth to="/#hero" className="flex items-center transition-transform hover:scale-105">
             <img src={logo} alt="Logo" className={`transition-all duration-500 ${isScrolled ? 'h-12' : 'h-14 lg:h-16'}`} />
           </NavHashLink>
 
           {/* DESKTOP NAV */}
-          <div className="hidden lg:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-6">
             {navLinks.map((link) => {
               const isCurrent = activeSection === link.id
               return (
@@ -149,7 +149,7 @@ export default function Header() {
                   smooth
                   to={link.to}
                   scroll={el => scrollWithOffset(el)}
-                  className={`text-sm font-bold uppercase tracking-widest transition-all relative py-2 group ${isScrolled
+                  className={`text-sm font-semibold uppercase tracking-widest transition-all relative py-2 group ${isScrolled
                     ? (isCurrent ? 'text-primary' : 'text-slate-800')
                     : (isCurrent ? 'text-primary' : 'text-white')
                     }`}
@@ -166,7 +166,7 @@ export default function Header() {
           <div className="flex items-center gap-4">
 
             {/* Selector de Idioma Desktop */}
-            <div className="relative hidden md:block">
+            <div className="relative hidden lg:block">
               <button
                 onClick={() => setLangDropdownOpen(!langDropdownOpen)}
                 className={`flex items-center gap-2 px-3 py-2 rounded-full border transition-all ${isScrolled
@@ -195,7 +195,7 @@ export default function Header() {
               )}
             </div>
 
-            <PrimaryButton as={NavHashLink} smooth to="/#contacto" scroll={el => scrollWithOffset(el)} className="hidden md:flex !py-2.5 !px-6 !text-sm">
+            <PrimaryButton as={NavHashLink} smooth to="/#contacto" scroll={el => scrollWithOffset(el)} className="hidden lg:block !py-2.5 !px-6 !text-sm">
               {t('nav.contact')}
             </PrimaryButton>
 
