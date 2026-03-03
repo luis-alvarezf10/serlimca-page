@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useLanguage } from '../context/LanguageContext'
-import logo from '../assets/normal-logo.svg'
-import logoWhite from '../assets/white-logo.svg'
+import logo from '../assets/normal-logo-rif.svg'
 import 'flag-icons/css/flag-icons.min.css'
 import PrimaryButton from '../components/buttons.jsx/PrimaryButton'
 
@@ -57,7 +56,7 @@ export default function Header() {
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${isScrolled ? 'bg-white backdrop-blur-md shadow-xl shadow-black/50' : 'bg-gradient-to-b from-black/50 to-transparent'}`}>
-      <nav className="flex items-center justify-evenly w-full relative">
+      <nav className="flex items-center px-4 justify-between md:justify-evenly w-full relative">
         {/* Div blanco de fondo */}
         <div
           className={`absolute top-0 left-0 bottom-0 w-[70%] md:w-[55%] lg:w-[30%] bg-gradient-to-r from-black/20 to-white/50 transition-all duration-500 ease-in-out ${isScrolled ? 'opacity-0 scale-95' : 'opacity-100 scale-120'
@@ -68,9 +67,8 @@ export default function Header() {
         ></div>
 
         {/* Logo */}
-        <Link className='relative z-10 flex items-center gap-4 px-6 py-3' to="/">
+        <Link className='relative z-10 flex items-center px-6 py-3' to="/">
           <img src={logo} alt="logo de empresa" className="w-auto h-16" />
-          <span className='text-black text-xs font-semibold'>J-31016439-8</span>
         </Link>
 
         {/* Desktop Menu */}
@@ -143,7 +141,7 @@ export default function Header() {
           </div>
 
           <div>
-            <PrimaryButton to="/contacto">
+            <PrimaryButton to="/contacto" className="hidden md:block">
               {t('nav.contact')}
             </PrimaryButton>
           </div>

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { HiPhone, HiMail, HiLocationMarker } from 'react-icons/hi'
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa'
-import logo from '../assets/normal-logo.svg'
+import logo from '../assets/normal-logo-rif.svg'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -19,7 +19,6 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <Link to="/" className="flex items-center gap-2 inline-block mb-6">
               <img src={logo} alt="Logo" className="h-20 w-auto" />
-              <span className='text-black text-xs font-semibold'>J-31016439-8</span>
             </Link>
             <p className="text-gray-600 text-sm leading-relaxed mb-6">
               Soluciones industriales y logísticas de excelencia. Comprometidos con la calidad y el servicio profesional en toda Venezuela.
