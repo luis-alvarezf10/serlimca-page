@@ -1,243 +1,147 @@
-import { useEffect, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { HiPhone, HiMail, HiArrowRight, HiLocationMarker, HiClock, HiCheck } from 'react-icons/hi'
+import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
+import { HiPhone, HiMail, HiArrowRight, HiLocationMarker, HiClock, HiCheck, HiShieldCheck } from 'react-icons/hi';
+import { FaWhatsapp } from 'react-icons/fa';
 import OutlinedButton from '../../../components/buttons.jsx/OutlinedButton';
 import GeneralButton from '../../../components/buttons.jsx/GeneralButton';
-import { useNavigate } from 'react-router-dom'
 
 const ContactCTASection = () => {
-  const [isVisible, setIsVisible] = useState(false)
-  const sectionRef = useRef(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-        }
-      },
-      { threshold: 0.2 }
-    )
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current)
-      }
-    }
-  }, [])
+  const navigate = useNavigate();
 
   const contactMethods = [
     {
       icon: HiPhone,
-      title: 'Teléfono',
-      description: 'Atención inmediata',
+      title: 'Línea Directa',
       info: '+58 424-XXX-XXXX',
-      action: 'Llamar ahora',
-      color: 'from-primary to-yellow-600'
+      sub: 'Atención técnica inmediata',
+      color: 'primary'
     },
     {
       icon: HiMail,
-      title: 'Email',
-      description: 'Respuesta en 24 horas',
-      info: 'contacto@empresa.com',
-      action: 'Enviar email',
-      color: 'from-yellow-500 to-primary'
-    },
-    {
-      icon: HiLocationMarker,
-      title: 'Ubicación',
-      description: 'Visítanos',
-      info: 'Venezuela, Múltiples Estados',
-      action: 'Ver mapa',
-      color: 'from-primary to-orange-500'
+      title: 'Email Corporativo',
+      info: 'proyectos@empresa.com',
+      sub: 'Solicitudes de licitación',
+      color: 'white'
     }
-  ]
-
-  const benefits = [
-    'Respuesta rápida y profesional',
-    'Asesoría personalizada sin costo',
-    'Cotización en menos de 24 horas',
-    'Atención en todo el país'
-  ]
-
-  const navigate = useNavigate()
+  ];
 
   return (
-    <section 
-      id="contacto" 
-      ref={sectionRef} 
-      className="py-24 relative overflow-hidden"
-      style={{
-        background: 'linear-gradient(225deg, #1a1a1a 0%, #080808ff 70%, #ffd034bd 100%)'
-      }}
-    >
-      {/* Animated Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
+    <section id="contacto" className="relative py-32 overflow-hidden bg-[#050505]">
+      
+      {/* Fondo Industrial: Grid y Luces de Advertencia sutiles */}
+       <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(216,178,54,0.15),transparent_70%)]" />
         <div 
-          className="absolute inset-0" 
-          style={{
-            backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 50px, var(--primary, #FFD700) 50px, var(--primary, #FFD700) 51px),
-                             repeating-linear-gradient(-45deg, transparent, transparent 50px, var(--primary, #FFD700) 50px, var(--primary, #FFD700) 51px)`
-          }} 
+          className="absolute inset-0 opacity-[0.03]" 
+          style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 30 L30 0 M0 30 L30 30' fill='none' stroke='white' stroke-width='1'/%3E%3C/svg%3E")` }}
         />
       </div>
 
-      {/* Glowing Orbs */}
-      <div className="absolute top-1/4 left-10 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-float" />
-      <div className="absolute bottom-1/4 right-10 w-96 h-96 bg-primary/30 rounded-full blur-3xl animate-float" 
-        style={{ animationDelay: '2s' }} 
-      />
-
-      <div className="container mx-auto px-6 md:px-16 lg:px-24 xl:px-3relative max-w-7xl">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Side - Content */}
-          <div className={`transform transition-all duration-1000 ${
-            isVisible ? 'translate-x-0 opacity-100' : '-translate-x-20 opacity-0'
-          }`}>
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/30 rounded-full mb-6">
-              <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-              <span className="text-primary text-sm font-semibold">Disponibles para ti</span>
+      <div className="container mx-auto px-6 max-w-7xl relative z-10">
+        <div className="grid lg:grid-cols-12 gap-16 items-start">
+          
+          {/* Columna Izquierda: El Gancho (5/12) */}
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="lg:col-span-5"
+          >
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary text-black font-black text-[10px] tracking-[.3em] uppercase rounded-sm mb-6">
+              <HiShieldCheck className="text-sm" />
+              Soporte Industrial Activo
             </div>
-
-            {/* Title */}
-            <h2 className="text-2xl xl:text-4xl 2xl:text-5xl font-bold text-white mb-6 leading-tight">
-              ¿Listo para Comenzar tu Proyecto?
+            
+            <h2 className="text-4xl md:text-6xl font-black text-white mb-8 leading-[1.1]">
+              Impulse su <span className="text-primary italic">Operación</span> Hoy
             </h2>
 
-            {/* Description */}
-            <p className="xl:text-lg 2xl:text-xl text-gray-300 mb-8 leading-relaxed">
-              Nuestro equipo de expertos está preparado para ofrecerte soluciones 
-              personalizadas que se adapten a tus necesidades específicas.
+            <p className="text-slate-400 text-xl leading-relaxed mb-10">
+              No deje su logística al azar. Nuestro equipo de ingenieros y especialistas está listo para desplegar soluciones en tiempo récord.
             </p>
 
-            {/* Benefits List */}
-            <div className="space-y-4 mb-10">
-              {benefits.map((benefit, index) => (
-                <div 
-                  key={index}
-                  className={`flex items-center gap-3 transform transition-all duration-700 ${
-                    isVisible ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'
-                  }`}
-                  style={{ transitionDelay: `${index * 100 + 300}ms` }}
-                >
-                  <div className="flex-shrink-0 w-6 h-6 bg-primary rounded-full flex items-center justify-center">
-                    <HiCheck className="w-5 h-5 text-black" />
+            <div className="space-y-4 mb-12">
+              {['Disponibilidad Nacional 24/7', 'Personal Certificado', 'Gestión de Carga Crítica'].map((item, i) => (
+                <div key={i} className="flex items-center gap-3 text-slate-200 font-medium">
+                  <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center">
+                    <HiCheck className="text-primary text-sm" />
                   </div>
-                  <span className="text-white tracking-wide">{benefit}</span>
+                  {item}
                 </div>
               ))}
             </div>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 animate-fade-up" style={{ animationDelay: '0.3s' }}>
-              <GeneralButton
-                onClick={
-                  () => navigate('/contacto')
-                }
-                className='hover:shadow-2xl hover:scale-105 transition-all duration-300 group'
-              >
-                Solicitar Cotización
-                <HiArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" />
+            <div className="flex flex-wrap gap-4">
+              <GeneralButton onClick={() => navigate('/contacto')} className="group shadow-xl shadow-primary/10">
+                Iniciar Cotización
+                <HiArrowRight className="group-hover:translate-x-1 transition-transform" />
               </GeneralButton>
-              
-              <OutlinedButton
-                onClick={() => window.open('https://wa.me/584241234567', '_blank')}
-                className='inline-flex items-center justify-center gap-3 text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300'
-              >
-                Contactar ahora
-               <HiPhone className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" />
+              <OutlinedButton onClick={() => window.open('https://wa.me/58424XXXXXX')} className="flex items-center gap-2">
+                <FaWhatsapp className="text-xl text-green-500" />
+                WhatsApp Directo
               </OutlinedButton>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Right Side - Contact Cards */}
-          <div className={`transform transition-all duration-1000 delay-300 ${
-            isVisible ? 'translate-x-0 opacity-100' : 'translate-x-20 opacity-0'
-          }`}>
-            <div className="space-y-6">
-              {/* Contact Method Cards */}
-              {contactMethods.map((method, index) => (
-                <div
-                  key={index}
-                  className={`bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-primary/50 transition-all duration-500 group cursor-pointer transform hover:scale-105 ${
-                    isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-                  }`}
-                  style={{ transitionDelay: `${index * 150 + 500}ms` }}
-                >
-                  <div className="flex items-start gap-4">
-                    {/* Icon */}
-                    <div className={`flex-shrink-0 w-14 h-14 bg-primary/25 group-hover:bg-primary text-primary group-hover:text-white rounded-xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg`}>
-                      <method.icon className="w-7 h-7" />
-                      <div className="absolute inset-0 rounded-2xl border-2 border-primary opacity-0 group-hover:opacity-100 group-hover:animate-ping" />
-                    </div>
-
-                    {/* Content */}
-                    <div className="flex-1">
-                      <h3 className="text-white text-lg font-bold mb-1 group-hover:text-primary transition-colors duration-300">
-                        {method.title}
-                      </h3>
-                      <p className="text-gray-400 text-sm mb-2">
-                        {method.description}
-                      </p>
-                      <p className="text-primary font-semibold mb-3">
-                        {method.info}
-                      </p>
-                    </div>
-                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-1 bg-primary group-hover:w-1/2 transition-all duration-500 rounded-full" />
-                  </div>
-                </div>
-              ))}
-
-              {/* Business Hours Card */}
-              <div className={`bg-gradient-to-br from-primary/10 to-primary/5 backdrop-blur-sm border border-primary/30 rounded-2xl p-6 transform transition-all duration-1000 ${
-                isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-              }`}
-              style={{ transitionDelay: '950ms' }}
+          {/* Columna Derecha: Tarjetas de Acción (7/12) */}
+          <div className="lg:col-span-7 grid md:grid-cols-2 gap-6">
+            
+            {/* Tarjetas de Contacto */}
+            {contactMethods.map((method, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: idx * 0.1 }}
+                viewport={{ once: true }}
+                className="group p-8 bg-white/5 border border-white/10 rounded-2xl hover:border-primary/50 transition-all duration-500 backdrop-blur-xl"
               >
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-14 h-14 bg-primary rounded-xl flex items-center justify-center">
-                    <HiClock className="w-7 h-7 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-white text-lg font-bold mb-2">
-                      Horario de Atención
-                    </h3>
-                    <div className="space-y-1 text-gray-300">
-                      <p className="text-sm">Lunes - Viernes: 8:00 AM - 6:00 PM</p>
-                      <p className="text-sm">Sábados-Domingos: 9:00 AM - 2:00 PM</p>
-                      <p className="text-sm font-semibold text-primary">Emergencias 24/7</p>
-                    </div>
-                  </div>
+                <method.icon className="text-4xl text-primary mb-6 group-hover:scale-110 transition-transform" />
+                <h3 className="text-white text-lg font-bold mb-1">{method.title}</h3>
+                <p className="text-slate-500 text-sm mb-4">{method.sub}</p>
+                <div className="text-slate-100 font-mono text-lg">{method.info}</div>
+              </motion.div>
+            ))}
+
+            {/* Tarjeta de Horario (Ancho completo en el grid interno) */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              viewport={{ once: true }}
+              className="md:col-span-2 p-8 bg-gradient-to-r from-primary/10 to-transparent border border-primary/20 rounded-2xl flex items-center justify-between"
+            >
+              <div className="flex items-center gap-6">
+                <div className="w-16 h-16 bg-primary rounded-xl flex items-center justify-center shadow-lg shadow-primary/20">
+                  <HiClock className="text-black text-3xl" />
+                </div>
+                <div>
+                  <h4 className="text-white font-bold text-xl uppercase tracking-tight">Centro de Operaciones</h4>
+                  <p className="text-slate-400 text-sm">Lunes a Viernes: 08:00 - 18:00</p>
+                  <p className="text-primary text-xs font-black mt-1">EMERGENCIAS: DISPONIBILIDAD 24/7</p>
                 </div>
               </div>
+              <HiLocationMarker className="text-5xl text-white/5 hidden sm:block" />
+            </motion.div>
+
+            {/* Stats Integrados */}
+            <div className="md:col-span-2 grid grid-cols-3 gap-4 mt-4">
+              {[
+                { label: 'Respuesta', val: '< 2h' },
+                { label: 'Proyectos', val: '500+' },
+                { label: 'Confianza', val: '100%' },
+              ].map((stat, i) => (
+                <div key={i} className="text-center py-4 bg-white/[0.02] border border-white/5 rounded-xl">
+                  <div className="text-primary font-black text-xl">{stat.val}</div>
+                  <div className="text-slate-500 text-[10px] uppercase tracking-widest font-bold">{stat.label}</div>
+                </div>
+              ))}
             </div>
           </div>
-        </div>
-
-        {/* Bottom Stats */}
-        <div className={`mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 transform transition-all duration-1000 delay-700 ${
-          isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-        }`}>
-          {[
-            { value: '<24h', label: 'Tiempo de Respuesta' },
-            { value: '24/7', label: 'Soporte Disponible' },
-            { value: '100%', label: 'Confidencialidad' },
-            { value: '+20', label: 'Años de Experiencia' }
-          ].map((stat, index) => (
-            <div key={index} className="text-center p-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl hover:bg-white/10 hover:border-primary/30 transition-all duration-300 cursor-default">
-              <div className="text-3xl md:text-4xl font-bold text-primary mb-2">{stat.value}</div>
-              <div className="text-sm font-semibold text-gray-400 tracking-wide">{stat.label}</div>
-            </div>
-          ))}
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default ContactCTASection
+export default ContactCTASection;
