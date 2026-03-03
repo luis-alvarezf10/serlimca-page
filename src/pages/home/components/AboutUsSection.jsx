@@ -1,90 +1,113 @@
-import { useEffect, useRef, useState } from 'react'
-import PrimaryButton from '../../../components/buttons.jsx/PrimaryButton'
+import { motion } from 'framer-motion';
+import PrimaryButton from '../../../components/buttons.jsx/PrimaryButton';
 import image from '../../../assets/imagen-8.jpeg';
-import { useLanguage } from '../../../context/LanguageContext'
-
+import { useLanguage } from '../../../context/LanguageContext';
 
 const Information = [
-  { title: "+20 años", description: "Forjando nuestro trabajo" },
-  { title: "+50 Clientes", description: "Que confian en nosotros" },
-  { title: "+45 Proyectos", description: "Finalizados exitosamente" },
-  { title: "+20 Empleados", description: "Trabajando duro por ti" },
+  { title: "20+", description: "Años de Trayectoria" },
+  { title: "50+", description: "Aliados Estratégicos" },
+  { title: "45+", description: "Proyectos de Ingeniería" },
+  { title: "20+", description: "Expertos Certificados" },
 ];
 
 const AboutUsSection = () => {
   const { t } = useLanguage();
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
 
   return (
-    <section id="nosotros" ref={sectionRef} className="min-h-screen  flex items-center max-w-7xl mx-auto">
-      <div className=" px-6 md:px-16 lg:px-24 xl:px-32 py-20 xl:py-0 grid md:grid-cols-2 md:gap-12 items-center px-10">
-        <div
-          className={`bg-gray-200 h-1/2 md:h-3/5 lg:h-1/2 xl:h-3/4 rounded-xl flex items-center justify-center overflow-hidden transform transition-all duration-1000 ${isVisible
-              ? 'opacity-100 translate-x-0 scale-100'
-              : 'opacity-0 -translate-x-20 scale-95'
-            }`}
+    <section id="nosotros" className="min-h-screen flex items-center bg-white overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 md:px-16 lg:px-24 py-20 grid md:grid-cols-2 gap-16 items-center">
+        
+        {/* Lado Izquierdo: Imagen con Composición de Diseño */}
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="relative"
         >
-          <img
-            src={image}
-            alt="Sobre nosotros"
-            className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
-          />
-        </div>
+          {/* Elemento decorativo detrás de la imagen */}
+          <div className="absolute -top-6 -left-6 w-32 h-32 bg-primary/10 -z-10" />
+          
+          <div className="rounded-sm overflow-hidden shadow-2xl border border-slate-100">
+            <motion.img
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.6 }}
+              src={image}
+              alt="Infraestructura Industrial"
+              className="w-full h-[500px] object-cover"
+            />
+          </div>
 
-        <div
-          className={`transform transition-all duration-1000 delay-300 grid gap-5 ${isVisible
-              ? 'opacity-100 translate-x-0'
-              : 'opacity-0 translate-x-20'
-            }`}
+          {/* Badge flotante de experiencia */}
+          <motion.div 
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            transition={{ delay: 0.5, type: "spring" }}
+            className="absolute -bottom-8 -right-8 bg-slate-950 text-white p-8 hidden lg:block"
+          >
+            <p className="text-primary font-bold text-sm tracking-widest uppercase mb-1">Certificación</p>
+            <p className="text-xl font-light">Calidad Garantizada</p>
+          </motion.div>
+        </motion.div>
+
+        {/* Lado Derecho: Contenido Informativo */}
+        <motion.div
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, delay: 0.2 }}
+          className="flex flex-col gap-8"
         >
           <div>
-            <span className="font-semibold tracking-wide text-gray-400">{t('about.title')}</span>
-            <h2 className="text-2xl xl:text-4xl 2xl:text-5xl font-bold">{t('about.subtitle')}</h2>
+            <span className="text-primary font-bold tracking-[0.3em] uppercase text-sm block mb-4">
+              {t('about.title')}
+            </span>
+            <h2 className="text-4xl lg:text-5xl font-bold text-slate-950 leading-tight">
+              {t('about.subtitle')}
+            </h2>
           </div>
-          <div className="grid gap-2 2xl:text-lg leading-relaxed text-gray-500 font-semibold text-justify md:text-left">
-            <p>
-             {t('about.shortdescription')}
+
+          <div className="space-y-4">
+            <p className="text-lg text-slate-600 leading-relaxed text-justify md:text-left font-medium">
+              {t('about.shortdescription')}
             </p>
-            <p>
+            <p className="text-slate-500 leading-relaxed text-justify md:text-left">
               {t('about.description')}
             </p>
           </div>
-          <div className="grid grid-cols-2 gap-5 pt-4">
+
+          {/* Estadísticas / KPIs */}
+          <div className="grid grid-cols-2 gap-x-8 gap-y-10 pt-6">
             {Information.map((item, index) => (
-              <div key={index} className="flex flex-col border-t-2 border-primary p-3">
-                <span className="text-md lg:text-2xl 2xl:text-2xl font-bold">{item.title}</span>
-                <span className="text-sm xl:text-lg font-semibold text-gray-500">{item.description}</span>
-              </div>
+              <motion.div 
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4 + (index * 0.1) }}
+                className="group"
+              >
+                <div className="flex flex-col border-l-4 border-primary pl-4 transition-all group-hover:border-slate-950">
+                  <span className="text-3xl font-black text-slate-950 mb-1">
+                    {item.title}
+                  </span>
+                  <span className="text-xs uppercase tracking-widest font-bold text-slate-400">
+                    {item.description}
+                  </span>
+                </div>
+              </motion.div>
             ))}
           </div>
-          <div>
+
+          <motion.div 
+            whileHover={{ x: 10 }}
+            className="pt-6"
+          >
             <PrimaryButton to="/aboutus">
-              Ver más
+              Ver Trayectoria Corporativa
             </PrimaryButton>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );
