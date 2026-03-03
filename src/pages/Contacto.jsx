@@ -1,187 +1,138 @@
-import Footer from '../components/Footer'
+import { motion } from 'framer-motion';
+import { HiMail, HiPhone, HiLocationMarker, HiClock, HiChevronRight } from 'react-icons/hi';
+import GeneralButton from '../components/buttons.jsx/GeneralButton';
 
-export default function Contacto() {
+const contactImage = 'https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1200&q=80';
+
+function Contact() {
   return (
-    <div className="min-h-screen overflow-x-hidden">
-      {/* Hero */}
-      <section className="relative py-20 overflow-hidden" style={{
-        background: 'linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 50%, #1a1a1a 100%)'
-      }}>
-        {/* Floating Orbs */}
-        <div className="absolute top-10 left-10 w-64 h-64 bg-primary/30 rounded-full blur-3xl animate-float" 
-          style={{ boxShadow: '0 0 100px 50px rgba(255, 215, 0, 0.3)' }} 
+    <div 
+      className="min-h-screen pt-32 pb-20 flex items-center relative overflow-hidden"
+      style={{
+        background: 'linear-gradient(135deg, #0a0a0a 0%, #050505 50%, #d8b2363d 100%)'
+      }}
+    >
+      {/* Fondo de Rejilla Tecnológica (Contexto Global de la Web) */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(216,178,54,0.15),transparent_70%)]" />
+        <div 
+          className="absolute inset-0 opacity-[0.03]" 
+          style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 30 L30 0 M0 30 L30 30' fill='none' stroke='white' stroke-width='1'/%3E%3C/svg%3E")` }}
         />
-        <div className="absolute bottom-10 right-10 w-80 h-80 bg-primary/40 rounded-full blur-3xl animate-float" 
-          style={{ 
-            animationDelay: '2s',
-            boxShadow: '0 0 120px 60px rgba(255, 215, 0, 0.4)' 
-          }} 
-        />
+      </div>
 
-        <div className="container mx-auto px-8 relative text-center">
-          <div className="w-16 h-1 bg-primary mx-auto mb-6" />
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
-            Contáctanos
-          </h1>
-          <p className="text-xl text-gray-300">
-            Estamos aquí para ayudarte
-          </p>
-        </div>
-      </section>
+      <div className="container mx-auto px-6 relative z-10 max-w-7xl">
+        <div className="grid lg:grid-cols-12 gap-0 border border-white/10 rounded-2xl overflow-hidden bg-black/60 backdrop-blur-3xl shadow-[0_0_50px_rgba(0,0,0,0.5)]">
+          
+          {/* SECCIÓN DE INFORMACIÓN (4/12) */}
+          <div className="lg:col-span-5 relative p-10 md:p-16 border-r border-white/5 flex flex-col justify-between">
+            {/* Overlay de Imagen Industrial */}
+            <div className="absolute inset-0 z-0 opacity-20 grayscale">
+              <img src={contactImage} alt="Infraestructura" className="w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
+            </div>
 
-      {/* Contenido */}
-      <section className="py-20 relative overflow-hidden bg-gradient-to-b from-gray-50 to-white">
-        {/* Floating Orbs Background */}
-        <div className="absolute top-20 right-20 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 left-20 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl" />
-        
-        <div className="container mx-auto px-8 relative max-w-6xl">
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Formulario */}
-            <div className="relative">
-              {/* Glow effect behind form */}
-              <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 to-orange-500/20 rounded-3xl blur-2xl" />
-              
-              <div className="relative bg-white/80 backdrop-blur-sm p-8 md:p-10 rounded-2xl shadow-2xl border border-primary/20">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                  Envíanos un mensaje
-                </h2>
-                <form className="space-y-6">
+            <div className="relative z-10">
+              <div className="w-12 h-1 bg-primary mb-8" />
+              <h1 className="text-5xl font-black text-white mb-6 uppercase tracking-tighter leading-none">
+                Contacto <br /> <span className="text-primary italic">Corporativo</span>
+              </h1>
+              <p className="text-slate-400 font-medium text-lg mb-12 border-l-2 border-primary/30 pl-4">
+                Establezca comunicación directa con nuestra unidad de gestión para requerimientos técnicos y comerciales a nivel nacional.
+              </p>
+
+              <div className="space-y-10">
+                <div className="flex gap-6 items-start">
+                  <HiPhone className="text-primary text-2xl mt-1" />
                   <div>
-                    <label className="block text-gray-700 font-medium mb-2">
-                      Nombre
-                    </label>
-                    <input
-                      type="text"
-                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
-                      placeholder="Tu nombre"
-                    />
+                    <h4 className="text-white font-bold uppercase tracking-widest text-xs mb-2">Central Telefónica</h4>
+                    <p className="text-slate-200 font-mono text-xl">+58 212 000 0000</p>
                   </div>
+                </div>
 
+                <div className="flex gap-6 items-start">
+                  <HiMail className="text-primary text-2xl mt-1" />
                   <div>
-                    <label className="block text-gray-700 font-medium mb-2">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
-                      placeholder="tu@email.com"
-                    />
+                    <h4 className="text-white font-bold uppercase tracking-widest text-xs mb-2">Canal de Licitaciones</h4>
+                    <p className="text-slate-200 font-mono text-xl">operaciones@empresa.com</p>
                   </div>
+                </div>
 
+                <div className="flex gap-6 items-start">
+                  <HiLocationMarker className="text-primary text-2xl mt-1" />
                   <div>
-                    <label className="block text-gray-700 font-medium mb-2">
-                      Teléfono
-                    </label>
-                    <input
-                      type="tel"
-                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
-                      placeholder="Tu teléfono"
-                    />
+                    <h4 className="text-white font-bold uppercase tracking-widest text-xs mb-2">Sede Administrativa</h4>
+                    <p className="text-slate-200 text-lg">Zona Industrial, Barcelona, Venezuela.</p>
                   </div>
-
-                  <div>
-                    <label className="block text-gray-700 font-medium mb-2">
-                      Mensaje
-                    </label>
-                    <textarea
-                      rows="5"
-                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all resize-vertical"
-                      placeholder="¿En qué podemos ayudarte?"
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="w-full px-8 py-4 bg-gradient-to-r from-primary to-orange-500 text-black text-lg font-bold rounded-lg hover:shadow-2xl hover:scale-105 transition-all duration-300"
-                    style={{ boxShadow: '0 10px 40px rgba(255, 215, 0, 0.3)' }}
-                  >
-                    Enviar Mensaje
-                  </button>
-                </form>
+                </div>
               </div>
             </div>
 
-            {/* Información de Contacto */}
-            <div className="space-y-6">
-              <div className="relative">
-                {/* Glow effect behind info */}
-                <div className="absolute -inset-4 bg-gradient-to-br from-orange-500/20 to-primary/20 rounded-3xl blur-2xl" />
-                
-                <div className="relative bg-white/80 backdrop-blur-sm p-8 md:p-10 rounded-2xl shadow-2xl border border-primary/20">
-                  <h2 className="text-3xl font-bold text-gray-900 mb-8">
-                    Información de Contacto
-                  </h2>
-
-                  <div className="space-y-8">
-                    <div className="flex items-start gap-4 group">
-                      <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-primary to-orange-500 rounded-full flex items-center justify-center text-2xl group-hover:scale-110 transition-transform duration-300">
-                        📞
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-semibold text-gray-900 mb-1">Teléfono</h3>
-                        <p className="text-gray-600">+58 XXX-XXXXXXX</p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-4 group">
-                      <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-primary to-orange-500 rounded-full flex items-center justify-center text-2xl group-hover:scale-110 transition-transform duration-300">
-                        📧
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-semibold text-gray-900 mb-1">Email</h3>
-                        <p className="text-gray-600">info@serlimca.com</p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-4 group">
-                      <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-primary to-orange-500 rounded-full flex items-center justify-center text-2xl group-hover:scale-110 transition-transform duration-300">
-                        📍
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-semibold text-gray-900 mb-1">Dirección</h3>
-                        <p className="text-gray-600">Venezuela</p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-4 group">
-                      <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-primary to-orange-500 rounded-full flex items-center justify-center text-2xl group-hover:scale-110 transition-transform duration-300">
-                        🕐
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-semibold text-gray-900 mb-1">Horario</h3>
-                        <p className="text-gray-600">Lunes a Viernes: 8:00 AM - 5:00 PM</p>
-                        <p className="text-gray-600">Sábados: 8:00 AM - 12:00 PM</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Additional Info Card */}
-              <div className="relative">
-                <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 to-orange-500/20 rounded-3xl blur-2xl" />
-                
-                <div className="relative bg-gradient-to-br from-gray-900 to-black p-8 rounded-2xl shadow-2xl border border-primary/30">
-                  <h3 className="text-xl font-bold text-white mb-4">
-                    ¿Necesitas ayuda inmediata?
-                  </h3>
-                  <p className="text-gray-300 mb-6">
-                    Nuestro equipo está disponible para atenderte y resolver tus dudas.
-                  </p>
-                  <div className="flex items-center gap-3">
-                    <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
-                    <span className="text-green-400 font-medium">Disponible ahora</span>
-                  </div>
-                </div>
+            <div className="relative z-10 mt-16 pt-8 border-t border-white/10">
+              <div className="flex items-center gap-4 text-slate-500">
+                <HiClock className="text-primary text-xl" />
+                <span className="text-[10px] font-black uppercase tracking-widest">Disponibilidad Técnica 24/7</span>
               </div>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* Footer */}
-      <Footer />
+          {/* SECCIÓN FORMULARIO (7/12) */}
+          <div className="lg:col-span-7 p-10 md:p-16 bg-white/[0.02]">
+            <form className="space-y-8">
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="flex flex-col gap-2">
+                  <label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] ml-1">Razón Social / Nombre</label>
+                  <input 
+                    type="text" 
+                    className="bg-transparent border-b-2 border-white/10 py-3 focus:outline-none focus:border-primary text-white transition-all font-medium"
+                    placeholder="Ingrese identificación"
+                  />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] ml-1">Correo Electrónico</label>
+                  <input 
+                    type="email" 
+                    className="bg-transparent border-b-2 border-white/10 py-3 focus:outline-none focus:border-primary text-white transition-all font-medium"
+                    placeholder="correo@ejemplo.com"
+                  />
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] ml-1">Unidad de Interés</label>
+                <select className="bg-transparent border-b-2 border-white/10 py-3 focus:outline-none focus:border-primary text-slate-300 transition-all font-medium appearance-none">
+                  <option className="bg-zinc-900">Transporte de Carga Pesada</option>
+                  <option className="bg-zinc-900">Mantenimiento y Equipos</option>
+                  <option className="bg-zinc-900">Proyectos de Infraestructura</option>
+                  <option className="bg-zinc-900">Soporte Operativo</option>
+                </select>
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] ml-1">Especificaciones del Requerimiento</label>
+                <textarea 
+                  rows="6"
+                  className="bg-white/5 border border-white/10 p-4 rounded-lg focus:outline-none focus:border-primary text-white transition-all resize-none font-medium"
+                  placeholder="Detalle los servicios solicitados"
+                />
+              </div>
+
+              <div className="flex flex-col md:flex-row items-center justify-between gap-6 pt-6">
+                <p className="text-slate-600 text-[9px] uppercase tracking-widest leading-relaxed max-w-xs">
+                  Al enviar esta solicitud, sus datos serán procesados bajo estrictos protocolos de seguridad industrial y confidencialidad.
+                </p>
+                <GeneralButton type="submit" className="w-full md:w-auto px-12 py-4 shadow-lg shadow-primary/20 group">
+                  ENVIAR SOLICITUD
+                  <HiChevronRight className="group-hover:translate-x-1 transition-transform" />
+                </GeneralButton>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
     </div>
-  )
+  );
 }
+
+export default Contact;
