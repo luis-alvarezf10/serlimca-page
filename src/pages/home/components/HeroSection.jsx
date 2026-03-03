@@ -1,242 +1,164 @@
 import { useLanguage } from '../../../context/LanguageContext';
 import { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import heroBg from '../../../assets/imagen-1.webp';
 import heroBg2 from '../../../assets/imagen-2.jpeg';
 import heroBg3 from '../../../assets/imagen-3.jpeg';
 import heroBg4 from '../../../assets/imagen-4.jpeg';
 import heroBg5 from '../../../assets/imagen-5.jpeg';
 
-
-
-import { HiCheckCircle, HiStar, HiBookmark, HiChevronLeft, HiChevronRight } from "react-icons/hi";
+import { HiCheckCircle, HiStar, HiChevronDoubleDown } from "react-icons/hi";
 import OutlinedButton from '../../../components/buttons.jsx/OutlinedButton';
 import GeneralButton from '../../../components/buttons.jsx/GeneralButton';
-import { HiChevronDoubleDown } from "react-icons/hi";
 
-// Array de imágenes para el carrusel
-const heroImages = [
-  heroBg,
-  heroBg2,
-  heroBg3,
-  heroBg4,
-  heroBg5,
-];
+const heroImages = [heroBg, heroBg2, heroBg3, heroBg4, heroBg5];
 
 const HeroSection = () => {
   const { t } = useLanguage();
   const [counters, setCounters] = useState({ years: 0, projects: 0 });
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
 
-  // Auto-play del carrusel
   useEffect(() => {
     const interval = setInterval(() => {
-      nextImage();
-    }, 5000); // Cambia cada 5 segundos
-
+      setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
+    }, 6000);
     return () => clearInterval(interval);
-  }, [currentImageIndex]);
-
-  const nextImage = () => {
-    if (isTransitioning) return;
-    setIsTransitioning(true);
-    setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
-    setTimeout(() => setIsTransitioning(false), 500);
-  };
-
-  const prevImage = () => {
-    if (isTransitioning) return;
-    setIsTransitioning(true);
-    setCurrentImageIndex((prev) => (prev - 1 + heroImages.length) % heroImages.length);
-    setTimeout(() => setIsTransitioning(false), 500);
-  };
+  }, []);
 
   useEffect(() => {
-    // Animate counters
     const duration = 2000;
     const steps = 60;
     const stepDuration = duration / steps;
-
     let step = 0;
     const timer = setInterval(() => {
       step++;
       const progress = step / steps;
       const easeOut = 1 - Math.pow(1 - progress, 3);
-
       setCounters({
         years: Math.round(20 * easeOut),
         projects: Math.round(500 * easeOut),
       });
-
       if (step >= steps) clearInterval(timer);
     }, stepDuration);
-
     return () => clearInterval(timer);
   }, []);
 
   const scrollToSection = (href) => {
     const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    if (element) element.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <section id="hero" className="relative w-full min-h-screen flex items-center overflow-hidden">
-      {/* Background Images Carousel */}
-      <div className="absolute inset-0 w-full h-full">
-        {heroImages.map((image, index) => (
-          <div
-            key={index}
-            className={`absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat transition-opacity duration-500 blur-sm ${
-              index === currentImageIndex ? 'opacity-100' : 'opacity-0'
-            }`}
-            style={{
-              backgroundImage: `url(${image})`,
-              backgroundSize: 'cover',
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Navigation Buttons */}
-      <button
-        onClick={prevImage}
-        disabled={isTransitioning}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-30 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-all duration-300 hover:scale-110 disabled:opacity-50 hidden md:block"
-        aria-label="Imagen anterior"
-      >
-        <HiChevronLeft className="w-6 h-6" />
-      </button>
+    <section id="hero" className="relative w-full h-screen flex items-center overflow-hidden bg-[#0a0a0a]">
       
-      <button
-        onClick={nextImage}
-        disabled={isTransitioning}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-30 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-all duration-300 hover:scale-110 disabled:opacity-50 hidden md:block"
-        aria-label="Imagen siguiente"
-      >
-        <HiChevronRight className="w-6 h-6" />
-      </button>
-
-      {/* Indicators */}
-      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 z-30 flex gap-2">
-        {heroImages.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => {
-              if (!isTransitioning) {
-                setIsTransitioning(true);
-                setCurrentImageIndex(index);
-                setTimeout(() => setIsTransitioning(false), 500);
-              }
-            }}
-            className={`w-2 h-2 rounded-full transition-all duration-300 ${
-              index === currentImageIndex 
-                ? 'bg-primary w-8' 
-                : 'bg-white/50 hover:bg-white/80'
-            }`}
-            aria-label={`Ir a imagen ${index + 1}`}
+      {/* BACKGROUND - Iluminación mejorada (opacity 0.6) */}
+      <div className="absolute inset-0 z-0">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentImageIndex}
+            initial={{ opacity: 0, scale: 1.1 }}
+            animate={{ opacity: 0.6, scale: 1 }} // Subimos de 0.4 a 0.6 para dar más luz
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.5 }}
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url(${heroImages[currentImageIndex]})` }}
           />
-        ))}
+        </AnimatePresence>
+        
+        {/* Gradientes más suaves para que la imagen respire */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/60 to-transparent z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent z-10" />
       </div>
 
-      {/* Animated Overlay con gradiente bonito */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-primary/30" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+      {/* REJILLA DE FONDO */}
+      <div className="absolute inset-0 z-10 opacity-[0.12] pointer-events-none" 
+           style={{ backgroundImage: `radial-gradient(#FFD700 0.5px, transparent 0.5px)`, backgroundSize: '40px 40px' }} 
+      />
 
-      {/* Animated Particles */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-primary rounded-full animate-float opacity-60" style={{ animationDelay: '0s' }} />
-        <div className="absolute top-1/3 right-1/4 w-3 h-3 bg-secondary rounded-full animate-float opacity-40" style={{ animationDelay: '1s' }} />
-        <div className="absolute bottom-1/3 left-1/3 w-2 h-2 bg-primary rounded-full animate-float opacity-50" style={{ animationDelay: '2s' }} />
-        <div className="absolute top-1/2 right-1/3 w-4 h-4 bg-secondary rounded-full animate-float opacity-30" style={{ animationDelay: '0.5s' }} />
-        <div className="absolute bottom-1/4 right-1/4 w-2 h-2 bg-primary rounded-full animate-float opacity-60" style={{ animationDelay: '1.5s' }} />
-      </div>
+      <div className="relative z-20 container mx-auto px-6 md:px-12 lg:px-20 w-full">
+        <div className="grid lg:grid-cols-12 gap-12 items-center">
+          
+          {/* TEXTO - Adaptado para centrarse en móvil */}
+          <div className="lg:col-span-8 text-center lg:text-left mt-10 lg:mt-0">
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="flex items-center justify-center lg:justify-start gap-3 mb-6"
+            >
+              <div className="h-[1px] w-8 lg:w-12 bg-primary hidden sm:block" />
+              <span className="text-primary font-bold text-[10px] uppercase tracking-[0.4em]">
+                {t('why.experience')}
+              </span>
+            </motion.div>
 
-      {/* Gradient Orbs */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-br from-primary/20 to-transparent rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-secondary/15 to-transparent rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white leading-[0.9] mb-6 uppercase tracking-tighter">
+              {t('hero.title')}
+              <span className="block text-primary italic font-light lowercase tracking-tighter text-3xl sm:text-5xl lg:text-6xl mt-1">
+                {t('hero.subtitle')}
+              </span>
+            </h1>
 
-      {/* Content */}
-      <div className="relative container mx-auto px-6 md:px-16 lg:px-24 xl:px-32 pt-32 pb-20">
-        <div className="max-w-4xl">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 bg-primary/20 backdrop-blur-sm rounded-full px-2 py-1 mb-8 animate-fade-up border border-primary/30 text-primary cursor-default">
-            <HiBookmark />
-            <span className=" font-medium text-sm">
-              {t('why.experience')}
-            </span>
+            <p className="text-slate-300 text-base md:text-lg lg:text-xl max-w-xl mb-10 leading-relaxed font-light mx-auto lg:mx-0">
+              {t('hero.description')}
+            </p>
+
+            <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 mb-12 lg:mb-0">
+              <GeneralButton 
+                onClick={() => scrollToSection('#contacto')}
+                className="w-full sm:w-auto !py-4 !px-8 text-sm uppercase tracking-widest font-bold shadow-xl shadow-primary/10"
+              >
+                {t('hero.cta.quote')}
+                <HiCheckCircle className="text-lg" />
+              </GeneralButton>
+              
+              <OutlinedButton 
+                onClick={() => scrollToSection('#servicios')}
+                className="w-full sm:w-auto !py-4 !px-8 text-sm uppercase tracking-widest font-bold text-white border-white/20 hover:border-primary transition-all"
+              >
+                {t('hero.cta.services')}
+                <HiStar className="text-primary" />
+              </OutlinedButton>
+            </div>
           </div>
 
-          {/* Title */}
-          <h1 className="text-2xl md:text-4xl xl:text-6xl 2xl:text-7xl font-heading font-black text-primary-foreground mb-4 animate-fade-up text-white" style={{ animationDelay: '0.1s' }}>
-            {t('hero.title')}
-            <span className="block text-shimmer text-primary">{t('hero.subtitle')}</span>
-          </h1>
-
-          {/* Description */}
-          <p className="text-md lg:text-lg text-white md:text-gray-400 max-w-2xl mb-10 leading-relaxed animate-fade-up " style={{ animationDelay: '0.2s' }}>
-            {t('hero.description')}
-          </p>
-
-          {/* CTAs */}
-          <div className="flex flex-col sm:flex-row gap-4 animate-fade-up" style={{ animationDelay: '0.3s' }}>
-            <GeneralButton 
-              onClick={() => scrollToSection('#contacto')}
-            >
-              {t('hero.cta.quote')}
-              <HiCheckCircle/>
-            </GeneralButton>
-            <OutlinedButton 
-              onClick={() => scrollToSection('#servicios')}
-              className="inline-flex items-center justify-center gap-3 text-lg"
-            >
-              {t('hero.cta.services')}
-              <HiStar />
-            </OutlinedButton>
-          </div>
-
-          {/* Stats */}
-          <div className="grid grid-cols-3 gap-8 mt-16 pt-8 border-t border-primary-foreground/20 animate-fade-up text-white text-center cursor-default" style={{ animationDelay: '0.4s' }}>
-            <div className="group">
-              <div className="font-heading text-2xl md:text-2xl xl:text-4xl 2xl:text-5xl font-black group-hover:scale-110 transition-transform duration-300">
-                +{counters.years}
-              </div>
-           <div className="text-gray-400 te text-xs md:t-sm font-semibold tracking-wide mt-1">Años de experiencia</div>
-            </div>
-            <div className="group">
-              <div className="font-heading text-2xl md:text-2xl xl:text-4xl 2xl:text-5xl font-black text-secondary group-hover:scale-110 transition-transform duration-300">
-                +{counters.projects}
-              </div>
-              <div className="text-gray-400 text-xs md:text-sm font-semibold tracking-wide mt-1">Proyectos completados</div>
-            </div>
-            <div className="group">
-              <div className="font-heading text-2xl md:text-2xl xl:text-4xl 2xl:text-5xl font-black group-hover:scale-110 transition-transform duration-300">
-                24/7
-              </div>
-              <div className="text-gray-400 text-xs md:text-sm font-semibold tracking-wide mt-1">Soporte técnico</div>
+          {/* STATS - Ahora visibles y responsivos */}
+          <div className="lg:col-span-4 w-full">
+            <div className="grid grid-cols-3 lg:grid-cols-1 gap-4 sm:gap-8 border-t lg:border-t-0 lg:border-l border-white/10 pt-8 lg:pt-0 lg:pl-12 text-center lg:text-left">
+              {[
+                { val: `+${counters.years}`, label: "Años" },
+                { val: `+${counters.projects}`, label: "Proyectos" },
+                { val: "24/7", label: "Soporte" }
+              ].map((stat, i) => (
+                <div key={i} className="group">
+                  <div className="text-3xl sm:text-4xl lg:text-6xl font-black text-white group-hover:text-primary transition-colors">
+                    {stat.val}
+                  </div>
+                  <div className="text-[8px] sm:text-[10px] uppercase tracking-[0.2em] text-slate-500 font-bold mt-1">
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className='absolute z-20 bottom-5 w-full flex justify-center'>
-        <a 
-          href="#nosotros"
-          onClick={(e) => {
-            e.preventDefault();
-            scrollToSection('#nosotros');
-          }}
-          className="text-xs flex flex-col items-center gap-2 animate-bounce text-primary font-semibold cursor-pointer"
-        >
-          <HiChevronDoubleDown />
-          <span className="uppercase tracking-widest">Ver más</span>
-        </a>
+      {/* INDICADORES - Ocultos en móvil para limpieza */}
+      <div className="absolute right-6 lg:right-10 top-1/2 -translate-y-1/2 z-30 hidden md:flex flex-col gap-4">
+        {heroImages.map((_, index) => (
+          <div
+            key={index}
+            className={`w-1 transition-all duration-500 rounded-full ${
+              index === currentImageIndex ? 'h-8 bg-primary shadow-[0_0_10px_#FFD700]' : 'h-3 bg-white/20'
+            }`}
+          />
+        ))}
       </div>
 
-      <div className="z-99 absolute w-full h-3 bg-primary/5 bottom-0 "></div>
-      <div className="absolute w-28 h-14 rounded-t-full bg-primary/5 left-1/2 -translate-x-1/2 bottom-3 "></div>
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center">
+        <HiChevronDoubleDown className="text-primary animate-bounce text-xl" />
+      </div>
+
     </section>
   );
 };
