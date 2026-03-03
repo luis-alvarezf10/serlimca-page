@@ -49,8 +49,11 @@ const HeroSection = () => {
   };
 
   return (
-    <section id="hero" className="relative w-full h-[100dvh] xl:h-screen flex items-center overflow-hidden bg-[#0a0a0a]">
-      
+    <section
+      id="hero"
+      className="relative w-full min-h-[100dvh] lg:h-screen flex items-center overflow-hidden bg-[#0a0a0a] py-20 lg:py-0"
+    >
+
       {/* BACKGROUND - Iluminación mejorada (opacity 0.6) */}
       <div className="absolute inset-0 z-0">
         <AnimatePresence mode="wait">
@@ -64,23 +67,23 @@ const HeroSection = () => {
             style={{ backgroundImage: `url(${heroImages[currentImageIndex]})` }}
           />
         </AnimatePresence>
-        
+
         {/* Gradientes más suaves para que la imagen respire */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/60 to-transparent z-10" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent z-10" />
       </div>
 
       {/* REJILLA DE FONDO */}
-      <div className="absolute inset-0 z-10 opacity-[0.12] pointer-events-none" 
-           style={{ backgroundImage: `radial-gradient(#FFD700 0.5px, transparent 0.5px)`, backgroundSize: '40px 40px' }} 
+      <div className="absolute inset-0 z-10 opacity-[0.12] pointer-events-none"
+        style={{ backgroundImage: `radial-gradient(#FFD700 0.5px, transparent 0.5px)`, backgroundSize: '40px 40px' }}
       />
 
       <div className="relative z-20 container mx-auto px-6 md:px-12 lg:px-20 w-full">
         <div className="grid lg:grid-cols-12 gap-12 items-center">
-          
+
           {/* TEXTO - Adaptado para centrarse en móvil */}
           <div className="lg:col-span-8 text-center lg:text-left mt-10 lg:mt-0">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               className="flex items-center justify-center lg:justify-start gap-3 mb-6"
@@ -91,32 +94,32 @@ const HeroSection = () => {
               </span>
             </motion.div>
 
-            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white leading-[0.9] mb-6 uppercase tracking-tighter">
+            <h1 className="text-4xl sm:text-5xl 2xl:text-7xl font-black text-white leading-[0.9] mb-6 uppercase tracking-tight">
               {t('hero.title')}
-              <span className="block text-primary italic font-light lowercase tracking-tighter text-3xl sm:text-5xl lg:text-6xl mt-1">
+              <span className="block text-primary italic font-light lowercase tracking-tight text-3xl sm:text-4xl lg:text-5xl 2xl:text-6xl mt-1">
                 {t('hero.subtitle')}
               </span>
             </h1>
 
-            <p className="text-slate-300 text-base md:text-lg lg:text-xl max-w-xl mb-10 leading-relaxed font-light mx-auto lg:mx-0">
+            <p className="text-slate-300 text-base md:text-lg 2xl:text-xl max-w-xl mb-10 leading-relaxed font-light mx-auto lg:mx-0">
               {t('hero.description')}
             </p>
 
             <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 mb-12 lg:mb-0">
-              <GeneralButton 
+              <GeneralButton
                 onClick={() => scrollToSection('#contacto')}
-                className="w-full sm:w-auto !py-4 !px-8 text-sm uppercase tracking-widest font-bold shadow-xl shadow-primary/10"
+                className="w-full sm:w-auto !md:py-4 !md:px-8 text-sm uppercase tracking-widest font-bold shadow-xl shadow-primary/10"
               >
                 {t('hero.cta.quote')}
                 <HiCheckCircle className="text-lg" />
               </GeneralButton>
-              
-              <OutlinedButton 
+
+              <OutlinedButton
                 onClick={() => scrollToSection('#servicios')}
-                className="w-full sm:w-auto !py-4 !px-8 text-sm uppercase tracking-widest font-bold text-white border-white/20 hover:border-primary transition-all"
+                className="flex items-center justify-center w-full sm:w-auto !md:py-4 !md:px-8 text-sm uppercase tracking-widest font-bold text-white border-white/20 transition-all"
               >
                 {t('hero.cta.services')}
-                <HiStar className="text-primary" />
+                <HiStar />
               </OutlinedButton>
             </div>
           </div>
@@ -130,7 +133,7 @@ const HeroSection = () => {
                 { val: "24/7", label: "Soporte" }
               ].map((stat, i) => (
                 <div key={i} className="group">
-                  <div className="text-3xl sm:text-4xl lg:text-6xl font-black text-white group-hover:text-primary transition-colors">
+                  <div className="text-3xl sm:text-4xl lg:text-5xl 2xl:text-6xl font-black text-white group-hover:text-primary transition-colors">
                     {stat.val}
                   </div>
                   <div className="text-[8px] sm:text-[10px] uppercase tracking-[0.2em] text-slate-500 font-bold mt-1">
@@ -148,9 +151,8 @@ const HeroSection = () => {
         {heroImages.map((_, index) => (
           <div
             key={index}
-            className={`w-1 transition-all duration-500 rounded-full ${
-              index === currentImageIndex ? 'h-8 bg-primary shadow-[0_0_10px_#FFD700]' : 'h-3 bg-white/20'
-            }`}
+            className={`w-1 transition-all duration-500 rounded-full ${index === currentImageIndex ? 'h-8 bg-primary shadow-[0_0_10px_#FFD700]' : 'h-3 bg-white/20'
+              }`}
           />
         ))}
       </div>
