@@ -1,163 +1,154 @@
-import { useEffect, useRef, useState } from 'react'
-import PrimaryButton from '../../../components/buttons.jsx/PrimaryButton'
-import { HiOutlineTruck, HiOutlineCog, HiOutlineCube, HiOutlineBriefcase} from 'react-icons/hi'
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
+import PrimaryButton from '../../../components/buttons.jsx/PrimaryButton';
+import { HiOutlineTruck, HiOutlineCog, HiOutlineCube, HiOutlineBriefcase } from 'react-icons/hi';
 
-// Importa tus imágenes aquí
-import image1 from '../../../assets/imagen-1.webp'
-import image2 from '../../../assets/imagen-2.jpeg'
-import image3 from '../../../assets/imagen-3.jpeg'
-import image4 from '../../../assets/imagen-4.jpeg'
+// Assets
+import image1 from '../../../assets/imagen-1.webp';
+import image2 from '../../../assets/imagen-2.jpeg';
+import image3 from '../../../assets/imagen-3.jpeg';
+import image4 from '../../../assets/imagen-4.jpeg';
 
 const services = [
   {
-    id: 1,
-    title: 'Transporte de Carga',
-    description: 'Servicio de transporte confiable y seguro para tus necesidades logísticas. Contamos con una flota moderna y personal capacitado para garantizar la entrega oportuna de tus productos.',
+    id: '01',
+    title: 'Transporte de Carga Crítica',
+    description: 'Servicio de logística de alta precisión para infraestructura energética. Garantizamos la integridad de sus activos mediante protocolos de seguridad industrial de clase mundial.',
     icon: <HiOutlineTruck />,
     image: image1
   },
   {
-    id: 2,
-    title: 'Mantenimiento Industrial',
-    description: 'Mantenimiento preventivo y correctivo para mantener tus equipos en óptimas condiciones. Nuestro equipo de expertos asegura el funcionamiento continuo de tu operación.',
+    id: '02',
+    title: 'Mantenimiento de Activos',
+    description: 'Ingeniería preventiva y correctiva diseñada para maximizar la vida útil de sus equipos. Reducimos el downtime mediante diagnósticos técnicos avanzados.',
     icon: <HiOutlineBriefcase />,
     image: image2
   },
   {
-    id: 3,
+    id: '03',
     title: 'Reparación Especializada',
-    description: 'Reparaciones especializadas con personal calificado y repuestos de calidad. Diagnóstico preciso y soluciones efectivas para minimizar tiempos de inactividad.',
+    description: 'Intervención técnica de alto nivel con personal certificado. Soluciones efectivas y repuestos de grado industrial para restaurar la operatividad inmediata.',
     icon: <HiOutlineCog />,
     image: image3
   },
   {
-    id: 4,
+    id: '04',
     title: 'Logística Integral',
-    description: 'Soluciones logísticas completas para optimizar tu cadena de suministro. Desde almacenamiento hasta distribución, manejamos cada detalle de tu operación.',
+    description: 'Optimización total de su cadena de suministro. Desde la gestión de almacenes hasta la distribución estratégica en campos operativos.',
     icon: <HiOutlineCube />,
     image: image4
-  },
-  // {
-  //   id: 5,
-  //   title: 'Consultoría Técnica',
-  //   description: 'Asesoramiento experto para mejorar tus procesos industriales. Análisis detallado y recomendaciones personalizadas para aumentar tu eficiencia operativa.',
-  //   icon: <HiOutlineChat />,
-  //   image: image5
-  // },
-  // {
-  //   id: 6,
-  //   title: 'Soporte 24/7',
-  //   description: 'Atención continua para resolver cualquier emergencia operativa. Nuestro equipo está disponible en todo momento para brindarte asistencia inmediata.',
-  //   icon: <HiOutlineClock />,
-  //   image: image6
-  // }
-]
+  }
+];
 
-const ServicesSection = () => {
-  const [visibleItems, setVisibleItems] = useState([]);
-  const sectionRef = useRef(null);
+const ServiceItem = ({ service, index }) => {
+  const isEven = index % 2 === 0;
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  });
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = parseInt(entry.target.dataset.index);
-            setVisibleItems((prev) => [...new Set([...prev, index])]);
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
-
-    const items = document.querySelectorAll('.service-item');
-    items.forEach((item) => observer.observe(item));
-
-    return () => observer.disconnect();
-  }, []);
+  // Efecto Parallax para la imagen
+  const y = useTransform(scrollYProgress, [0, 1], [-30, 30]);
 
   return (
-    <section id="servicios" ref={sectionRef} className="py-12 sm:py-16 md:py-20 lg:py-24 bg-gradient-to-b from-white to-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
-        {/* Header */}
-        <div className="text-center mb-12 sm:mb-14 md:mb-16 lg:mb-20">
-          <span className="text-xs sm:text-sm font-semibold tracking-wide text-gray-400 uppercase">Servicios</span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mt-2 mb-3 sm:mb-4 px-4">
-            ¿Qué hacemos?
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-12 lg:gap-20`}
+    >
+      {/* Imagen con Parallax */}
+      <div className="w-full lg:w-1/2 relative">
+        <div className="relative group overflow-hidden rounded-sm shadow-2xl">
+          <motion.div style={{ y }}>
+            <img
+              src={service.image}
+              alt={service.title}
+              className="w-full h-[350px] md:h-[500px] object-cover scale-110"
+            />
+          </motion.div>
+          <div className="absolute inset-0 bg-slate-900/20 group-hover:bg-transparent transition-colors duration-500" />
+          {/* Borde dinámico que aparece en hover */}
+          <div className="absolute inset-4 border border-white/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+        </div>
+      </div>
+
+      {/* Texto */}
+      <div className="w-full lg:w-1/2 text-left">
+        <div className="flex items-center gap-4 mb-4">
+          <span className="text-6xl font-black text-slate-100 font-serif select-none">
+            {service.id}
+          </span>
+          <div className="h-[1px] flex-grow bg-slate-100" />
+          <div className="text-primary text-4xl bg-primary/5 p-3 rounded-full">
+            {service.icon}
+          </div>
+        </div>
+
+        <h3 className="text-3xl md:text-5xl font-bold text-slate-950 mb-6 tracking-tight">
+          {service.title}
+        </h3>
+
+        <p className="text-xl text-slate-500 leading-relaxed font-light italic border-l-4 border-primary/20 pl-6">
+          {service.description}
+        </p>
+      </div>
+    </motion.div>
+  );
+};
+
+const ServicesSection = () => {
+  return (
+    <section id="servicios" className="py-32 bg-white relative">
+      <div className="max-w-7xl mx-auto px-6">
+        
+        {/* Cabecera */}
+        <div className="text-center mb-32 relative">
+          <motion.span 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="text-primary font-bold tracking-[0.5em] uppercase text-xs"
+          >
+            Capabilities
+          </motion.span>
+          <h2 className="text-5xl md:text-6xl font-black text-slate-950 mt-4 mb-6">
+            Nuestras Soluciones
           </h2>
-          <p className="text-sm sm:text-base text-gray-500 max-w-2xl mx-auto px-4">
-            Nuestro equipo de expertos está dedicado a ayudarte a alcanzar tus objetivos industriales y logísticos.
-          </p>
+          <div className="w-24 h-1 bg-primary mx-auto" />
         </div>
 
-        {/* Services List */}
-        <div className="space-y-16 sm:space-y-20 md:space-y-24 lg:space-y-32">
-          {services.map((service, index) => {
-            const isEven = index % 2 === 0;
-            const isVisible = visibleItems.includes(index);
-
-            return (
-              <div
-                key={service.id}
-                data-index={index}
-                className={`service-item flex flex-col ${
-                  isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'
-                } items-center gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-16 transition-all duration-1000 ease-out ${
-                  isVisible 
-                    ? 'opacity-100 translate-x-0' 
-                    : isEven 
-                      ? 'opacity-0 -translate-x-20' 
-                      : 'opacity-0 translate-x-20'
-                }`}
-              >
-                {/* Image Circle */}
-                <div className="w-full lg:w-1/2 flex justify-center">
-                  <div className="relative group">
-                    {/* Background blob */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 rounded-2xl sm:rounded-3xl blur-2xl sm:blur-3xl scale-110 group-hover:scale-125 transition-transform duration-700" />
-                    
-                    {/* Image container */}
-                    <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-[22rem] lg:h-[22rem] xl:w-96 xl:h-96 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl group-hover:shadow-primary/20 transition-all duration-500">
-                      <img
-                        src={service.image}
-                        alt={service.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                      />
-                      {/* Overlay gradient */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    </div>
-
-                    {/* Decorative ring */}
-                    <div className="absolute inset-0 rounded-2xl sm:rounded-3xl border-2 sm:border-4 border-primary/50 scale-105 group-hover:scale-110 group-hover:border-primary/70 transition-all duration-500" />
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="w-full lg:w-1/2 text-center lg:text-left px-4 sm:px-6 lg:px-0">
-                  {/* Icon */}
-                  <div className={`inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-xl sm:rounded-2xl bg-primary/10 text-primary text-2xl sm:text-3xl mb-4 sm:mb-5 md:mb-6 hover:bg-primary hover:text-white transition-all duration-300`}>
-                    {service.icon}
-                  </div>
-
-                  {/* Title */}
-                  <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 hover:text-primary transition-colors duration-300">
-                    {service.title}
-                  </h3>
-
-                  {/* Description */}
-                  <p className="text-sm sm:text-base md:text-lg text-gray-600 leading-relaxed mb-5 sm:mb-6 max-w-xl mx-auto lg:mx-0">
-                    {service.description}
-                  </p>
-
-                  {/* Learn More Button */}
-                  <PrimaryButton to="/servicios" className="inline-flex text-sm sm:text-base">
-                    Conocer más
-                  </PrimaryButton>
-                </div>
-              </div>
-            );
-          })}
+        {/* Lista de Servicios */}
+        <div className="space-y-40 relative">
+          {/* Línea decorativa vertical central (solo desktop) */}
+          <div className="absolute left-1/2 top-0 bottom-0 w-[1px] bg-slate-100 -translate-x-1/2 hidden lg:block -z-10" />
+          
+          {services.map((service, index) => (
+            <ServiceItem key={service.id} service={service} index={index} />
+          ))}
         </div>
+
+        {/* Botón General Final */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-40 text-center"
+        >
+          <div className="mb-8 text-slate-400 font-medium tracking-widest uppercase text-sm">
+            ¿Listo para optimizar su infraestructura?
+          </div>
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <PrimaryButton to="/servicios">
+              EXPLORAR TODAS LAS CAPACIDADES TÉCNICAS
+            </PrimaryButton>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );
