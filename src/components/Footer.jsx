@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { HiPhone, HiMail, HiLocationMarker, HiChevronRight } from 'react-icons/hi'
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa'
-import logo from '../assets/normal-logo.svg'
+import logo from '../assets/normal-logo-rif.svg'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -87,7 +87,7 @@ export default function Footer() {
                 </div>
                 <div className="flex flex-col">
                   <span className="text-[10px] uppercase text-slate-400 font-bold tracking-tighter">Llámanos</span>
-                  <a href="tel:+584241234567" className="text-slate-700 font-bold text-sm hover:text-primary transition-colors">+58 424-XXX-XXXX</a>
+                  <a href="tel:+584241234567" className="text-slate-700 font-bold text-sm hover:text-primary transition-colors">0426-5831206</a>
                 </div>
               </div>
 
@@ -97,7 +97,7 @@ export default function Footer() {
                 </div>
                 <div className="flex flex-col">
                   <span className="text-[10px] uppercase text-slate-400 font-bold tracking-tighter">Escríbenos</span>
-                  <a href="mailto:contacto@empresa.com" className="text-slate-700 font-bold text-sm hover:text-primary transition-colors">contacto@empresa.com</a>
+                  <a href="mailto:contacto@empresa.com" className="text-slate-700 font-bold text-sm hover:text-primary transition-colors">serlimca@gmail.com</a>
                 </div>
               </div>
             </div>
@@ -108,7 +108,7 @@ export default function Footer() {
         <div className="py-10">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <p className="text-slate-400 text-[11px] font-medium tracking-wide">
-              © {currentYear} <span className="text-slate-900 font-black">NOMBRE DE EMPRESA</span>. 
+              © {currentYear} <span className="text-slate-900 font-black">SERVICIOS D'LIMA C.A SERLIMCA</span>. 
               TODOS LOS DERECHOS RESERVADOS.
             </p>
             <div className="flex gap-8 text-[10px] uppercase tracking-[0.2em] font-black">

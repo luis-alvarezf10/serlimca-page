@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { HiMail, HiPhone, HiLocationMarker, HiClock, HiChevronRight } from 'react-icons/hi';
 import GeneralButton from '../components/buttons.jsx/GeneralButton';
 

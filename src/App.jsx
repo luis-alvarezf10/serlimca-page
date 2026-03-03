@@ -20,7 +20,7 @@ function App() {
       <main className="w-full overflow-x-hidden">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/aboutus" element={<About />} />
+          <Route path="/nosotros" element={<About />} />
           <Route path="/servicios" element={<Servicios />} />
           <Route path="/contacto" element={<Contacto />} />
         </Routes>

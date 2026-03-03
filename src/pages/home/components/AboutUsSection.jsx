@@ -103,7 +103,7 @@ const AboutUsSection = () => {
             whileHover={{ x: 10 }}
             className="pt-6"
           >
-            <PrimaryButton to="/aboutus">
+            <PrimaryButton to="/nosotros">
               Ver Trayectoria Corporativa
             </PrimaryButton>
           </motion.div>
