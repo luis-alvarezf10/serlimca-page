@@ -49,7 +49,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section id="hero" className="relative w-full h-screen flex items-center overflow-hidden bg-[#0a0a0a]">
+    <section id="hero" className="relative w-full h-[100dvh] xl:h-screen flex items-center overflow-hidden bg-[#0a0a0a]">
       
       {/* BACKGROUND - Iluminación mejorada (opacity 0.6) */}
       <div className="absolute inset-0 z-0">
