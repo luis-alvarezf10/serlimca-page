@@ -127,9 +127,9 @@ const HeroSection = () => {
           <div className="lg:col-span-4 w-full">
             <div className="grid grid-cols-3 lg:grid-cols-1 gap-4 sm:gap-8 border-t lg:border-t-0 lg:border-l border-white/10 pt-8 lg:pt-0 lg:pl-12 text-center lg:text-left">
               {[
-                { val: `+${counters.years}`, label: "Años" },
-                { val: `+${counters.projects}`, label: "Proyectos" },
-                { val: "24/7", label: "Soporte" }
+                { val: `+${counters.years}`, label: t('quick.years') },
+                { val: `+${counters.projects}`, label: t('quick.projects') }, // Aprovecha de traducir este también
+                { val: "24/7", label: t('quick.support') },
               ].map((stat, i) => (
                 <div key={i} className="group">
                   <div className="text-3xl sm:text-4xl lg:text-5xl 2xl:text-6xl font-black text-white group-hover:text-primary transition-colors">
