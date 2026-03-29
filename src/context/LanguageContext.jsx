@@ -42,6 +42,7 @@ export const translations = {
   'about.subtitle': { es: 'Nuestro camino al éxito', en: 'Our journey to success', cn: '我们的成功之路' },
   'about.description': { es: ' En  \"SERLIMCA"\ somos especialistas en el transporte de carga pesada, respaldados por una infraestructura sólida y un equipo experto en logística, mantenimiento y seguridad. Nos distinguimos por nuestra capacidad operativa y un control riguroso en cada etapa del proceso.', en: 'At SERLIMCA, we specialize in heavy-duty freight transport, backed by a solid infrastructure and an expert team in logistics, maintenance, and security. We stand out for our operational capacity and rigorous control at every stage of the process.', cn : '在 SERLIMCA，我们专注于重型货物运输。凭借稳固的基础设施以及在物流、维护和安全方面的专家团队，我们以卓越的运营能力和对流程各阶段的严格控制而脱颖而出。' },
   'about.shortdescription': { es: 'Nuestro compromiso es brindar soluciones de transporte eficientes y seguras garantizando que cada activo llegue a su destino con la puntualidad y la integridad que el sector industrial exige', en: 'Our commitment is to provide efficient and secure transport solutions, ensuring every asset reaches its destination with the punctuality and integrity required by the industrial sector.', cn : '我们致力于提供高效、安全的运输解决方案，确保每一项资产都能按照工业部门要求的准时性与完整性送达目的地。' },
+  'about.cta.learnmore': { es: 'Conoce más sobre nosotros', en: 'Learn more about us', cn: '了解更多关于我们的信息' },
 
   // Services
   'services.title': { es: 'Nuestros Servicios', en: 'Our Services' },
@@ -56,20 +57,14 @@ export const translations = {
   'services.support.description': { es: 'Asistencia técnica 24/7 con respuesta inmediata en campo.', en: '24/7 technical assistance with immediate field response.' },
 
   // Why Us
-  'why.experience': { es: '+15 Años de Experiencia', en: '+15 Years of Experience' },
-  'why.title': { es: '¿Por qué elegir SERLIMCA?', en: 'Why choose SERLIMCA?' },
-  'why.subtitle': { es: 'Ventajas que nos diferencian', en: 'Advantages that set us apart' },
-  'why.experience.desc': { es: 'Trayectoria comprobada en el sector petrolero nacional.', en: 'Proven track record in the national oil sector.' },
-  'why.quality': { es: 'Calidad Certificada', en: 'Certified Quality' },
-  'why.quality.desc': { es: 'Cumplimos con todas las normativas y estándares de seguridad.', en: 'We comply with all regulations and safety standards.' },
-  'why.team': { es: 'Equipo Especializado', en: 'Specialized Team' },
-  'why.team.desc': { es: 'Personal técnico altamente capacitado y certificado.', en: 'Highly trained and certified technical staff.' },
-  'why.coverage': { es: 'Cobertura Nacional', en: 'National Coverage' },
-  'why.coverage.desc': { es: 'Presencia en todas las regiones petroleras del país.', en: 'Presence in all oil regions of the country.' },
-  'why.response': { es: 'Respuesta Inmediata', en: 'Immediate Response' },
-  'why.response.desc': { es: 'Atención 24/7 para emergencias y soporte técnico.', en: '24/7 attention for emergencies and technical support.' },
-  'why.pricing': { es: 'Precios Competitivos', en: 'Competitive Pricing' },
-  'why.pricing.desc': { es: 'Tarifas justas con la mejor relación calidad-precio.', en: 'Fair rates with the best value for money.' },
+  'why.experience': { es: '+20 Años de Experiencia', en: '+20 Years of Experience', cn: '+20 年以上经验' },
+  'why.certification': { es: 'Certificación', en: 'Certification', cn: '认证' },
+  'why.quality': { es: 'Calidad Garantizada', en: 'Quality Guaranteed', cn: '质量保证' },
+  
+  'why.cta.years': { es: 'años de trayectoria', en: 'Years of Experience', cn: '多年行业经验' },
+  'why.cta.projects': { es: 'proyectos exitosos', en: 'Successful Projects', cn: '成功项目' },
+  'why.cta.experts': { es: 'expertos certificados', en: 'certified experts', cn: '认证专家' },
+  'why.cta.support': { es: 'aliados estratégicos', en: 'Strategic Allies', cn: '战略合作伙伴' },
 
   // Coverage
   'coverage.title': { es: 'Cobertura Nacional', en: 'National Coverage' },
@@ -105,7 +100,8 @@ export const translations = {
   'quick.years': { es: 'años', en: 'years', cn: '年' },
   'quick.projects': { es: 'proyectos', en: 'projects', cn: '项目' },
   'quick.support': { es: 'soporte', en: 'support', cn: '支持' },
-  'quick.cta.years': { es: 'años de trayectoria', en: 'Years of Experience', cn: '多年行业经验' }
+ 
+
 };
 
 const LanguageContext = createContext();

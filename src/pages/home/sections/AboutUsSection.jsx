@@ -3,15 +3,16 @@ import PrimaryButton from '../../../components/buttons.jsx/PrimaryButton';
 import image from '../../../assets/imagen-8.jpeg';
 import { useLanguage } from '../../../context/LanguageContext';
 
-const Information = [
-  { title: "20+", description: "Años de Trayectoria" },
-  { title: "50+", description: "Aliados Estratégicos" },
-  { title: "45+", description: "Proyectos de Ingeniería" },
-  { title: "20+", description: "Expertos Certificados" },
-];
 
 const AboutUsSection = () => {
   const { t } = useLanguage();
+  
+  const Information = [
+    { title: "20+", description: t('why.cta.years')},
+    { title: "50+", description: t('why.cta.support') },
+    { title: "45+", description: t('why.cta.projects') },
+    { title: "20+", description: t('why.cta.experts') },
+  ];
 
   return (
     <section id="nosotros" className="min-h-screen flex items-center bg-white overflow-hidden">
@@ -43,10 +44,10 @@ const AboutUsSection = () => {
             initial={{ scale: 0 }}
             whileInView={{ scale: 1 }}
             transition={{ delay: 0.5, type: "spring" }}
-            className="absolute -bottom-8 -right-8 bg-slate-950 text-white p-8 hidden lg:block"
+            className="absolute -bottom-8 -right-8 bg-black/90 text-white p-8 hidden lg:block"
           >
-            <p className="text-primary font-bold text-sm tracking-widest uppercase mb-1">Certificación</p>
-            <p className="text-xl font-light">Calidad Garantizada</p>
+            <p className="text-primary font-bold text-sm tracking-widest uppercase mb-1">{t('why.certification')}</p>
+            <p className="text-xl font-light">{t('why.quality')}</p>
           </motion.div>
         </motion.div>
 
@@ -104,7 +105,7 @@ const AboutUsSection = () => {
             className="pt-6"
           >
             <PrimaryButton to="/nosotros">
-              Ver Trayectoria Corporativa
+              {t('about.cta.learnmore')}
             </PrimaryButton>
           </motion.div>
         </motion.div>
