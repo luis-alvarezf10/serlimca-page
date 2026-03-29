@@ -69,10 +69,10 @@ const AboutUsSection = () => {
 
           <div className="space-y-4">
             <p className="text-lg text-slate-600 leading-relaxed text-justify md:text-left font-medium">
-              {t('about.shortdescription')}
+              {t('about.description')}
             </p>
             <p className="text-slate-500 leading-relaxed text-justify md:text-left">
-              {t('about.description')}
+              {t('about.shortdescription')}
             </p>
           </div>
 

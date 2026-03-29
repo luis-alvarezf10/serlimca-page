@@ -1,10 +1,10 @@
-import HeroSection from './components/HeroSection'
-import AboutUsSection from './components/AboutUsSection'
+import HeroSection from './sections/HeroSection'
+import AboutUsSection from './sections/AboutUsSection'
 import MarqueeText from './components/MarqueeText'
-import ServicesSection from './components/ServicesSection'
-import CoverageSection from './components/CoverageSection'
-import GallerySection from './components/GallerySection'
-import ContactCTASection from './components/ContactCTASection'
+import ServicesSection from './sections/ServicesSection'
+import CoverageSection from './sections/CoverageSection'
+import GallerySection from './sections/GallerySection'
+import ContactCTASection from './sections/ContactCTASection'
 import Footer from '../../components/Footer'
 
 export default function Home() {

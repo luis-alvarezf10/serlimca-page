@@ -17,10 +17,10 @@ export const translations = {
   'hero.cta.services': { es: 'Nuestros Servicios', en: 'Our Services' },
 
   // About
-  'about.title': { es: 'Sobre Nosotros', en: 'About Us' },
-  'about.subtitle': { es: 'Nuestro camino al éxito', en: 'Our journey to success' },
-  'about.shortdescription': { es: 'Somos  \"SERVICIOS D\'LIMA C.A (SERLIMCA)"\ una empresa de servicios petroleros, comprometidos con la excelencia y la calidad en cada uno de nuestros servicios.', en: 'We are  \"SERVICIOS D\'LIMA C.A (SERLIMCA)"\ an oil services company, committed to excellence and quality in each of our services.' },
-  'about.description': { es: ' Con años de experiencia en el sector, nos hemos consolidado como líderes, ofreciendo soluciones confiables y profesionales que superan las expectativas de nuestros clientes.', en: 'With years of experience in the sector, we have established ourselves as leaders, offering reliable and professional solutions that exceed our clients' },
+  'about.title': { es: 'Sobre Nosotros', en: 'About Us', cn: '关于我们' },
+  'about.subtitle': { es: 'Nuestro camino al éxito', en: 'Our journey to success', cn: '我们的成功之路' },
+  'about.description': { es: ' En  \"SERLIMCA"\ somos especialistas en el transporte de carga pesada, respaldados por una infraestructura sólida y un equipo experto en logística, mantenimiento y seguridad. Nos distinguimos por nuestra capacidad operativa y un control riguroso en cada etapa del proceso.', en: 'At SERLIMCA, we specialize in heavy-duty freight transport, backed by a solid infrastructure and an expert team in logistics, maintenance, and security. We stand out for our operational capacity and rigorous control at every stage of the process.', cn : '在 SERLIMCA，我们专注于重型货物运输。凭借稳固的基础设施以及在物流、维护和安全方面的专家团队，我们以卓越的运营能力和对流程各阶段的严格控制而脱颖而出。' },
+  'about.shortdescription': { es: 'Nuestro compromiso es brindar soluciones de transporte eficientes y seguras garantizando que cada activo llegue a su destino con la puntualidad y la integridad que el sector industrial exige', en: 'Our commitment is to provide efficient and secure transport solutions, ensuring every asset reaches its destination with the punctuality and integrity required by the industrial sector.', cn : '我们致力于提供高效、安全的运输解决方案，确保每一项资产都能按照工业部门要求的准时性与完整性送达目的地。' },
   'about.legend': { es: 'Conoce nuestra historia, misión y el equipo que hace posible nuestro servicio', en: 'Learn about our history, mission and the team that makes our service possible'},
   'about.mission.title': { es: 'Misión', en: 'Mission' },
   'about.mission.text': { es: 'Brindar servicios de transporte y mantenimiento de alta calidad, garantizando la seguridad, eficiencia y satisfacción de nuestros clientes.', en: 'Provide high-quality transport and maintenance services, ensuring safety, efficiency, and customer satisfaction.' },
