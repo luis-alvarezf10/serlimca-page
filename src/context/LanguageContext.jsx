@@ -45,16 +45,19 @@ export const translations = {
   'about.cta.learnmore': { es: 'Conoce más sobre nosotros', en: 'Learn more about us', cn: '了解更多关于我们的信息' },
 
   // Services
-  'services.title': { es: 'Nuestros Servicios', en: 'Our Services' },
-  'services.subtitle': { es: 'Soluciones especializadas para la industria petrolera', en: 'Specialized solutions for the oil industry' },
-  'services.transport.title': { es: 'Transporte de Maquinaria Pesada', en: 'Heavy Machinery Transport' },
-  'services.transport.description': { es: 'Transporte especializado de equipos petroleros con flota moderna y personal capacitado.', en: 'Specialized transport of oil equipment with modern fleet and trained personnel.' },
-  'services.maintenance.title': { es: 'Mantenimiento de Sistemas de Bombeo', en: 'Pumping System Maintenance' },
-  'services.maintenance.description': { es: 'Servicio integral para bombas, balancines, BCP, Rotaflex y equipos de bombeo.', en: 'Comprehensive service for pumps, beam pumps, PCP, Rotaflex and pumping equipment.' },
-  'services.repair.title': { es: 'Reparación Especializada', en: 'Specialized Repair' },
-  'services.repair.description': { es: 'Diagnóstico y reparación de equipos industriales con técnicos certificados.', en: 'Diagnosis and repair of industrial equipment with certified technicians.' },
-  'services.support.title': { es: 'Soporte Técnico', en: 'Technical Support' },
-  'services.support.description': { es: 'Asistencia técnica 24/7 con respuesta inmediata en campo.', en: '24/7 technical assistance with immediate field response.' },
+  'services.title': { es: 'Servicios', en: 'Services', cn: '服务项目' },
+  'services.subtitle': { es: 'Nuestras Soluciones', en: 'Our Solutions', cn: '我们的解决方案' },
+  'services.transport.title': { es: 'Transporte de Carga Pesada y Especializada', en: 'Heavy and Specialized Cargo Transport', cn: '重型及特种货物运输' },
+  'services.transport.description': { es: 'Contamos con una flota de alto tonelaje preparada para los retos más exigentes. Somos especialistas en la movilización de maquinaria industrial y carga pesada, garantizando siempre la sujeción correcta y el cumplimiento de todas las normativas de seguridad vial.', en: 'We have a high-tonnage fleet prepared for the most demanding challenges. We specialize in the mobilization of industrial machinery and heavy cargo, always ensuring proper securing and compliance with all road safety regulations.', cn: '我们拥有一支高吨位车队，准备应对最苛刻的挑战。我们专注于工业机械和重型货物的运输，始终确保正确固定并遵守所有道路安全法规。' },
+  'services.managment.title': { es: 'Gestión Logística y Distribución', en: 'Logistics Management and Distribution', cn: '物流管理与配送' },
+  'services.managment.description': { es: 'Diseñamos la ruta más eficiente para su mercancía. Nuestra gestión operativa permite coordinar tiempos de entrega precisos, optimizando recursos y manteniendo una comunicación constante sobre el estatus de sus activos en tránsito.', en: 'We design the most efficient route for your goods. Our operational management allows us to coordinate precise delivery times, optimizing resources and maintaining constant communication about the status of your assets in transit.', cn: '我们为您的货物设计最有效的路线。我们的运营管理使我们能够协调精确的交货时间，优化资源，并保持关于您在运输中的资产状态的持续沟通。' },
+  'services.izamiento.title': {es: 'Izamiento de Precisión', en: 'Precision Lifting', cn: '精密吊装' },
+  'services.izamiento.description': { es: 'Disponemos de Grúa Telescópica de alta capacidad y unidades equipadas con Brazo Hidráulico, ideales para maniobras de carga, descarga y montaje industrial con máxima seguridad.', en: 'We have a high-capacity Telescopic Crane and units equipped with Hydraulic Arms, ideal for loading, unloading, and industrial assembly maneuvers with maximum safety.', cn: '我们拥有高容量的伸缩式起重机和配备液压臂的设备，非常适合进行安全的装卸和工业组装操作。' },
+  'services.heavytransport.title': { es: 'Transporte de Carga Pesada', en: 'Heavy transport', cn: '重货运输'},
+  'services.heavytransport.description': { es: 'Contamos con Chutos de alta potencia configurados con: Bateas: Para el traslado eficiente de materiales y carga general. Low Boy (Cama Baja) Plano: Diseñado para equipos de gran altura y volumen. 	Low Boy Descuellable: La solución definitiva para maquinaria pesada de difícil acceso, facilitando la carga frontal de forma rápida y segura.', en: 'Heavy Transport: We have high-power Chutos configured with: Bateas: For efficient transportation of materials and general cargo. Low Boy (Flatbed): Designed for tall and voluminous equipment.Low Boy Uncollared: The definitive solution for heavy machinery that is difficult to access, facilitating front loading quickly and safely.', },
+  'services.question': { es: '¿Listo para optimatizar su infraestructura?', en: 'Ready to optimize your infrastructure?', cn: '准备好优化您的基础设施了吗？' },
+  'services.cta.button': { es: 'Explorar todas las capacidades tecnicas', en: 'Explore all technical capabilities', cn: '探索所有技术能力' },
+
 
   // Why Us
   'why.experience': { es: '+20 Años de Experiencia', en: '+20 Years of Experience', cn: '+20 年以上经验' },
@@ -100,6 +103,11 @@ export const translations = {
   'quick.years': { es: 'años', en: 'years', cn: '年' },
   'quick.projects': { es: 'proyectos', en: 'projects', cn: '项目' },
   'quick.support': { es: 'soporte', en: 'support', cn: '支持' },
+
+
+
+
+  // PARTE DE SERVICIOS
  
 
 };
