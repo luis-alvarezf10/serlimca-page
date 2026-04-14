@@ -10,6 +10,7 @@
             <li><strong>Manejador:</strong> pnpm</li>
         </ul>
         <h2>Instalación y Desarrollo</h2>
+        </hr>
         <pre><code># Clonar el repositorio
 git clone https://github.com/tu-usuario/serlimca-web.git
 
@@ -40,7 +41,7 @@ pnpm dev</code></pre>
                     <td>Set de iconos vectoriales para la interfaz.</td>
                 </tr>
             </tbody>
-        </ul>
+        </table>
         <h2>Arquitectura de Carpetas</h2>
 <pre><code>src/
 ├── assets/         # Recursos estáticos
