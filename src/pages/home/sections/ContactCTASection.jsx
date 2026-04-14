@@ -112,7 +112,7 @@ const ContactCTASection = () => {
               className="md:col-span-2 p-8 bg-gradient-to-r from-primary/10 to-transparent border border-primary/20 rounded-2xl flex items-center justify-between"
             >
               <div className="flex items-center gap-6">
-                <div className="w-16 h-16 bg-primary rounded-xl flex items-center justify-center shadow-lg shadow-primary/20">
+                <div className="hidden md:flex w-16 h-14 bg-primary rounded-xl flex items-center justify-center shadow-lg shadow-primary/20">
                   <HiClock className="text-black text-2xl" />
                 </div>
                 <div>
@@ -130,7 +130,7 @@ const ContactCTASection = () => {
             <div className="md:col-span-2 grid grid-cols-3 gap-4 mt-4">
               {[
                 { label: 'Respuesta', val: '< 2h' },
-                { label: 'Proyectos', val: '500+' },
+                { label: 'Proyectos', val: '45+' },
                 { label: 'Confianza', val: '100%' },
               ].map((stat, i) => (
                 <div key={i} className="text-center py-4 bg-white/[0.02] border border-white/5 rounded-xl">
