@@ -4,7 +4,7 @@ import Header from './components/Header'
 import Home from './pages/home/Home'
 import About from './pages/about/About'
 import Servicios from './pages/services/Servicios'
-import Contacto from './pages/Contacto'
+import Contacto from './pages/Contact'
 import ScrollToTopButton from './components/buttons.jsx/ScrollToTopButton'
 
 function App() {
