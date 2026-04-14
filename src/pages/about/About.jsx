@@ -209,7 +209,7 @@ function About() {
       </section>
 
       {/* Equipo con Efecto Hover Elevado */}
-      <section className="py-24 px-8 bg-slate-50">
+      {/* <section className="py-24 px-8 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-bold text-slate-900 mb-16">Capital Humano</h2>
           <div className="grid md:grid-cols-3 gap-8">
@@ -239,7 +239,7 @@ function About() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* CTA con Pulsación Sutil */}
       <section className="py-24 overflow-hidden relative bg-slate-900">
