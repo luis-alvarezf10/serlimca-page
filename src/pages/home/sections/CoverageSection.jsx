@@ -3,15 +3,15 @@ import { HiLocationMarker } from 'react-icons/hi';
 import venezuelaMap from '../../../assets/mapa.png';
 
 const regions = [
-  { name: 'Zulia', top: '25%', left: '15%' },
-  { name: 'Falcón', top: '18%', left: '28%' },
-  { name: 'Anzoátegui', top: '30%', left: '65%' },
-  { name: 'Monagas', top: '32%', left: '78%' },
-  { name: 'Barinas', top: '45%', left: '25%' },
-  { name: 'Apure', top: '55%', left: '35%' },
-  { name: 'Caracas', top: '22%', left: '48%' },
-  { name: 'Miranda', top: '25%', left: '52%' },
-  { name: 'Carabobo', top: '24%', left: '42%' },
+  { name: 'Zulia', top: '28%', left: '7%' },
+  { name: 'Falcón', top: '17%', left: '28%' },
+  { name: 'Anzoátegui', top: '32%', left: '65%' },
+  { name: 'Monagas', top: '30%', left: '76%' },
+  { name: 'Barinas', top: '38%', left: '23%' },
+  { name: 'Apure', top: '47%', left: '35%' },
+  { name: 'Caracas', top: '22%', left: '47%' },
+  { name: 'Miranda', top: '23%', left: '51%' },
+  { name: 'Carabobo', top: '24%', left: '39%' },
 ];
 
 const CoverageSection = () => {
