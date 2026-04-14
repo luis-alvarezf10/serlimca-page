@@ -56,7 +56,7 @@ const GallerySection = () => {
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`px-8 py-2 rounded-full text-sm font-bold transition-all duration-300 ${
+              className={`px-6 py-1 rounded-full text-sm font-bold transition-all duration-300 ${
                 activeCategory === category
                   ? 'bg-primary text-black shadow-xl shadow-primary/20 scale-105'
                   : 'bg-slate-100 text-slate-500 hover:bg-slate-200'
@@ -81,7 +81,7 @@ const GallerySection = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.4 }}
-                className={`group relative overflow-hidden rounded-2xl bg-slate-200 cursor-pointer shadow-lg ${
+                className={`group relative overflow-hidden bg-black cursor-pointer shadow-lg ${
                   index === 0 && activeCategory === 'Todos' ? 'md:col-span-2 md:row-span-2' : ''
                 }`}
                 style={{ aspectRatio: index === 0 && activeCategory === 'Todos' ? '16/10' : '4/3' }}
@@ -124,7 +124,7 @@ const GallerySection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-slate-950/95 z-[100] flex items-center justify-center p-4 md:p-10 backdrop-blur-md"
+            className="fixed inset-0 bg-black/90 z-[100] flex items-center justify-center p-4 md:p-10 backdrop-blur-md"
             onClick={() => setSelectedImage(null)}
           >
             <motion.button 
@@ -145,11 +145,6 @@ const GallerySection = () => {
                 alt={selectedImage.title}
                 className="w-full h-auto max-h-[70dvh] object-contain rounded-xl shadow-2xl"
               />
-              <div className="bg-white p-8 rounded-xl">
-                <span className="bg-primary px-3 py-1 rounded text-xs font-black uppercase">{selectedImage.category}</span>
-                <h3 className="text-2xl md:text-3xl font-bold mt-4 mb-2">{selectedImage.title}</h3>
-                <p className="text-slate-600">{selectedImage.description}</p>
-              </div>
             </motion.div>
           </motion.div>
         )}
