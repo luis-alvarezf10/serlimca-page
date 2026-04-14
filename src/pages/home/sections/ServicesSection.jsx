@@ -152,11 +152,11 @@ const ServicesSection = () => {
           <div className="mb-8 text-slate-400 font-medium tracking-widest uppercase text-sm">
             {t("services.question")}
           </div>
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+          {/* <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <PrimaryButton to="/servicios" className="uppercase">
               {t("services.cta.button")}
             </PrimaryButton>
-          </motion.div>
+          </motion.div> */}
         </motion.div>
       </div>
     </section>
