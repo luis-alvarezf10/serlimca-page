@@ -2,7 +2,6 @@ import { useLanguage } from '../../context/LanguageContext';
 import image from '../../assets/imagen-1.webp';
 import { motion } from 'framer-motion';
 import Footer from '../../components/Footer'
-import { HiOutlineUserCircle } from "react-icons/hi";
 import OutlinedButton from '../../components/buttons.jsx/OutlinedButton';
 import { useNavigate } from 'react-router-dom';
 
@@ -25,16 +24,16 @@ const staggerContainer = {
 };
 const goals = [
   {
-    titulo: 'Estratégicos',
-    descripcion: 'Ser un referente nacional en nuestra especialidad, fortaleciendo las relaciones comerciales con nuestros clientes leales y confiables, garantizándoles un trato especial y preferencial.'
+    titleKey: 'about.page.goals.strategic.title',
+    descriptionKey: 'about.page.goals.strategic.description'
   },
   {
-    titulo: 'Operacional',
-    descripcion: 'Diversificar los servicios prestados a la industria petrolera. Los nuevos servicios deberán priorizar los factores tecnológico y técnico.'
+    titleKey: 'about.page.goals.operational.title',
+    descriptionKey: 'about.page.goals.operational.description'
   },
   {
-    titulo: 'Táctico',
-    descripcion: 'Conseguir clientes afines a nuestros valores con los cuales establecer relaciones comerciales estrechas y rentables.'
+    titleKey: 'about.page.goals.tactical.title',
+    descriptionKey: 'about.page.goals.tactical.description'
   }
 ];
 
@@ -103,7 +102,7 @@ function About() {
             transition={{ duration: 1 }}
             className="text-primary tracking-[0.3em] uppercase text-sm font-semibold mb-4 block"
           >
-            Liderazgo en Ingeniería de Mantenimiento
+            {t('about.page.hero.eyebrow')}
           </motion.span>
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
@@ -111,8 +110,8 @@ function About() {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="text-5xl md:text-7xl font-light text-white mb-6 leading-tight"
           >
-            Excelencia Operativa en el <br />
-            <span className="font-bold">Sector Petrolero</span>
+            {t('about.page.hero.title')} <br />
+            <span className="font-bold">{t('about.page.hero.highlight')}</span>
           </motion.h1>
           <motion.div
             initial={{ width: 0 }}
@@ -132,15 +131,17 @@ function About() {
             whileInView="visible"
             variants={fadeIn}
           >
-            <h2 className="text-sm uppercase tracking-widest text-primary font-bold mb-4">Nuestra Organización</h2>
+            <h2 className="text-sm uppercase tracking-widest text-primary font-bold mb-4">
+              {t('about.page.intro.eyebrow')}
+            </h2>
             <h3 className="text-4xl font-bold text-slate-900 mb-8 leading-tight">
-              Quiénes somos
+              {t('about.page.intro.title')}
             </h3>
             <p className="text-lg text-slate-600 leading-relaxed mb-6">
-              Somos <strong className="text-slate-900">Servicios D'LIMA, C.A.</strong>, una compañía especializada en el soporte técnico, el mantenimiento y la reparación de infraestructura crítica del sector petrolero. Fue fundada en <a href="https://maps.app.goo.gl/Ao2ZBhfGdZDDEZoy6" target="_blank" rel="noreferrer" className="text-primary font-semibold italic">El Tigre, estado Anzoátegui</a>, en el año <strong className="text-slate-900">2003</strong>.
+              {t('about.page.intro.beforeCompany')} <strong className="text-slate-900">Servicios D'LIMA, C.A.</strong>, {t('about.page.intro.afterCompany')} <a href="https://maps.app.goo.gl/Ao2ZBhfGdZDDEZoy6" target="_blank" rel="noreferrer" className="text-primary font-semibold italic">{t('about.page.intro.location')}</a> {t('about.page.intro.beforeYear')} <strong className="text-slate-900">2003</strong>.
             </p>
             <p className="text-lg text-slate-600 leading-relaxed">
-              Aseguramos que cada intervención cumpla con los estándares internacionales de calidad y seguridad industrial más exigentes.
+              {t('about.page.intro.quality')}
             </p>
           </motion.div>
 
@@ -152,7 +153,7 @@ function About() {
             className="relative"
           >
             <div className="aspect-video bg-slate-100 rounded-sm border border-slate-200 overflow-hidden shadow-2xl">
-              <img src="src\assets\imagen-1.webp" alt="" />
+              <img src={image} alt={t('about.page.intro.title')} className="w-full h-full object-cover" />
             </div>
             <motion.div
               initial={{ scale: 0 }}
@@ -161,7 +162,9 @@ function About() {
               className="absolute -bottom-6 -left-6 bg-primary p-8 hidden md:block"
             >
               <p className="text-slate-950 font-black text-4xl">20+</p>
-              <p className="text-slate-900 text-xs uppercase font-bold tracking-tighter">Años de experiencia técnica</p>
+              <p className="text-slate-900 text-xs uppercase font-bold tracking-tighter">
+                {t('about.page.experience')}
+              </p>
             </motion.div>
           </motion.div>
         </div>
@@ -191,19 +194,19 @@ function About() {
         >
           <motion.div variants={fadeIn} className="border-l border-primary/30 pl-8 group cursor-default">
             <h3 className="text-2xl font-bold mb-6 text-primary uppercase tracking-wider group-hover:pl-4 transition-all duration-300">
-              Misión
+              {t('about.page.mission.title')}
             </h3>
             <p className="text-xl text-slate-200 leading-relaxed font-light">
-              Prestar servicios a la industria petrolera, priorizando la seguridad y la rentabilidad para garantizar la satisfacción de nuestros clientes.
+              {t('about.page.mission.description')}
             </p>
           </motion.div>
 
           <motion.div variants={fadeIn} className="border-l border-primary/30 pl-8 group cursor-default">
             <h3 className="text-2xl font-bold mb-6 text-primary uppercase tracking-wider group-hover:pl-4 transition-all duration-300">
-              Visión
+              {t('about.page.vision.title')}
             </h3>
             <p className="text-xl text-slate-200 leading-relaxed font-light">
-              Posicionarnos como la compañía más confiable en el servicio de izamiento y transporte de cargas pesadas a nivel nacional.
+              {t('about.page.vision.description')}
             </p>
           </motion.div>
         </motion.div>
@@ -271,12 +274,12 @@ function About() {
           whileInView={{ opacity: 1 }}
           className="text-center text-sm uppercase tracking-[0.4em] text-slate-500 font-bold mb-16"
         >
-          Nuestros Objetivos
+          {t('about.page.goals.title')}
         </motion.h2>
         <div className="grid md:grid-cols-3 gap-12">
           {goals.map((goal, i) => (
             <motion.div
-              key={goal.titulo} // Usamos el título como key única
+              key={goal.titleKey}
               viewport={{ once: true }}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -285,7 +288,7 @@ function About() {
               className="group"
             >
               <h4 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-primary transition-colors">
-                {goal.titulo}
+                {t(goal.titleKey)}
               </h4>
 
               <motion.div
@@ -295,7 +298,7 @@ function About() {
               />
 
               <p className="text-slate-600 leading-relaxed">
-                {goal.descripcion}
+                {t(goal.descriptionKey)}
               </p>
             </motion.div>
           ))}
@@ -362,7 +365,7 @@ function About() {
           className="max-w-4xl mx-auto text-center px-6 relative z-10"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-8 uppercase tracking-tight">
-            Potencie su capacidad operativa hoy mismo
+            {t('about.page.cta.title')}
           </h2>
 
           <motion.div
@@ -378,7 +381,7 @@ function About() {
               }
               className="inline-block bg-slate-950 text-white px-12 py-4 font-bold text-sm uppercase tracking-[0.2em] shadow-2xl transition-colors"
             >
-              Solicitar Consultoría Técnica
+              {t('about.page.cta.button')}
             </OutlinedButton>
           </motion.div>
         </motion.div>
