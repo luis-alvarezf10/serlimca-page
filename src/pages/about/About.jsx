@@ -38,6 +38,45 @@ const goals = [
   }
 ];
 
+const values = [
+  {
+    titleKey: 'about.values.honesty.title',
+    descriptionKey: 'about.values.honesty.description'
+  },
+  {
+    titleKey: 'about.values.quality.title',
+    descriptionKey: 'about.values.quality.description'
+  },
+  {
+    titleKey: 'about.values.punctuality.title',
+    descriptionKey: 'about.values.punctuality.description'
+  },
+  {
+    titleKey: 'about.values.passion.title',
+    descriptionKey: 'about.values.passion.description'
+  },
+  {
+    titleKey: 'about.values.competitiveness.title',
+    descriptionKey: 'about.values.competitiveness.description'
+  },
+  {
+    titleKey: 'about.values.teamwork.title',
+    descriptionKey: 'about.values.teamwork.description'
+  },
+  {
+    titleKey: 'about.values.customerOrientation.title',
+    descriptionKey: 'about.values.customerOrientation.description'
+  },
+  {
+    titleKey: 'about.values.socialResponsibility.title',
+    descriptionKey: 'about.values.socialResponsibility.description'
+  },
+  {
+    titleKey: 'about.values.problemSolving.title',
+    descriptionKey: 'about.values.problemSolving.description'
+  }
+];
+
 function About() {
   const { t } = useLanguage();
   const navigate = useNavigate();
@@ -168,6 +207,61 @@ function About() {
             </p>
           </motion.div>
         </motion.div>
+      </section>
+
+      {/* Valores Corporativos */}
+      <section className="py-24 px-8 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            viewport={{ once: true }}
+            initial="hidden"
+            whileInView="visible"
+            variants={fadeIn}
+            className="grid lg:grid-cols-[0.75fr_1.25fr] gap-14 lg:gap-20"
+          >
+            <div>
+              <p className="text-sm uppercase tracking-[0.35em] text-primary font-bold mb-5">
+                {t('about.values.eyebrow')}
+              </p>
+              <h2 className="text-4xl md:text-5xl font-black text-slate-950 leading-tight mb-6">
+                {t('about.values.title')}
+              </h2>
+              <p className="text-lg text-slate-500 leading-relaxed">
+                {t('about.values.description')}
+              </p>
+            </div>
+
+            <motion.div
+              viewport={{ once: true }}
+              initial="hidden"
+              whileInView="visible"
+              variants={staggerContainer}
+              className="grid sm:grid-cols-2 xl:grid-cols-3 gap-x-8 gap-y-10"
+            >
+              {values.map((value, index) => (
+                <motion.article
+                  key={value.titleKey}
+                  variants={fadeIn}
+                  custom={index}
+                  className="group border-t border-slate-200 pt-6"
+                >
+                  <div className="flex items-center justify-between gap-4 mb-5">
+                    <span className="text-sm font-black text-primary">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                    <span className="h-px flex-1 bg-slate-100 group-hover:bg-primary/40 transition-colors" />
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-950 mb-3 group-hover:text-primary transition-colors">
+                    {t(value.titleKey)}
+                  </h3>
+                  <p className="text-slate-500 leading-relaxed">
+                    {t(value.descriptionKey)}
+                  </p>
+                </motion.article>
+              ))}
+            </motion.div>
+          </motion.div>
+        </div>
       </section>
 
       {/* Pilares Estratégicos Animados */}
