@@ -16,7 +16,7 @@ export default function Servicios() {
     {
       id: '02',
       titulo: 'Ingeniería de Mantenimiento Integral',
-      descripcion: 'Programas técnicos diseñados para maximizar la vida útil de los activos. Aplicamos metodologías de mantenimiento basado en la condición para reducir el downtime no programado.',
+      descripcion: 'Programas técnicos diseñados para maximizar la vida útil de los activos. Aplicamos metodologías de mantenimiento basado en la condición para reducir el tiempo de inactividad no programado.',
       detalles: [
         'Diagnóstico por análisis de vibraciones y termografía',
         'Mantenimiento preventivo de sistemas de bombeo',
@@ -31,7 +31,7 @@ export default function Servicios() {
       detalles: [
         'Especialistas senior certificados en API / ISO',
         'Suministro de componentes de grado industrial',
-        'Pruebas hidrostáticas y de hermeticidad post-reparación',
+        'Pruebas hidrostáticas y de hermeticidad posteriores a la reparación',
         'Servicio de respuesta para contingencias 24/7'
       ]
     }

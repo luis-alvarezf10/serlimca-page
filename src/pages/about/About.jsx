@@ -30,7 +30,7 @@ const goals = [
   },
   {
     titulo: 'Operacional',
-    descripcion: 'Diversificar los servicios prestados a la industria petrolera,  los nuevos servicios deberán priorizar el factor tecnológico y técnico.'
+    descripcion: 'Diversificar los servicios prestados a la industria petrolera. Los nuevos servicios deberán priorizar los factores tecnológico y técnico.'
   },
   {
     titulo: 'Táctico',
@@ -95,10 +95,10 @@ function About() {
           >
             <h2 className="text-sm uppercase tracking-widest text-primary font-bold mb-4">Nuestra Organización</h2>
             <h3 className="text-4xl font-bold text-slate-900 mb-8 leading-tight">
-              Quienes somos
+              Quiénes somos
             </h3>
             <p className="text-lg text-slate-600 leading-relaxed mb-6">
-              Somos <strong className="text-slate-900">Servicios D'LIMA, C.A</strong> una compañía especializada en el soporte técnico, mantenimiento y reparación de infraestructura crítica dentro del sector petrolero fundada en el <a href="https://maps.app.goo.gl/Ao2ZBhfGdZDDEZoy6" target='_blanck' className="text-primary font-semibold italic">tigre edo. Anzoátegui</a> en el año <strong className="text-slate-900">2003</strong>.
+              Somos <strong className="text-slate-900">Servicios D'LIMA, C.A.</strong>, una compañía especializada en el soporte técnico, el mantenimiento y la reparación de infraestructura crítica del sector petrolero. Fue fundada en <a href="https://maps.app.goo.gl/Ao2ZBhfGdZDDEZoy6" target="_blank" rel="noreferrer" className="text-primary font-semibold italic">El Tigre, estado Anzoátegui</a>, en el año <strong className="text-slate-900">2003</strong>.
             </p>
             <p className="text-lg text-slate-600 leading-relaxed">
               Aseguramos que cada intervención cumpla con los estándares internacionales de calidad y seguridad industrial más exigentes.
@@ -155,7 +155,7 @@ function About() {
               Misión
             </h3>
             <p className="text-xl text-slate-200 leading-relaxed font-light">
-              Prestar servicios a la industria petrolera priorizando la seguridad y rentabilidad que garanticen la satisfacción de nuestros clientes
+              Prestar servicios a la industria petrolera, priorizando la seguridad y la rentabilidad para garantizar la satisfacción de nuestros clientes.
             </p>
           </motion.div>
 

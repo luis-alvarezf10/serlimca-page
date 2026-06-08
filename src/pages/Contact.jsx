@@ -82,7 +82,7 @@ function Contact() {
                     <HiMail className="text-primary text-2xl mt-1" />
                     <div>
                       <h4 className="text-white font-bold uppercase tracking-widest text-xs mb-2">
-                        Email Corporativo
+                        Correo electrónico corporativo
                       </h4>
                       <p className="text-slate-200 font-mono text-xl">
                         serlimca@gmail.com
@@ -97,8 +97,8 @@ function Contact() {
                         Sede Administrativa
                       </h4>
                       <p className="text-slate-200 text-lg">
-                        Calle Codazzi cruce con calle el Carmen Local 1, Zona
-                        Industrial – San José de Guanipa- Edo. Anzoátegui
+                        Calle Codazzi, cruce con calle El Carmen, local 1, zona
+                        industrial, San José de Guanipa, estado Anzoátegui
                       </p>
                     </div>
                   </div>
@@ -109,7 +109,7 @@ function Contact() {
                 <div className="flex items-center gap-4 text-slate-500">
                   <HiClock className="text-primary text-xl" />
                   <span className="text-[10px] font-black uppercase tracking-widest">
-                    Disponibilidad Técnica 24/7
+                    Disponibilidad técnica 24/7
                   </span>
                 </div>
               </div>
@@ -125,15 +125,15 @@ function Contact() {
                     type="email"
                   />
                   <GeneralField
-                    label="Correo Electrónico"
-                    placeholder="example@mail.com"
+                    label="Correo electrónico"
+                    placeholder="ejemplo@correo.com"
                     type="email"
                   />
                 </div>
-                <GeneralSelect label="Servicio de Interés" options={services} />
+                <GeneralSelect label="Servicio de interés" options={services} />
                 <div className="flex flex-col gap-2">
                   <label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] ml-1">
-                    Especificaciones del Requerimiento
+                    Especificaciones del requerimiento
                   </label>
                   <textarea
                     rows="6"

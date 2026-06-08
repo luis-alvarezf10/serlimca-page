@@ -18,7 +18,7 @@ const ContactCTASection = () => {
     },
     {
       icon: HiMail,
-      title: 'Email Corporativo',
+      title: 'Correo electrónico corporativo',
       info: 'serlimca@gmail.com. ',
       sub: 'Solicitudes de licitación',
       color: 'white'
@@ -117,7 +117,7 @@ const ContactCTASection = () => {
                 </div>
                 <div>
                   <h4 className="text-white font-bold text-xl uppercase tracking-tight">Centro de Operaciones</h4>
-                  <p className="text-slate-400 text-sm"> Calle Codazzi cruce con calle el Carmen Local 1, Zona Industrial – San José de Guanipa- Edo. Anzoátegui </p>
+                  <p className="text-slate-400 text-sm">Calle Codazzi, cruce con calle El Carmen, local 1, zona industrial, San José de Guanipa, estado Anzoátegui</p>
 
                   <p className="text-slate-200 text-sm">Lunes a Viernes: 08:00 - 18:00</p>
                   <p className="text-primary text-xs font-black mt-1">EMERGENCIAS: DISPONIBILIDAD 24/7</p>
