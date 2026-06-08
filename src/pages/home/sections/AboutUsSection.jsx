@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import PrimaryButton from '../../../components/buttons.jsx/PrimaryButton';
-import image from '../../../assets/imagen-8.jpeg';
+import image from '../../../assets/imagen-1.webp';
 import { useLanguage } from '../../../context/LanguageContext';
 
 
