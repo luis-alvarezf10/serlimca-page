@@ -9,9 +9,9 @@ import {
 } from "react-icons/hi";
 
 // Assets
-import image1 from "../../../assets/imagen-1.webp";
-import image2 from "../../../assets/imagen-2.jpeg";
-import image3 from "../../../assets/imagen-3.jpeg";
+import image1 from '../../../assets/imagen-8.jpeg';
+import image2 from "../../../assets/imagen-9.png";
+import image3 from "../../../assets/imagen-11.jpeg";
 import image4 from "../../../assets/imagen-4.jpeg";
 
 // context de language
@@ -82,34 +82,30 @@ const ServicesSection = () => {
   const services = [
     {
       id: "01",
-      title: t("services.transport.title"),
-      description:
-        t("services.transport.description"),
+      title: t("services.liftingTransport.title"),
+      description: t("services.liftingTransport.description"),
       icon: <HiOutlineTruck />,
       image: image1,
     },
     {
       id: "02",
-      title: t("services.managment.title"),
-      description:
-        t("services.managment.description"),
-      icon: <HiOutlineBriefcase />,
+      title: t("services.maintenance.title"),
+      description: t("services.maintenance.description"),
+      icon: <HiOutlineCog />,
       image: image2,
     },
     {
       id: "03",
-      title: t("services.izamiento.title"),
-      description:
-        t("services.izamiento.description"),
-      icon: <HiOutlineCog />,
+      title: t("services.rigMoving.title"),
+      description: t("services.rigMoving.description"),
+      icon: <HiOutlineCube />,
       image: image3,
     },
     {
       id: "04",
-      title: t("services.heavytransport.title"),
-      description:
-        t("services.heavytransport.description"),
-      icon: <HiOutlineCube />,
+      title: t("services.logistics.title"),
+      description: t("services.logistics.description"),
+      icon: <HiOutlineBriefcase />,
       image: image4,
     },
   ];
