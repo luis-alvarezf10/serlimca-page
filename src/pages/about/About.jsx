@@ -1,395 +1,308 @@
-import { useLanguage } from '../../context/LanguageContext';
-import image from '../../assets/imagen-1.webp';
-import { motion as Motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion'
+import { HiOutlineBadgeCheck, HiOutlineCog, HiOutlineShieldCheck, HiOutlineTruck } from 'react-icons/hi'
+import { useLanguage } from '../../context/LanguageContext'
 import Footer from '../../components/Footer'
-import OutlinedButton from '../../components/buttons.jsx/OutlinedButton';
-import { useNavigate } from 'react-router-dom';
+import PrimaryButton from '../../components/buttons.jsx/PrimaryButton'
+import heroImage from '../../assets/imagen-1.webp'
+import liftingImage from '../../assets/imagen-8.webp'
+import maintenanceImage from '../../assets/imagen-9.webp'
+import movingImage from '../../assets/imagen-11.webp'
+import capacityImage from '../../assets/imagen-16.jpeg'
 
-// Variantes de animación reutilizables
-const fadeIn = {
-  hidden: { opacity: 0, y: 20 },
-  visible: (i = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.1, duration: 0.8, ease: "easeOut" }
-  })
-};
+const MotionSection = ({ children, className = '' }) => (
+  <Motion.section
+    initial={{ opacity: 0, y: 24 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, margin: '-80px' }}
+    transition={{ duration: 0.55, ease: 'easeOut' }}
+    className={className}
+  >
+    {children}
+  </Motion.section>
+)
 
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.2 }
-  }
-};
-const goals = [
-  {
-    titleKey: 'about.page.goals.strategic.title',
-    descriptionKey: 'about.page.goals.strategic.description'
-  },
-  {
-    titleKey: 'about.page.goals.operational.title',
-    descriptionKey: 'about.page.goals.operational.description'
-  },
-  {
-    titleKey: 'about.page.goals.tactical.title',
-    descriptionKey: 'about.page.goals.tactical.description'
-  }
-];
+const valueIds = [
+  'honesty',
+  'quality',
+  'punctuality',
+  'passion',
+  'competitiveness',
+  'teamwork',
+  'customerOrientation',
+  'socialResponsibility',
+  'problemSolving',
+]
 
-const values = [
-  {
-    titleKey: 'about.values.honesty.title',
-    descriptionKey: 'about.values.honesty.description'
-  },
-  {
-    titleKey: 'about.values.quality.title',
-    descriptionKey: 'about.values.quality.description'
-  },
-  {
-    titleKey: 'about.values.punctuality.title',
-    descriptionKey: 'about.values.punctuality.description'
-  },
-  {
-    titleKey: 'about.values.passion.title',
-    descriptionKey: 'about.values.passion.description'
-  },
-  {
-    titleKey: 'about.values.competitiveness.title',
-    descriptionKey: 'about.values.competitiveness.description'
-  },
-  {
-    titleKey: 'about.values.teamwork.title',
-    descriptionKey: 'about.values.teamwork.description'
-  },
-  {
-    titleKey: 'about.values.customerOrientation.title',
-    descriptionKey: 'about.values.customerOrientation.description'
-  },
-  {
-    titleKey: 'about.values.socialResponsibility.title',
-    descriptionKey: 'about.values.socialResponsibility.description'
-  },
-  {
-    titleKey: 'about.values.problemSolving.title',
-    descriptionKey: 'about.values.problemSolving.description'
-  }
-];
+const pillarIds = ['lifting', 'maintenance', 'moving']
+const pillarImages = [liftingImage, maintenanceImage, movingImage]
+const pillarIcons = [HiOutlineTruck, HiOutlineCog, HiOutlineShieldCheck]
+const pillarDimensions = [
+  { width: 720, height: 960 },
+  { width: 720, height: 961 },
+  { width: 720, height: 720 },
+]
+const fleetColumns = ['cranes', 'trailers', 'hydraulicTrucks']
+const fleetRows = ['lifting', 'maintenance', 'moving']
+const partnerIds = ['cnpc', 'bohai', 'huawei', 'ensing', 'sanAntonio', 'venalmaQ']
+const alignmentIds = ['strategic', 'operational', 'tactical']
 
 function About() {
-  const { t } = useLanguage();
-  const navigate = useNavigate();
+  const { t } = useLanguage()
 
   return (
-    <div className="w-full bg-white overflow-x-hidden font-sans">
-      {/* Hero Section */}
-      <section className="relative h-[70vh] flex items-center justify-center overflow-hidden">
-        <Motion.div
-          initial={{ scale: 1.1 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 10, ease: "linear" }}
-          className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${image})` }}
+    <div className="w-full overflow-x-hidden bg-white font-sans text-slate-900">
+      <section className="relative isolate flex min-h-[68svh] items-center justify-center overflow-hidden bg-slate-950 px-6 py-16 md:min-h-[76svh] md:py-24">
+        <img
+          src={heroImage}
+          alt=""
+          aria-hidden="true"
+          width="1280"
+          height="960"
+          fetchPriority="high"
+          className="absolute inset-0 -z-20 h-full w-full object-cover object-center"
         />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-slate-950 via-slate-950/85 to-slate-950/30" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/20" />
 
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/60 to-transparent z-10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent z-10" />
-
-        <div className="relative z-10 text-center px-6 max-w-5xl">
-          <Motion.span
-            initial={{ opacity: 0, letterSpacing: "0.1em" }}
-            animate={{ opacity: 1, letterSpacing: "0.3em" }}
-            transition={{ duration: 1 }}
-            className="text-primary tracking-[0.3em] uppercase text-sm font-semibold mb-4 block"
-          >
-            {t('about.page.hero.eyebrow')}
-          </Motion.span>
-          <Motion.h1
-            initial={{ opacity: 0, y: 30 }}
+        <div className="mx-auto w-full max-w-7xl text-center">
+          <Motion.div
+            initial={{ opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-5xl md:text-7xl font-light text-white mb-6 leading-tight"
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+            className="mx-auto max-w-4xl"
           >
-            {t('about.page.hero.title')} <br />
-            <span className="font-bold">{t('about.page.hero.highlight')}</span>
-          </Motion.h1>
-          <Motion.div
-            initial={{ width: 0 }}
-            animate={{ width: "6rem" }}
-            transition={{ duration: 1, delay: 0.8 }}
-            className="h-1 bg-primary mx-auto mb-8"
-          />
-        </div>
-      </section>
-
-      {/* Introducción Corporativa */}
-      <section className="py-24 px-8 max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
-          <Motion.div
-            viewport={{ once: true }}
-            initial="hidden"
-            whileInView="visible"
-            variants={fadeIn}
-          >
-            <h2 className="text-sm uppercase tracking-widest text-primary font-bold mb-4">
-              {t('about.page.intro.eyebrow')}
-            </h2>
-            <h3 className="text-4xl font-bold text-slate-900 mb-8 leading-tight">
-              {t('about.page.intro.title')}
-            </h3>
-            <p className="text-lg text-slate-600 leading-relaxed mb-6">
-              {t('about.page.intro.beforeCompany')} <strong className="text-slate-900">Servicios D'LIMA, C.A.</strong>, {t('about.page.intro.afterCompany')} <a href="https://maps.app.goo.gl/Ao2ZBhfGdZDDEZoy6" target="_blank" rel="noreferrer" className="text-primary font-semibold italic">{t('about.page.intro.location')}</a> {t('about.page.intro.beforeYear')} <strong className="text-slate-900">2003</strong>.
+            <p className="mb-5 text-xs font-bold uppercase tracking-[0.32em] text-primary md:text-sm">
+              {t('about.corporate.hero.eyebrow')}
             </p>
-            <p className="text-lg text-slate-600 leading-relaxed">
-              {t('about.page.intro.quality')}
+            <h1 className="max-w-4xl text-4xl leading-[1.05] text-white md:text-6xl lg:text-7xl">
+              {t('about.corporate.hero.title')}
+            </h1>
+            <p className="mx-auto mt-7 max-w-2xl text-base leading-relaxed text-slate-200 md:text-xl">
+              {t('about.corporate.hero.description')}
             </p>
-          </Motion.div>
-
-          <Motion.div
-            viewport={{ once: true }}
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="relative"
-          >
-            <div className="aspect-video bg-slate-100 rounded-sm border border-slate-200 overflow-hidden shadow-2xl">
-              <img src={image} alt={t('about.page.intro.title')} className="w-full h-full object-cover" />
-            </div>
-            <Motion.div
-              initial={{ scale: 0 }}
-              whileInView={{ scale: 1 }}
-              transition={{ delay: 0.5, type: "spring" }}
-              className="absolute -bottom-6 -left-6 bg-primary p-8 hidden md:block"
-            >
-              <p className="text-slate-950 font-black text-4xl">20+</p>
-              <p className="text-slate-900 text-xs uppercase font-bold tracking-tighter">
-                {t('about.page.experience')}
-              </p>
-            </Motion.div>
           </Motion.div>
         </div>
       </section>
 
-      <section className="relative py-24 px-8 bg-black text-white overflow-hidden">
-
-        {/* IMAGEN DE FONDO CON ANIMACIÓN KEN BURNS */}
-        <Motion.div
-          initial={{ scale: 1.2, opacity: 0 }}
-          animate={{ scale: 1, opacity: 0.4 }} // Opacidad baja para que se vea el texto
-          transition={{ duration: 10, ease: "easeOut" }}
-          className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat z-0"
-          style={{ backgroundImage: `url(${image})` }}
-        />
-
-        {/* OVERLAY OSCURO (Para asegurar legibilidad) */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/80 z-10" />
-
-        {/* CONTENIDO (Con z-20 para estar por encima de todo) */}
-        <Motion.div
-          viewport={{ once: true }}
-          initial="hidden"
-          whileInView="visible"
-          variants={staggerContainer}
-          className="relative z-20 max-w-7xl mx-auto grid md:grid-cols-2 gap-16"
-        >
-          <Motion.div variants={fadeIn} className="border-l border-primary/30 pl-8 group cursor-default">
-            <h3 className="text-2xl font-bold mb-6 text-primary uppercase tracking-wider group-hover:pl-4 transition-all duration-300">
-              {t('about.page.mission.title')}
-            </h3>
-            <p className="text-xl text-slate-200 leading-relaxed font-light">
-              {t('about.page.mission.description')}
-            </p>
-          </Motion.div>
-
-          <Motion.div variants={fadeIn} className="border-l border-primary/30 pl-8 group cursor-default">
-            <h3 className="text-2xl font-bold mb-6 text-primary uppercase tracking-wider group-hover:pl-4 transition-all duration-300">
-              {t('about.page.vision.title')}
-            </h3>
-            <p className="text-xl text-slate-200 leading-relaxed font-light">
-              {t('about.page.vision.description')}
-            </p>
-          </Motion.div>
-        </Motion.div>
-      </section>
-
-      {/* Valores Corporativos */}
-      <section className="py-24 px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <Motion.div
-            viewport={{ once: true }}
-            initial="hidden"
-            whileInView="visible"
-            variants={fadeIn}
-            className="grid lg:grid-cols-[0.75fr_1.25fr] gap-14 lg:gap-20"
-          >
-            <div>
-              <p className="text-sm uppercase tracking-[0.35em] text-primary font-bold mb-5">
-                {t('about.values.eyebrow')}
-              </p>
-              <h2 className="text-4xl md:text-5xl font-black text-slate-950 leading-tight mb-6">
-                {t('about.values.title')}
-              </h2>
-              <p className="text-lg text-slate-500 leading-relaxed">
-                {t('about.values.description')}
-              </p>
-            </div>
-
-            <Motion.div
-              viewport={{ once: true }}
-              initial="hidden"
-              whileInView="visible"
-              variants={staggerContainer}
-              className="grid sm:grid-cols-2 xl:grid-cols-3 gap-x-8 gap-y-10"
-            >
-              {values.map((value, index) => (
-                <Motion.article
-                  key={value.titleKey}
-                  variants={fadeIn}
-                  custom={index}
-                  className="group border-t border-slate-200 pt-6"
-                >
-                  <div className="flex items-center justify-between gap-4 mb-5">
-                    <span className="text-sm font-black text-primary">
-                      {String(index + 1).padStart(2, '0')}
-                    </span>
-                    <span className="h-px flex-1 bg-slate-100 group-hover:bg-primary/40 transition-colors" />
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-950 mb-3 group-hover:text-primary transition-colors">
-                    {t(value.titleKey)}
-                  </h3>
-                  <p className="text-slate-500 leading-relaxed">
-                    {t(value.descriptionKey)}
-                  </p>
-                </Motion.article>
-              ))}
-            </Motion.div>
-          </Motion.div>
+      <MotionSection className="mx-auto grid max-w-7xl gap-12 px-6 py-20 md:py-28 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+        <div>
+          <p className="mb-5 text-xs font-bold uppercase tracking-[0.3em] text-primary">
+            {t('about.corporate.evolution.eyebrow')}
+          </p>
+          <h2 className="max-w-xl text-3xl leading-tight text-slate-950 md:text-5xl">
+            {t('about.corporate.evolution.title')}
+          </h2>
         </div>
-      </section>
+        <div className="relative border-l-2 border-primary pl-6 md:pl-9">
+          <div className="absolute -left-3 top-0 grid h-6 w-6 place-items-center rounded-full bg-primary text-[10px] font-bold text-slate-950">{t('about.corporate.evolution.marker')}</div>
+          <p className="text-lg leading-relaxed text-slate-600">{t('about.corporate.evolution.description')}</p>
+        </div>
 
-      {/* Pilares Estratégicos Animados */}
-      <section className="py-24 px-8 max-w-7xl mx-auto">
-        <Motion.h2
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          className="text-center text-sm uppercase tracking-[0.4em] text-slate-500 font-bold mb-16"
-        >
-          {t('about.page.goals.title')}
-        </Motion.h2>
-        <div className="grid md:grid-cols-3 gap-12">
-          {goals.map((goal, i) => (
-            <Motion.div
-              key={goal.titleKey}
-              viewport={{ once: true }}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.2 }}
-              whileHover={{ y: -10 }}
-              className="group"
-            >
-              <h4 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-primary transition-colors">
-                {t(goal.titleKey)}
-              </h4>
-
-              <Motion.div
-                whileInView={{ width: "3rem" }}
-                initial={{ width: 0 }}
-                className="h-0.5 bg-primary mb-6"
-              />
-
-              <p className="text-slate-600 leading-relaxed">
-                {t(goal.descriptionKey)}
-              </p>
-            </Motion.div>
+        <div className="grid gap-5 border-t border-slate-200 pt-8 sm:grid-cols-2 lg:col-span-2">
+          {['origin', 'capacity'].map((item, index) => (
+            <article key={item} className="border border-slate-200 bg-slate-50 p-6 md:p-8">
+              <p className="text-3xl font-bold text-slate-950">{t(`about.corporate.evolution.${item}.year`)}</p>
+              <h3 className="mt-5 text-lg text-slate-950">{t(`about.corporate.evolution.${item}.title`)}</h3>
+              <p className="mt-3 leading-relaxed text-slate-600">{t(`about.corporate.evolution.${item}.description`)}</p>
+              <span className="mt-5 block text-xs font-bold uppercase tracking-[0.22em] text-primary">{String(index + 1).padStart(2, '0')}</span>
+            </article>
           ))}
         </div>
-      </section>
+      </MotionSection>
 
-      {/* Equipo con Efecto Hover Elevado */}
-      {/* <section className="py-24 px-8 bg-slate-50">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-slate-900 mb-16">Capital Humano</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {[1, 2, 3].map((member, i) => (
-              <Motion.div
-                key={member}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: i * 0.1 }}
-                whileHover={{ y: -5, boxShadow: "0 20px 25px -5px rgb(0 0 0 / 0.1)" }}
-                className="bg-white border border-slate-200 p-8 transition-shadow"
-              >
-                <div className="w-20 h-20 bg-slate-100 mb-6 rounded-full flex items-center justify-center grayscale overflow-hidden group">
-                  <Motion.div
-                    whileHover={{ scale: 1.1 }}
-                    className="w-10 h-10 flex items-center justify-center border-2 border-slate-300 rounded-full"
-                  >
-                    <HiOutlineUserCircle className="text-slate-300 text-2xl" />
-                  </Motion.div>
-                </div>
-                <h3 className="text-lg font-bold text-slate-900 mb-1">Benito Martínez</h3>
-                <p className="text-primary text-xs uppercase font-black tracking-widest mb-4">Fundador de la empresa</p>
-                <p className="text-sm text-slate-500 leading-relaxed border-t border-slate-100 pt-4">
-                  Especialista en ingeniería de mantenimiento industrial con +20 años de trayectoria.
-                </p>
-              </Motion.div>
+      <MotionSection className="bg-slate-950 px-6 py-20 text-white md:py-28">
+        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <div>
+            <p className="mb-5 text-xs font-bold uppercase tracking-[0.3em] text-primary">{t('about.corporate.dna.eyebrow')}</p>
+            <h2 className="text-3xl leading-tight md:text-5xl">{t('about.corporate.dna.title')}</h2>
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-slate-300">{t('about.corporate.dna.description')}</p>
+          </div>
+          <div className="grid gap-5 md:grid-cols-2">
+            {['vision', 'mission'].map((item) => (
+              <article key={item} className="border border-white/15 bg-white/5 p-7 backdrop-blur-sm md:p-8">
+                <span className="text-xs font-bold uppercase tracking-[0.24em] text-primary">{t(`about.corporate.dna.${item}.label`)}</span>
+                <h3 className="mt-5 text-2xl leading-snug text-white">{t(`about.corporate.dna.${item}.title`)}</h3>
+                <p className="mt-5 leading-relaxed text-slate-300">{t(`about.corporate.dna.${item}.description`)}</p>
+              </article>
             ))}
           </div>
         </div>
-      </section> */}
+      </MotionSection>
 
-      {/* CTA con Pulsación Sutil */}
-      <section className="py-24 overflow-hidden relative bg-slate-900">
-        {/* IMAGEN DE FONDO */}
-        <Motion.div
-          initial={{ scale: 1.2, opacity: 0 }}
-          whileInView={{ scale: 1, opacity: 0.5 }} // Opacidad media para dar profundidad
-          transition={{ duration: 1.5, ease: "easeOut" }}
-          className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `url(${image})`, // Cambia por tu variable de imagen
-            filter: 'grayscale(40%)' // Opcional: le da un toque más industrial
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/60 to-transparent z-10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent z-10" />
+      <MotionSection className="mx-auto max-w-7xl px-6 py-20 md:py-28">
+        <div className="grid gap-12 lg:grid-cols-[0.72fr_1.28fr]">
+          <div>
+            <p className="mb-5 text-xs font-bold uppercase tracking-[0.3em] text-primary">{t('about.corporate.values.eyebrow')}</p>
+            <h2 className="text-3xl leading-tight text-slate-950 md:text-5xl">{t('about.corporate.values.title')}</h2>
+            <p className="mt-6 max-w-md text-lg leading-relaxed text-slate-600">{t('about.corporate.values.description')}</p>
+          </div>
+          <div className="grid gap-px overflow-hidden border border-slate-200 bg-slate-200 sm:grid-cols-2 lg:grid-cols-3">
+            {valueIds.map((valueId, index) => (
+              <article key={valueId} className="bg-white p-6 transition-colors hover:bg-primary/10">
+                <span className="text-xs font-bold tracking-[0.2em] text-primary">{String(index + 1).padStart(2, '0')}</span>
+                <h3 className="mt-7 text-lg text-slate-950">{t(`about.values.${valueId}.title`)}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-slate-600">{t(`about.values.${valueId}.description`)}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </MotionSection>
 
+      <MotionSection className="bg-slate-100 px-6 py-20 md:py-28">
+        <div className="mx-auto max-w-7xl">
+          <div className="max-w-3xl">
+            <p className="mb-5 text-xs font-bold uppercase tracking-[0.3em] text-primary">{t('about.corporate.pillars.eyebrow')}</p>
+            <h2 className="text-3xl leading-tight text-slate-950 md:text-5xl">{t('about.corporate.pillars.title')}</h2>
+            <p className="mt-6 text-lg leading-relaxed text-slate-600">{t('about.corporate.pillars.description')}</p>
+          </div>
 
-        {/* CAPA DE COLOR (Para mantener el branding) */}
-        <div className="absolute inset-0 bg-primary/80 mix-blend-multiply z-0" />
+          <div className="mt-12 grid gap-6 lg:grid-cols-3">
+            {pillarIds.map((pillarId, index) => {
+              const Icon = pillarIcons[index]
+              return (
+                <article key={pillarId} className="group overflow-hidden border border-slate-200 bg-white shadow-sm">
+                  <img
+                    src={pillarImages[index]}
+                    alt={t(`about.corporate.pillars.${pillarId}.title`)}
+                    width={pillarDimensions[index].width}
+                    height={pillarDimensions[index].height}
+                    loading="lazy"
+                    decoding="async"
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                    className="h-64 w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+                  />
+                  <div className="p-7">
+                    <div className="flex items-center justify-between gap-5">
+                      <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary">{t('about.corporate.pillars.label', { number: String(index + 1).padStart(2, '0') })}</span>
+                      <Icon className="text-2xl text-slate-700" aria-hidden="true" />
+                    </div>
+                    <h3 className="mt-5 text-2xl leading-tight text-slate-950">{t(`about.corporate.pillars.${pillarId}.title`)}</h3>
+                    <p className="mt-4 leading-relaxed text-slate-600">{t(`about.corporate.pillars.${pillarId}.description`)}</p>
+                    <ul className="mt-6 space-y-3 border-t border-slate-100 pt-6 text-sm leading-relaxed text-slate-600">
+                      {[1, 2, 3].map((item) => (
+                        <li key={item} className="flex gap-3">
+                          <HiOutlineBadgeCheck className="mt-0.5 shrink-0 text-lg text-primary" aria-hidden="true" />
+                          <span>{t(`about.corporate.pillars.${pillarId}.point${item}`)}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </article>
+              )
+            })}
+          </div>
+        </div>
+      </MotionSection>
 
-        <Motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="max-w-4xl mx-auto text-center px-6 relative z-10"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-8 uppercase tracking-tight">
-            {t('about.page.cta.title')}
-          </h2>
+      <MotionSection className="mx-auto grid max-w-7xl gap-12 px-6 py-20 md:py-28 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+        <div>
+          <p className="mb-5 text-xs font-bold uppercase tracking-[0.3em] text-primary">{t('about.corporate.capacity.eyebrow')}</p>
+          <h2 className="text-3xl leading-tight text-slate-950 md:text-5xl">{t('about.corporate.capacity.title')}</h2>
+          <p className="mt-6 text-lg leading-relaxed text-slate-600">{t('about.corporate.capacity.description')}</p>
+          <div className="mt-9 grid gap-4 sm:grid-cols-2">
+            {['lifting', 'deployment', 'team', 'safety'].map((item) => (
+              <article key={item} className="border-l-2 border-primary bg-slate-50 px-5 py-4">
+                <h3 className="text-base text-slate-950">{t(`about.corporate.capacity.${item}.title`)}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">{t(`about.corporate.capacity.${item}.description`)}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+        <div className="overflow-hidden border border-slate-200 bg-slate-100">
+          <img
+            src={capacityImage}
+            alt={t('about.corporate.capacity.imageAlt')}
+            width="1080"
+            height="810"
+            loading="lazy"
+            decoding="async"
+            sizes="(min-width: 1024px) 45vw, 100vw"
+            className="h-full min-h-[320px] w-full object-cover"
+          />
+        </div>
+      </MotionSection>
 
-          <Motion.div
-            whileHover={{ scale: 1.05, backgroundColor: "#000" }}
-            whileTap={{ scale: 0.95 }}
-            className="inline-block"
-          >
-            <OutlinedButton
-              onClick={
-                () => {
-                  navigate('/contacto') 
-                }
-              }
-              className="inline-block bg-slate-950 text-white px-12 py-4 font-bold text-sm uppercase tracking-[0.2em] shadow-2xl transition-colors"
-            >
-              {t('about.page.cta.button')}
-            </OutlinedButton>
-          </Motion.div>
-        </Motion.div>
+      <MotionSection className="bg-slate-950 px-6 py-20 text-white md:py-28">
+        <div className="mx-auto max-w-7xl">
+          <div className="max-w-3xl">
+            <p className="mb-5 text-xs font-bold uppercase tracking-[0.3em] text-primary">{t('about.corporate.fleet.eyebrow')}</p>
+            <h2 className="text-3xl leading-tight md:text-5xl">{t('about.corporate.fleet.title')}</h2>
+            <p className="mt-6 text-lg leading-relaxed text-slate-300">{t('about.corporate.fleet.description')}</p>
+          </div>
+
+          <div className="mt-12 overflow-x-auto border border-white/15">
+            <table className="min-w-[760px] w-full border-collapse text-left">
+              <thead className="bg-white/10 text-xs uppercase tracking-[0.16em] text-primary">
+                <tr>
+                  <th className="p-5 font-bold">{t('about.corporate.fleet.pillarColumn')}</th>
+                  {fleetColumns.map((column) => <th key={column} className="border-l border-white/15 p-5 font-bold">{t(`about.corporate.fleet.columns.${column}`)}</th>)}
+                </tr>
+              </thead>
+              <tbody className="text-sm text-slate-200">
+                {fleetRows.map((row) => (
+                  <tr key={row} className="border-t border-white/15">
+                    <th scope="row" className="p-5 font-bold text-white">{t(`about.corporate.fleet.rows.${row}.label`)}</th>
+                    {fleetColumns.map((column) => <td key={column} className="border-l border-white/15 p-5 leading-relaxed">{t(`about.corporate.fleet.rows.${row}.${column}`)}</td>)}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </MotionSection>
+
+      <MotionSection className="mx-auto max-w-7xl px-6 py-20 md:py-28">
+        <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+          <div>
+            <p className="mb-5 text-xs font-bold uppercase tracking-[0.3em] text-primary">{t('about.corporate.partners.eyebrow')}</p>
+            <h2 className="text-3xl leading-tight text-slate-950 md:text-5xl">{t('about.corporate.partners.title')}</h2>
+          </div>
+          <p className="max-w-2xl text-lg leading-relaxed text-slate-600">{t('about.corporate.partners.description')}</p>
+        </div>
+        <div className="mt-12 grid gap-px overflow-hidden border border-slate-200 bg-slate-200 sm:grid-cols-2 lg:grid-cols-3">
+          {partnerIds.map((partner) => (
+            <div key={partner} className="flex min-h-28 items-center justify-center bg-white p-6 text-center text-2xl font-bold tracking-tight text-slate-950 transition-colors hover:bg-primary/15 md:text-3xl">
+              {t(`about.corporate.partners.${partner}`)}
+            </div>
+          ))}
+        </div>
+      </MotionSection>
+
+      <MotionSection className="bg-slate-100 px-6 py-20 md:py-28">
+        <div className="mx-auto max-w-7xl">
+          <div className="max-w-3xl">
+            <p className="mb-5 text-xs font-bold uppercase tracking-[0.3em] text-primary">{t('about.corporate.alignment.eyebrow')}</p>
+            <h2 className="text-3xl leading-tight text-slate-950 md:text-5xl">{t('about.corporate.alignment.title')}</h2>
+            <p className="mt-6 text-lg leading-relaxed text-slate-600">{t('about.corporate.alignment.description')}</p>
+          </div>
+          <div className="mt-12 grid gap-5 lg:grid-cols-3">
+            {alignmentIds.map((item, index) => (
+              <article key={item} className="border border-slate-200 bg-white p-7 md:p-8">
+                <span className="text-xs font-bold uppercase tracking-[0.22em] text-primary">{String(index + 1).padStart(2, '0')}</span>
+                <h3 className="mt-8 text-2xl text-slate-950">{t(`about.corporate.alignment.${item}.title`)}</h3>
+                <p className="mt-5 leading-relaxed text-slate-600">{t(`about.corporate.alignment.${item}.description`)}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </MotionSection>
+
+      <section className="bg-primary px-6 py-20 md:py-24">
+        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-8 md:flex-row md:items-end">
+          <div className="max-w-3xl">
+            <p className="text-xs font-bold uppercase tracking-[0.3em] text-slate-800">{t('about.corporate.cta.eyebrow')}</p>
+            <h2 className="mt-5 text-3xl leading-tight text-slate-950 md:text-5xl">{t('about.corporate.cta.title')}</h2>
+            <p className="mt-5 text-lg leading-relaxed text-slate-800">{t('about.corporate.cta.description')}</p>
+          </div>
+          <PrimaryButton to="/contacto" className="shrink-0 rounded-none bg-slate-950 px-7 py-4 text-xs uppercase tracking-[0.2em] text-white hover:bg-slate-800">
+            {t('about.corporate.cta.button')}
+          </PrimaryButton>
+        </div>
       </section>
+
       <Footer />
     </div>
-
-  );
+  )
 }
 
-export default About;
+export default About
