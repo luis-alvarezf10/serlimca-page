@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Keep headings strong without the overly heavy font-black weight. */
+h1,
+h2,
+h3 {
+  font-weight: 700 !important;
+}
+
 * {
   margin: 0;
   padding: 0;
