@@ -97,7 +97,7 @@ export default function Footer() {
                 </div>
                 <div className="flex flex-col">
                   <span className="text-[10px] uppercase text-slate-400 font-bold tracking-tighter">Escríbenos</span>
-                  <a href="mailto:contacto@empresa.com" className="text-slate-700 font-bold text-sm hover:text-primary transition-colors">serlimca@gmail.com</a>
+                  <a href="mailto:serlimca@gmail.com" className="text-slate-700 font-bold text-sm hover:text-primary transition-colors">serlimca@gmail.com</a>
                 </div>
               </div>
             </div>
