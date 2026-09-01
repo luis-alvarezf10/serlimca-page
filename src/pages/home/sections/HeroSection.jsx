@@ -116,9 +116,9 @@ const HeroSection = () => {
               </span>
             </Motion.div>
 
-            <h1 className="text-4xl sm:text-5xl 2xl:text-7xl font-black text-white leading-[0.9] mb-6 uppercase tracking-tight">
+            <h1 className="text-4xl sm:text-5xl 2xl:text-7xl font-bold text-white leading-[0.9] mb-6 uppercase tracking-tight">
               {t('hero.title')}
-              <span className="block text-primary italic font-light lowercase tracking-tight text-3xl sm:text-4xl lg:text-5xl 2xl:text-6xl mt-1">
+              <span className="block text-primary italic font-normal lowercase tracking-tight text-3xl sm:text-4xl lg:text-5xl 2xl:text-6xl mt-1">
                 {t('hero.subtitle')}
               </span>
             </h1>
@@ -155,7 +155,7 @@ const HeroSection = () => {
                 { val: "24/7", label: t('quick.support') },
               ].map((stat, i) => (
                 <div key={i} className="group">
-                  <div className="text-3xl sm:text-4xl lg:text-5xl 2xl:text-6xl font-black text-white group-hover:text-primary transition-colors">
+                  <div className="text-2xl sm:text-3xl lg:text-4xl 2xl:text-5xl font-semibold text-white group-hover:text-primary transition-colors">
                     {stat.val}
                   </div>
                   <div className="text-[8px] sm:text-[10px] uppercase tracking-[0.2em] text-slate-500 font-bold mt-1">
