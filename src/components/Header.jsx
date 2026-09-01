@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useLanguage } from "../context/LanguageContext";
 import logo from "../assets/normal-logo-rif.svg";
@@ -6,12 +6,12 @@ import "flag-icons/css/flag-icons.min.css";
 import { NavHashLink } from "react-router-hash-link";
 import PrimaryButton from "../components/buttons.jsx/PrimaryButton";
 import { HiMenuAlt3, HiX, HiChevronDown } from "react-icons/hi";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion as Motion } from "framer-motion";
 
 const languages = [
   { code: "es", flag: "ve", name: "Español" },
   { code: "en", flag: "us", name: "English" },
-  { code: "cn", flag: "cn", name: "中国人" },
+  { code: "cn", flag: "cn", name: "简体中文" },
 ];
 
 function ScrollToHashElement() {
@@ -59,13 +59,13 @@ export default function Header() {
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
   const { language, setLanguage, t } = useLanguage();
 
-  const navLinks = [
+  const navLinks = useMemo(() => [
     { to: "/#hero", label: t("nav.home"), id: "hero" },
     { to: "/#nosotros", label: t("nav.about"), id: "nosotros" },
     { to: "/#servicios", label: t("nav.services"), id: "servicios" },
     { to: "/#cobertura", label: t("nav.coverage"), id: "cobertura" },
     { to: "/#galeria", label: t("nav.gallery"), id: "galeria" },
-  ];
+  ], [t]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -152,7 +152,7 @@ export default function Header() {
           >
             <img
               src={logo}
-              alt="Logo"
+              alt={t('brand.logo')}
               className={`transition-all duration-500 ${isScrolled ? "h-12" : "h-14 lg:h-16"}`}
             />
           </NavHashLink>
@@ -196,6 +196,7 @@ export default function Header() {
             <div className="relative hidden lg:block">
               <button
                 onClick={() => setLangDropdownOpen(!langDropdownOpen)}
+                aria-label={t('language.selector')}
                 className={`flex items-center gap-2 px-3 py-2 rounded-full border transition-all ${
                   isScrolled
                     ? "border-slate-200 text-slate-800 hover:bg-slate-100"
@@ -242,7 +243,7 @@ export default function Header() {
               {t("nav.contact")}
             </PrimaryButton>
 
-            <button className="lg:hidden p-2" onClick={() => setMenuOpen(true)}>
+            <button className="lg:hidden p-2" onClick={() => setMenuOpen(true)} aria-label={t('nav.openMenu')}>
               <HiMenuAlt3
                 className={`text-3xl ${isScrolled ? "text-slate-900" : "text-white"}`}
               />
@@ -253,17 +254,18 @@ export default function Header() {
         {/* MOBILE MENU */}
         <AnimatePresence>
           {menuOpen && (
-            <motion.div
+            <Motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               className="fixed inset-0 h-screen bg-white z-[60] flex flex-col"
             >
               <div className="flex items-center justify-between p-6 border-b">
-                <img src={logo} alt="Logo" className="h-10" />
+                <img src={logo} alt={t('brand.logo')} className="h-10" />
                 <button
                   onClick={() => setMenuOpen(false)}
                   className="p-2 bg-slate-100 rounded-full"
+                  aria-label={t('nav.closeMenu')}
                 >
                   <HiX className="text-2xl text-slate-800" />
                 </button>
@@ -320,7 +322,7 @@ export default function Header() {
                   </PrimaryButton>
                 </div>
               </div>
-            </motion.div>
+            </Motion.div>
           )}
         </AnimatePresence>
       </header>

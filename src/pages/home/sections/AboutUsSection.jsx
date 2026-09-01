@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 import PrimaryButton from '../../../components/buttons.jsx/PrimaryButton';
 import image from '../../../assets/imagen-1.webp';
 import { useLanguage } from '../../../context/LanguageContext';
@@ -19,7 +19,7 @@ const AboutUsSection = () => {
       <div className="max-w-7xl mx-auto px-6 md:px-16 lg:px-24 py-20 grid md:grid-cols-2 gap-16 items-center">
         
         {/* Lado Izquierdo: Imagen con Composición de Diseño */}
-        <motion.div
+        <Motion.div
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
@@ -30,17 +30,17 @@ const AboutUsSection = () => {
           <div className="absolute -top-6 -left-6 w-32 h-32 bg-primary/10 -z-10" />
           
           <div className="rounded-sm overflow-hidden shadow-2xl border border-slate-100">
-            <motion.img
+            <Motion.img
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.6 }}
               src={image}
-              alt="Infraestructura Industrial"
+              alt={t('about.title')}
               className="w-full h-[500px] object-cover"
             />
           </div>
 
           {/* Badge flotante de experiencia */}
-          <motion.div 
+          <Motion.div 
             initial={{ scale: 0 }}
             whileInView={{ scale: 1 }}
             transition={{ delay: 0.5, type: "spring" }}
@@ -48,11 +48,11 @@ const AboutUsSection = () => {
           >
             <p className="text-primary font-bold text-sm tracking-widest uppercase mb-1">{t('why.certification')}</p>
             <p className="text-xl font-light">{t('why.quality')}</p>
-          </motion.div>
-        </motion.div>
+          </Motion.div>
+        </Motion.div>
 
         {/* Lado Derecho: Contenido Informativo */}
-        <motion.div
+        <Motion.div
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
@@ -80,7 +80,7 @@ const AboutUsSection = () => {
           {/* Estadísticas / KPIs */}
           <div className="grid grid-cols-2 gap-x-8 gap-y-10 pt-6">
             {Information.map((item, index) => (
-              <motion.div 
+              <Motion.div 
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -96,19 +96,19 @@ const AboutUsSection = () => {
                     {item.description}
                   </span>
                 </div>
-              </motion.div>
+              </Motion.div>
             ))}
           </div>
 
-          <motion.div 
+          <Motion.div 
             whileHover={{ x: 10 }}
             className="pt-6"
           >
             <PrimaryButton to="/nosotros">
               {t('about.cta.learnmore')}
             </PrimaryButton>
-          </motion.div>
-        </motion.div>
+          </Motion.div>
+        </Motion.div>
       </div>
     </section>
   );

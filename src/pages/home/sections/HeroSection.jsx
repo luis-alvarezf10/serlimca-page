@@ -1,6 +1,6 @@
 import { useLanguage } from '../../../context/LanguageContext';
 import { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion as Motion, AnimatePresence } from 'framer-motion';
 import heroBg from '../../../assets/imagen-1.webp';
 import heroBg2 from '../../../assets/imagen-2.jpeg';
 import heroBg3 from '../../../assets/imagen-3.jpeg';
@@ -57,7 +57,7 @@ const HeroSection = () => {
       {/* BACKGROUND - Iluminación mejorada (opacity 0.6) */}
       <div className="absolute inset-0 z-0">
         <AnimatePresence mode="wait">
-          <motion.div
+          <Motion.div
             key={currentImageIndex}
             initial={{ opacity: 0, scale: 1.1 }}
             animate={{ opacity: 0.6, scale: 1 }} // Subimos de 0.4 a 0.6 para dar más luz
@@ -82,7 +82,7 @@ const HeroSection = () => {
 
           {/* TEXTO - Adaptado para centrarse en móvil */}
           <div className="lg:col-span-8 text-center lg:text-left mt-10 lg:mt-0">
-            <motion.div
+            <Motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               className="flex items-center justify-center lg:justify-start gap-3 mb-6"
@@ -91,7 +91,7 @@ const HeroSection = () => {
               <span className="text-primary font-bold text-[10px] uppercase tracking-[0.4em]">
                 {t('why.experience')}
               </span>
-            </motion.div>
+            </Motion.div>
 
             <h1 className="text-4xl sm:text-5xl 2xl:text-7xl font-black text-white leading-[0.9] mb-6 uppercase tracking-tight">
               {t('hero.title')}

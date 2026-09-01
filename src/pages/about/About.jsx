@@ -1,6 +1,6 @@
 import { useLanguage } from '../../context/LanguageContext';
 import image from '../../assets/imagen-1.webp';
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 import Footer from '../../components/Footer'
 import OutlinedButton from '../../components/buttons.jsx/OutlinedButton';
 import { useNavigate } from 'react-router-dom';
@@ -84,7 +84,7 @@ function About() {
     <div className="w-full bg-white overflow-x-hidden font-sans">
       {/* Hero Section */}
       <section className="relative h-[70vh] flex items-center justify-center overflow-hidden">
-        <motion.div
+        <Motion.div
           initial={{ scale: 1.1 }}
           animate={{ scale: 1 }}
           transition={{ duration: 10, ease: "linear" }}
@@ -96,15 +96,15 @@ function About() {
         <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent z-10" />
 
         <div className="relative z-10 text-center px-6 max-w-5xl">
-          <motion.span
+          <Motion.span
             initial={{ opacity: 0, letterSpacing: "0.1em" }}
             animate={{ opacity: 1, letterSpacing: "0.3em" }}
             transition={{ duration: 1 }}
             className="text-primary tracking-[0.3em] uppercase text-sm font-semibold mb-4 block"
           >
             {t('about.page.hero.eyebrow')}
-          </motion.span>
-          <motion.h1
+          </Motion.span>
+          <Motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
@@ -112,8 +112,8 @@ function About() {
           >
             {t('about.page.hero.title')} <br />
             <span className="font-bold">{t('about.page.hero.highlight')}</span>
-          </motion.h1>
-          <motion.div
+          </Motion.h1>
+          <Motion.div
             initial={{ width: 0 }}
             animate={{ width: "6rem" }}
             transition={{ duration: 1, delay: 0.8 }}
@@ -125,7 +125,7 @@ function About() {
       {/* Introducción Corporativa */}
       <section className="py-24 px-8 max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
-          <motion.div
+          <Motion.div
             viewport={{ once: true }}
             initial="hidden"
             whileInView="visible"
@@ -143,9 +143,9 @@ function About() {
             <p className="text-lg text-slate-600 leading-relaxed">
               {t('about.page.intro.quality')}
             </p>
-          </motion.div>
+          </Motion.div>
 
-          <motion.div
+          <Motion.div
             viewport={{ once: true }}
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -155,7 +155,7 @@ function About() {
             <div className="aspect-video bg-slate-100 rounded-sm border border-slate-200 overflow-hidden shadow-2xl">
               <img src={image} alt={t('about.page.intro.title')} className="w-full h-full object-cover" />
             </div>
-            <motion.div
+            <Motion.div
               initial={{ scale: 0 }}
               whileInView={{ scale: 1 }}
               transition={{ delay: 0.5, type: "spring" }}
@@ -165,15 +165,15 @@ function About() {
               <p className="text-slate-900 text-xs uppercase font-bold tracking-tighter">
                 {t('about.page.experience')}
               </p>
-            </motion.div>
-          </motion.div>
+            </Motion.div>
+          </Motion.div>
         </div>
       </section>
 
       <section className="relative py-24 px-8 bg-black text-white overflow-hidden">
 
         {/* IMAGEN DE FONDO CON ANIMACIÓN KEN BURNS */}
-        <motion.div
+        <Motion.div
           initial={{ scale: 1.2, opacity: 0 }}
           animate={{ scale: 1, opacity: 0.4 }} // Opacidad baja para que se vea el texto
           transition={{ duration: 10, ease: "easeOut" }}
@@ -185,37 +185,37 @@ function About() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/80 z-10" />
 
         {/* CONTENIDO (Con z-20 para estar por encima de todo) */}
-        <motion.div
+        <Motion.div
           viewport={{ once: true }}
           initial="hidden"
           whileInView="visible"
           variants={staggerContainer}
           className="relative z-20 max-w-7xl mx-auto grid md:grid-cols-2 gap-16"
         >
-          <motion.div variants={fadeIn} className="border-l border-primary/30 pl-8 group cursor-default">
+          <Motion.div variants={fadeIn} className="border-l border-primary/30 pl-8 group cursor-default">
             <h3 className="text-2xl font-bold mb-6 text-primary uppercase tracking-wider group-hover:pl-4 transition-all duration-300">
               {t('about.page.mission.title')}
             </h3>
             <p className="text-xl text-slate-200 leading-relaxed font-light">
               {t('about.page.mission.description')}
             </p>
-          </motion.div>
+          </Motion.div>
 
-          <motion.div variants={fadeIn} className="border-l border-primary/30 pl-8 group cursor-default">
+          <Motion.div variants={fadeIn} className="border-l border-primary/30 pl-8 group cursor-default">
             <h3 className="text-2xl font-bold mb-6 text-primary uppercase tracking-wider group-hover:pl-4 transition-all duration-300">
               {t('about.page.vision.title')}
             </h3>
             <p className="text-xl text-slate-200 leading-relaxed font-light">
               {t('about.page.vision.description')}
             </p>
-          </motion.div>
-        </motion.div>
+          </Motion.div>
+        </Motion.div>
       </section>
 
       {/* Valores Corporativos */}
       <section className="py-24 px-8 bg-white">
         <div className="max-w-7xl mx-auto">
-          <motion.div
+          <Motion.div
             viewport={{ once: true }}
             initial="hidden"
             whileInView="visible"
@@ -234,7 +234,7 @@ function About() {
               </p>
             </div>
 
-            <motion.div
+            <Motion.div
               viewport={{ once: true }}
               initial="hidden"
               whileInView="visible"
@@ -242,7 +242,7 @@ function About() {
               className="grid sm:grid-cols-2 xl:grid-cols-3 gap-x-8 gap-y-10"
             >
               {values.map((value, index) => (
-                <motion.article
+                <Motion.article
                   key={value.titleKey}
                   variants={fadeIn}
                   custom={index}
@@ -260,25 +260,25 @@ function About() {
                   <p className="text-slate-500 leading-relaxed">
                     {t(value.descriptionKey)}
                   </p>
-                </motion.article>
+                </Motion.article>
               ))}
-            </motion.div>
-          </motion.div>
+            </Motion.div>
+          </Motion.div>
         </div>
       </section>
 
       {/* Pilares Estratégicos Animados */}
       <section className="py-24 px-8 max-w-7xl mx-auto">
-        <motion.h2
+        <Motion.h2
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           className="text-center text-sm uppercase tracking-[0.4em] text-slate-500 font-bold mb-16"
         >
           {t('about.page.goals.title')}
-        </motion.h2>
+        </Motion.h2>
         <div className="grid md:grid-cols-3 gap-12">
           {goals.map((goal, i) => (
-            <motion.div
+            <Motion.div
               key={goal.titleKey}
               viewport={{ once: true }}
               initial={{ opacity: 0, y: 30 }}
@@ -291,7 +291,7 @@ function About() {
                 {t(goal.titleKey)}
               </h4>
 
-              <motion.div
+              <Motion.div
                 whileInView={{ width: "3rem" }}
                 initial={{ width: 0 }}
                 className="h-0.5 bg-primary mb-6"
@@ -300,7 +300,7 @@ function About() {
               <p className="text-slate-600 leading-relaxed">
                 {t(goal.descriptionKey)}
               </p>
-            </motion.div>
+            </Motion.div>
           ))}
         </div>
       </section>
@@ -311,7 +311,7 @@ function About() {
           <h2 className="text-4xl font-bold text-slate-900 mb-16">Capital Humano</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {[1, 2, 3].map((member, i) => (
-              <motion.div
+              <Motion.div
                 key={member}
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -320,19 +320,19 @@ function About() {
                 className="bg-white border border-slate-200 p-8 transition-shadow"
               >
                 <div className="w-20 h-20 bg-slate-100 mb-6 rounded-full flex items-center justify-center grayscale overflow-hidden group">
-                  <motion.div
+                  <Motion.div
                     whileHover={{ scale: 1.1 }}
                     className="w-10 h-10 flex items-center justify-center border-2 border-slate-300 rounded-full"
                   >
                     <HiOutlineUserCircle className="text-slate-300 text-2xl" />
-                  </motion.div>
+                  </Motion.div>
                 </div>
                 <h3 className="text-lg font-bold text-slate-900 mb-1">Benito Martínez</h3>
                 <p className="text-primary text-xs uppercase font-black tracking-widest mb-4">Fundador de la empresa</p>
                 <p className="text-sm text-slate-500 leading-relaxed border-t border-slate-100 pt-4">
                   Especialista en ingeniería de mantenimiento industrial con +20 años de trayectoria.
                 </p>
-              </motion.div>
+              </Motion.div>
             ))}
           </div>
         </div>
@@ -341,7 +341,7 @@ function About() {
       {/* CTA con Pulsación Sutil */}
       <section className="py-24 overflow-hidden relative bg-slate-900">
         {/* IMAGEN DE FONDO */}
-        <motion.div
+        <Motion.div
           initial={{ scale: 1.2, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 0.5 }} // Opacidad media para dar profundidad
           transition={{ duration: 1.5, ease: "easeOut" }}
@@ -358,7 +358,7 @@ function About() {
         {/* CAPA DE COLOR (Para mantener el branding) */}
         <div className="absolute inset-0 bg-primary/80 mix-blend-multiply z-0" />
 
-        <motion.div
+        <Motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -368,7 +368,7 @@ function About() {
             {t('about.page.cta.title')}
           </h2>
 
-          <motion.div
+          <Motion.div
             whileHover={{ scale: 1.05, backgroundColor: "#000" }}
             whileTap={{ scale: 0.95 }}
             className="inline-block"
@@ -383,8 +383,8 @@ function About() {
             >
               {t('about.page.cta.button')}
             </OutlinedButton>
-          </motion.div>
-        </motion.div>
+          </Motion.div>
+        </Motion.div>
       </section>
       <Footer />
     </div>

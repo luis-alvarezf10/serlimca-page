@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
+import { useLanguage } from '../../../context/LanguageContext'
+
 import {
   HiArrowLeft,
   HiArrowRight,
@@ -17,72 +19,25 @@ import imagen20 from '../../../assets/imagen-20.jpeg'
 import imagen21 from '../../../assets/imagen-21.jpeg'
 
 const galleryImages = [
-  {
-    id: 1,
-    src: imagen16,
-    title: 'Operación de izamiento coordinado',
-    category: 'Izamiento',
-    description: 'Maniobra ejecutada con equipos de alta capacidad y control operativo en campo.',
-  },
-  {
-    id: 2,
-    src: imagen21,
-    title: 'Transporte de grúa telescópica',
-    category: 'Transporte',
-    description: 'Movilización segura de maquinaria pesada sobre unidad de cama baja.',
-  },
-  {
-    id: 3,
-    src: imagen9,
-    title: 'Manejo de componentes industriales',
-    category: 'Mantenimiento',
-    description: 'Recepción y manipulación controlada de componentes para operaciones técnicas.',
-  },
-  {
-    id: 4,
-    src: imagen18,
-    title: 'Izamiento de equipo petrolero',
-    category: 'Izamiento',
-    description: 'Posicionamiento de activos industriales mediante grúa telescópica.',
-  },
-  {
-    id: 5,
-    src: imagen12,
-    title: 'Grúa de alta capacidad',
-    category: 'Equipos',
-    description: 'Inspección y preparación operativa de equipos especializados.',
-  },
-  {
-    id: 6,
-    src: imagen20,
-    title: 'Trabajo técnico en altura',
-    category: 'Mantenimiento',
-    description: 'Intervención con brazos hidráulicos y personal especializado.',
-  },
-  {
-    id: 7,
-    src: imagen14,
-    title: 'Movilización de maquinaria',
-    category: 'Transporte',
-    description: 'Traslado planificado de grúa para su despliegue en campo.',
-  },
-  {
-    id: 8,
-    src: imagen13,
-    title: 'Flota de equipos especializados',
-    category: 'Equipos',
-    description: 'Unidades disponibles para operaciones industriales de alta exigencia.',
-  },
+  { id: 1, src: imagen16, category: 'lifting' },
+  { id: 2, src: imagen21, category: 'transport' },
+  { id: 3, src: imagen9, category: 'maintenance' },
+  { id: 4, src: imagen18, category: 'lifting' },
+  { id: 5, src: imagen12, category: 'equipment' },
+  { id: 6, src: imagen20, category: 'maintenance' },
+  { id: 7, src: imagen14, category: 'transport' },
+  { id: 8, src: imagen13, category: 'equipment' },
 ]
 
-const categories = ['Todos', 'Izamiento', 'Transporte', 'Mantenimiento', 'Equipos']
+const categoryKeys = ['all', 'lifting', 'transport', 'maintenance', 'equipment']
 const Motion = motion
 
 const GallerySection = () => {
   const [selectedImage, setSelectedImage] = useState(null)
-  const [activeCategory, setActiveCategory] = useState('Todos')
+  const { t } = useLanguage()
+  const [activeCategory, setActiveCategory] = useState('all')
 
-  const filteredImages = activeCategory === 'Todos'
+  const filteredImages = activeCategory === 'all'
     ? galleryImages
     : galleryImages.filter((image) => image.category === activeCategory)
 
@@ -127,19 +82,19 @@ const GallerySection = () => {
         >
           <div>
             <span className="mb-5 block text-xs font-bold uppercase tracking-[0.38em] text-primary">
-              Experiencia en campo
+              {t('gallery.eyebrow')}
             </span>
             <h2 className="max-w-3xl text-4xl font-black leading-tight text-slate-950 md:text-6xl">
-              Operaciones que hablan por nosotros
+              {t('gallery.title')}
             </h2>
           </div>
           <p className="max-w-xl text-base leading-relaxed text-slate-500 md:text-lg lg:justify-self-end">
-            Una mirada a nuestro equipo, capacidad técnica y ejecución de maniobras industriales en condiciones reales.
+            {t('gallery.description')}
           </p>
         </Motion.div>
 
         <div className="mb-10 flex gap-2 overflow-x-auto pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          {categories.map((category) => {
+          {categoryKeys.map((category) => {
             const isActive = activeCategory === category
 
             return (
@@ -160,7 +115,7 @@ const GallerySection = () => {
                     transition={{ type: 'spring', stiffness: 350, damping: 30 }}
                   />
                 )}
-                <span className="relative z-10">{category}</span>
+                <span className="relative z-10">{t(`gallery.category.${category}`)}</span>
               </button>
             )
           })}
@@ -169,9 +124,9 @@ const GallerySection = () => {
         <Motion.div layout className="grid auto-rows-[250px] grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
           <AnimatePresence mode="popLayout">
             {filteredImages.map((image, index) => {
-              const isFeatured = activeCategory === 'Todos' && index === 0
-              const isWide = activeCategory === 'Todos' && [1, 6].includes(index)
-              const isTall = activeCategory === 'Todos' && [2, 4].includes(index)
+              const isFeatured = activeCategory === 'all' && index === 0
+              const isWide = activeCategory === 'all' && [1, 6].includes(index)
+              const isTall = activeCategory === 'all' && [2, 4].includes(index)
 
               return (
                 <Motion.button
@@ -186,11 +141,11 @@ const GallerySection = () => {
                   className={`group relative min-h-[250px] overflow-hidden rounded-sm bg-slate-100 text-left shadow-xl shadow-slate-900/10 ring-1 ring-slate-200/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary ${
                     isFeatured ? 'md:col-span-2 md:row-span-2' : ''
                   } ${isWide ? 'lg:col-span-2' : ''} ${isTall ? 'md:row-span-2' : ''}`}
-                  aria-label={`Ampliar imagen: ${image.title}`}
+                  aria-label={t('gallery.expandImage', { title: t(`gallery.image.${image.id}.title`) })}
                 >
                   <img
                     src={image.src}
-                    alt={image.title}
+                    alt={t(`gallery.image.${image.id}.title`)}
                     loading="lazy"
                     className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
                   />
@@ -199,15 +154,15 @@ const GallerySection = () => {
                   <div className="absolute inset-x-0 bottom-0 p-5 md:p-7">
                     <div className="mb-3 flex items-center justify-between gap-4">
                       <span className="text-[10px] font-black uppercase tracking-[0.24em] text-primary">
-                        {image.category}
+                        {t(`gallery.category.${image.category}`)}
                       </span>
                       <HiOutlineArrowsExpand className="text-xl text-white/70 transition group-hover:text-primary" />
                     </div>
                     <h3 className={`${isFeatured ? 'md:text-3xl' : 'md:text-xl'} text-lg font-bold text-white`}>
-                      {image.title}
+                      {t(`gallery.image.${image.id}.title`)}
                     </h3>
                     <p className="mt-2 max-w-xl text-sm leading-relaxed text-slate-200 md:translate-y-3 md:opacity-0 md:transition md:duration-300 md:group-hover:translate-y-0 md:group-hover:opacity-100">
-                      {image.description}
+                      {t(`gallery.image.${image.id}.description`)}
                     </p>
                   </div>
                 </Motion.button>
@@ -227,13 +182,13 @@ const GallerySection = () => {
             onClick={() => setSelectedImage(null)}
             role="dialog"
             aria-modal="true"
-            aria-label={selectedImage.title}
+            aria-label={t(`gallery.image.${selectedImage.id}.title`)}
           >
             <button
               type="button"
               onClick={() => setSelectedImage(null)}
               className="absolute right-5 top-5 z-20 grid h-12 w-12 place-items-center border border-white/20 bg-black/40 text-2xl text-white transition hover:border-primary hover:text-primary md:right-10 md:top-10"
-              aria-label="Cerrar galería"
+              aria-label={t('gallery.close')}
             >
               <HiX />
             </button>
@@ -247,7 +202,7 @@ const GallerySection = () => {
                     showImage(-1)
                   }}
                   className="absolute bottom-5 left-5 z-20 grid h-12 w-12 place-items-center border border-white/20 bg-black/40 text-xl text-white transition hover:border-primary hover:text-primary md:bottom-auto md:left-10"
-                  aria-label="Imagen anterior"
+                  aria-label={t('gallery.previous')}
                 >
                   <HiArrowLeft />
                 </button>
@@ -258,7 +213,7 @@ const GallerySection = () => {
                     showImage(1)
                   }}
                   className="absolute bottom-5 right-5 z-20 grid h-12 w-12 place-items-center border border-white/20 bg-black/40 text-xl text-white transition hover:border-primary hover:text-primary md:bottom-auto md:right-10"
-                  aria-label="Imagen siguiente"
+                  aria-label={t('gallery.next')}
                 >
                   <HiArrowRight />
                 </button>
@@ -276,18 +231,18 @@ const GallerySection = () => {
             >
               <img
                 src={selectedImage.src}
-                alt={selectedImage.title}
+                alt={t(`gallery.image.${selectedImage.id}.title`)}
                 className="min-h-0 w-full flex-1 object-contain"
               />
               <figcaption className="border-t border-white/10 bg-black/60 px-5 py-4 md:flex md:items-center md:justify-between md:px-7">
                 <div>
                   <span className="text-[10px] font-black uppercase tracking-[0.22em] text-primary">
-                    {selectedImage.category}
+                    {t(`gallery.category.${selectedImage.category}`)}
                   </span>
-                  <h3 className="mt-1 text-lg font-bold text-white">{selectedImage.title}</h3>
+                  <h3 className="mt-1 text-lg font-bold text-white">{t(`gallery.image.${selectedImage.id}.title`)}</h3>
                 </div>
                 <p className="mt-2 max-w-xl text-sm text-slate-400 md:mt-0 md:text-right">
-                  {selectedImage.description}
+                  {t(`gallery.image.${selectedImage.id}.description`)}
                 </p>
               </figcaption>
             </Motion.figure>

@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence, useScroll, useSpring, useTransform } from 'framer-motion';
+import { motion as Motion, AnimatePresence, useScroll, useSpring, useTransform } from 'framer-motion';
 import { HiArrowUp } from 'react-icons/hi';
+import { useLanguage } from '../../context/LanguageContext';
 
 export default function ScrollToTopButton() {
+  const { t } = useLanguage();
   const [showButton, setShowButton] = useState(false);
   
   // Usamos el hook nativo de Framer para el scroll (más suave)
@@ -37,7 +39,7 @@ export default function ScrollToTopButton() {
   return (
     <AnimatePresence>
       {showButton && (
-        <motion.button
+        <Motion.button
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.5 }}
@@ -45,7 +47,7 @@ export default function ScrollToTopButton() {
           whileTap={{ scale: 0.9 }}
           onClick={scrollToTop}
           className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-12 h-12 bg-white rounded-full shadow-xl border border-slate-100 group"
-          aria-label="Volver arriba"
+          aria-label={t('scrollToTop')}
         >
           {/* Círculo de progreso */}
           <svg className="absolute w-full h-full -rotate-90 pointer-events-none" viewBox="0 0 50 50">
@@ -59,7 +61,7 @@ export default function ScrollToTopButton() {
               fill="transparent"
             />
             {/* Círculo de progreso (Color principal) */}
-            <motion.circle
+            <Motion.circle
               cx="25"
               cy="25"
               r="20"
@@ -67,15 +69,13 @@ export default function ScrollToTopButton() {
               strokeWidth="4"
               fill="transparent"
               strokeLinecap="round"
-              style={{
-                pathLength: scrollYProgress, // Framer Motion maneja el dasharray automáticamente así
-              }}
+              style={{ strokeDashoffset }}
             />
           </svg>
 
           {/* Icono de flecha */}
           <HiArrowUp className="text-xl text-slate-700 group-hover:-translate-y-1 transition-transform duration-300 z-10" />
-        </motion.button>
+        </Motion.button>
       )}
     </AnimatePresence>
   );

@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion as Motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import PrimaryButton from "../../../components/buttons.jsx/PrimaryButton";
 import {
@@ -29,7 +29,7 @@ const ServiceItem = ({ service, index }) => {
   const y = useTransform(scrollYProgress, [0, 1], [-30, 30]);
 
   return (
-    <motion.div
+    <Motion.div
       ref={ref}
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -40,13 +40,13 @@ const ServiceItem = ({ service, index }) => {
       {/* Imagen con Parallax */}
       <div className="w-full lg:w-1/2 relative">
         <div className="relative group overflow-hidden rounded-sm shadow-2xl">
-          <motion.div style={{ y }}>
+          <Motion.div style={{ y }}>
             <img
               src={service.image}
               alt={service.title}
               className="w-full h-[350px] md:h-[500px] object-cover scale-110"
             />
-          </motion.div>
+          </Motion.div>
           <div className="absolute inset-0 bg-slate-900/20 group-hover:bg-transparent transition-colors duration-500" />
           {/* Borde dinámico que aparece en hover */}
           <div className="absolute inset-4 border border-white/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
@@ -73,7 +73,7 @@ const ServiceItem = ({ service, index }) => {
           {service.description}
         </p>
       </div>
-    </motion.div>
+    </Motion.div>
   );
 };
 
@@ -115,13 +115,13 @@ const ServicesSection = () => {
       <div className="max-w-7xl mx-auto px-6">
         {/* Cabecera */}
         <div className="text-center mb-32 relative">
-          <motion.span
+          <Motion.span
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             className="text-primary font-bold tracking-[0.5em] uppercase text-xs"
           >
             {t("services.title")}
-          </motion.span>
+          </Motion.span>
           <h2 className="text-5xl md:text-6xl font-black text-slate-950 mt-4 mb-6">
             {t("services.subtitle")}
           </h2>
@@ -139,7 +139,7 @@ const ServicesSection = () => {
         </div>
 
         {/* Botón General Final */}
-        <motion.div
+        <Motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -148,12 +148,12 @@ const ServicesSection = () => {
           <div className="mb-8 text-slate-400 font-medium tracking-widest uppercase text-sm">
             {t("services.question")}
           </div>
-          {/* <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+          {/* <Motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <PrimaryButton to="/servicios" className="uppercase">
               {t("services.cta.button")}
             </PrimaryButton>
-          </motion.div> */}
-        </motion.div>
+          </Motion.div> */}
+        </Motion.div>
       </div>
     </section>
   );
