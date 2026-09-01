@@ -99,7 +99,7 @@ export const translations = {
   'services.page.fieldSupport.description': { es: 'Capacidad de respuesta técnica inmediata para la restauración funcional de activos críticos en sitio, asegurando el retorno a la operación en tiempos mínimos.', en: 'Immediate technical response capability to restore critical assets on-site, ensuring a return to operation in the shortest possible time.', cn: '可快速响应并在现场恢复关键资产功能，确保在最短时间内恢复运营。' },
   'services.page.fieldSupport.details': { es: ['Especialistas senior certificados en API / ISO', 'Suministro de componentes de grado industrial', 'Pruebas hidrostáticas y de hermeticidad posteriores a la reparación', 'Servicio de respuesta para contingencias 24/7'], en: ['Senior specialists certified in API / ISO', 'Industrial-grade component supply', 'Post-repair hydrostatic and leak tests', '24/7 contingency response service'], cn: ['通过 API / ISO 认证的高级专家', '工业级部件供应', '维修后的水压和密封测试', '全天候应急响应服务'] },
 
-  'why.experience': { es: '+20 años de experiencia', en: '+20 years of experience', cn: '20 多年经验' },
+  'why.experience': { es: '+23 años de experiencia', en: '+23 years of experience', cn: '23 多年经验' },
   'why.certification': { es: 'Certificación', en: 'Certification', cn: '认证' },
   'why.quality': { es: 'Calidad garantizada', en: 'Quality guaranteed', cn: '质量保证' },
   'why.cta.years': { es: 'años de trayectoria', en: 'years of experience', cn: '年行业经验' },

@@ -89,10 +89,10 @@ const AboutUsSection = () => {
                 className="group"
               >
                 <div className="flex flex-col border-l-4 border-primary pl-4 transition-all group-hover:border-slate-950">
-                  <span className="text-3xl font-black text-slate-950 mb-1">
+                  <span className="text-2xl font-bold text-slate-950 mb-1">
                     {item.title}
                   </span>
-                  <span className="text-xs uppercase tracking-widest font-bold text-slate-400">
+                  <span className="text-xs uppercase tracking-widest font-semibold text-slate-400">
                     {item.description}
                   </span>
                 </div>
