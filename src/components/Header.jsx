@@ -2,16 +2,15 @@ import { useState, useEffect, useMemo } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useLanguage } from "../context/LanguageContext";
 import logo from "../assets/normal-logo-rif.svg";
-import "flag-icons/css/flag-icons.min.css";
 import { NavHashLink } from "react-router-hash-link";
 import PrimaryButton from "../components/buttons.jsx/PrimaryButton";
 import { HiMenuAlt3, HiX, HiChevronDown } from "react-icons/hi";
 import { AnimatePresence, motion as Motion } from "framer-motion";
 
 const languages = [
-  { code: "es", flag: "ve", name: "Español" },
-  { code: "en", flag: "us", name: "English" },
-  { code: "cn", flag: "cn", name: "简体中文" },
+  { code: "es", flag: "🇻🇪", name: "Español" },
+  { code: "en", flag: "🇺🇸", name: "English" },
+  { code: "cn", flag: "🇨🇳", name: "简体中文" },
 ];
 
 function ScrollToHashElement() {
@@ -203,9 +202,9 @@ export default function Header() {
                     : "border-white/20 text-white hover:bg-white/10"
                 }`}
               >
-                <span
-                  className={`fi fi-${languages.find((l) => l.code === language)?.flag}`}
-                />
+                <span aria-hidden="true" className="text-sm leading-none">
+                  {languages.find((item) => item.code === language)?.flag}
+                </span>
                 <span className="text-xs font-bold">
                   {language.toUpperCase()}
                 </span>
@@ -225,7 +224,7 @@ export default function Header() {
                       }}
                       className="flex items-center gap-3 w-full px-4 py-3 text-left text-sm hover:bg-slate-50 transition-colors text-slate-700 font-bold"
                     >
-                      <span className={`fi fi-${lang.flag}`} />
+                      <span aria-hidden="true" className="text-base leading-none">{lang.flag}</span>
                       {lang.name}
                     </button>
                   ))}
@@ -306,7 +305,7 @@ export default function Header() {
                           : "border-slate-200 bg-white text-slate-400"
                       }`}
                     >
-                      <span className={`fi fi-${lang.flag}`} />
+                      <span aria-hidden="true" className="text-base leading-none">{lang.flag}</span>
                       {lang.code.toUpperCase()}
                     </button>
                   ))}

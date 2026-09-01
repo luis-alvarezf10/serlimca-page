@@ -2,6 +2,7 @@ import { useLanguage } from '../../../context/LanguageContext';
 import { useEffect, useState } from 'react';
 import { motion as Motion, AnimatePresence } from 'framer-motion';
 import heroBg from '../../../assets/imagen-1.webp';
+import heroBgMobile from '../../../assets/imagen-1-mobile.webp';
 import heroBg2 from '../../../assets/imagen-2.jpeg';
 import heroBg3 from '../../../assets/imagen-3.jpeg';
 import heroBg4 from '../../../assets/imagen-4.jpeg';
@@ -11,7 +12,13 @@ import { HiCheckCircle, HiStar, HiChevronDoubleDown } from "react-icons/hi";
 import OutlinedButton from '../../../components/buttons.jsx/OutlinedButton';
 import GeneralButton from '../../../components/buttons.jsx/GeneralButton';
 
-const heroImages = [heroBg, heroBg2, heroBg3, heroBg4, heroBg5];
+const heroImages = [
+  { desktop: heroBg, mobile: heroBgMobile },
+  { desktop: heroBg2 },
+  { desktop: heroBg3 },
+  { desktop: heroBg4 },
+  { desktop: heroBg5 },
+];
 
 const HeroSection = () => {
   const { t } = useLanguage();
@@ -63,9 +70,25 @@ const HeroSection = () => {
             animate={{ opacity: 0.6, scale: 1 }} // Subimos de 0.4 a 0.6 para dar más luz
             exit={{ opacity: 0 }}
             transition={{ duration: 1.5 }}
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(${heroImages[currentImageIndex]})` }}
-          />
+            className="absolute inset-0"
+          >
+            <picture className="block h-full w-full">
+              {heroImages[currentImageIndex].mobile && (
+                <source
+                  media="(max-width: 767px)"
+                  srcSet={heroImages[currentImageIndex].mobile}
+                />
+              )}
+              <img
+                src={heroImages[currentImageIndex].desktop}
+                alt=""
+                aria-hidden="true"
+                className="h-full w-full object-cover object-center"
+                loading={currentImageIndex === 0 ? "eager" : "lazy"}
+                fetchPriority={currentImageIndex === 0 ? "high" : "auto"}
+              />
+            </picture>
+          </Motion.div>
         </AnimatePresence>
 
         <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/60 to-transparent z-10" />

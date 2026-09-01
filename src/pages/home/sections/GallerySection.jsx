@@ -9,7 +9,7 @@ import {
   HiX,
 } from 'react-icons/hi'
 
-import imagen9 from '../../../assets/imagen-9.png'
+import imagen9 from '../../../assets/imagen-9.webp'
 import imagen12 from '../../../assets/imagen-12.jpeg'
 import imagen13 from '../../../assets/imagen-13.jpeg'
 import imagen14 from '../../../assets/imagen-14.jpeg'
@@ -147,6 +147,8 @@ const GallerySection = () => {
                     src={image.src}
                     alt={t(`gallery.image.${image.id}.title`)}
                     loading="lazy"
+                    decoding="async"
+                    sizes="(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 100vw"
                     className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/18 to-transparent" />

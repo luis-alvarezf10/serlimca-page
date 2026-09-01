@@ -9,10 +9,10 @@ import {
 } from "react-icons/hi";
 
 // Assets
-import image1 from '../../../assets/imagen-8.jpeg';
-import image2 from "../../../assets/imagen-9.png";
-import image3 from "../../../assets/imagen-11.jpeg";
-import image4 from "../../../assets/imagen-4.jpeg";
+import image1 from '../../../assets/imagen-8.webp';
+import image2 from "../../../assets/imagen-9.webp";
+import image3 from "../../../assets/imagen-11.webp";
+import image4 from "../../../assets/imagen-4.webp";
 
 // context de language
 import { useLanguage } from "../../../context/LanguageContext";
@@ -45,6 +45,11 @@ const ServiceItem = ({ service, index }) => {
               src={service.image}
               alt={service.title}
               className="w-full h-[350px] md:h-[500px] object-cover scale-110"
+              width={service.imageWidth}
+              height={service.imageHeight}
+              loading="lazy"
+              decoding="async"
+              sizes="(min-width: 1024px) 50vw, 100vw"
             />
           </Motion.div>
           <div className="absolute inset-0 bg-slate-900/20 group-hover:bg-transparent transition-colors duration-500" />
@@ -86,6 +91,8 @@ const ServicesSection = () => {
       description: t("services.liftingTransport.description"),
       icon: <HiOutlineTruck />,
       image: image1,
+      imageWidth: 720,
+      imageHeight: 960,
     },
     {
       id: "02",
@@ -93,6 +100,8 @@ const ServicesSection = () => {
       description: t("services.maintenance.description"),
       icon: <HiOutlineCog />,
       image: image2,
+      imageWidth: 720,
+      imageHeight: 961,
     },
     {
       id: "03",
@@ -100,6 +109,8 @@ const ServicesSection = () => {
       description: t("services.rigMoving.description"),
       icon: <HiOutlineCube />,
       image: image3,
+      imageWidth: 720,
+      imageHeight: 720,
     },
     {
       id: "04",
@@ -107,6 +118,8 @@ const ServicesSection = () => {
       description: t("services.logistics.description"),
       icon: <HiOutlineBriefcase />,
       image: image4,
+      imageWidth: 900,
+      imageHeight: 675,
     },
   ];
 
