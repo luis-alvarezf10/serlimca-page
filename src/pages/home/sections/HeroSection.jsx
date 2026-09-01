@@ -35,8 +35,8 @@ const HeroSection = () => {
       const progress = step / steps;
       const easeOut = 1 - Math.pow(1 - progress, 3);
       setCounters({
-        years: Math.round(20 * easeOut),
-        projects: Math.round(500 * easeOut),
+        years: Math.round(23 * easeOut),
+        projects: Math.round(45 * easeOut),
       });
       if (step >= steps) clearInterval(timer);
     }, stepDuration);

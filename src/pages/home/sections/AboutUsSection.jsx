@@ -8,10 +8,10 @@ const AboutUsSection = () => {
   const { t } = useLanguage();
   
   const Information = [
-    { title: "20+", description: t('why.cta.years')},
-    { title: "50+", description: t('why.cta.support') },
+    { title: "23+", description: t('why.cta.years')},
+    { title: "15+", description: t('why.cta.support') },
     { title: "45+", description: t('why.cta.projects') },
-    { title: "20+", description: t('why.cta.experts') },
+    { title: "5+", description: t('why.cta.experts') },
   ];
 
   return (

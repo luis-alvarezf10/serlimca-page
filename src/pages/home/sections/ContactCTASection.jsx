@@ -76,7 +76,7 @@ const ContactCTASection = () => {
                 Iniciar Cotización
                 <HiArrowRight className="group-hover:translate-x-1 transition-transform" />
               </GeneralButton>
-              <OutlinedButton onClick={() => window.open('https://wa.me/584146690263')} className="flex items-center gap-2">
+              <OutlinedButton onClick={() => window.open('https://wa.me/5804265831206')} className="flex items-center gap-2">
                 <FaWhatsapp className="text-xl" />
                 WhatsApp Directo
               </OutlinedButton>
