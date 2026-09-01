@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://serlimca.com/sitemap.xml
+Sitemap: https://www.serlimca.com/sitemap.xml
