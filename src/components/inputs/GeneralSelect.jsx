@@ -1,6 +1,6 @@
 import { HiOutlineChevronDown } from "react-icons/hi";
 
-export default function GeneralSelect({ label, options }) {
+export default function GeneralSelect({ label, options, ...props }) {
   return (
     <div className="flex flex-col gap-2 relative">
       <label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] ml-1">
@@ -9,6 +9,7 @@ export default function GeneralSelect({ label, options }) {
 
       <div className="relative">
         <select
+          {...props}
           className="w-full bg-transparent py-3 text-white transition-all font-medium appearance-none cursor-pointer
                      border-none border-b-2 border-b-white/10
                      outline-none focus:outline-none focus:ring-0 focus:ring-offset-0

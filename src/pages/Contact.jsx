@@ -5,6 +5,8 @@ import {
   HiClock,
   HiChevronRight,
 } from "react-icons/hi";
+import { useState } from "react";
+import emailjs from "@emailjs/browser";
 import GeneralButton from "../components/buttons.jsx/GeneralButton";
 import Footer from "../components/Footer";
 import GeneralField from "../components/inputs/GeneraldField";
@@ -14,12 +16,55 @@ const contactImage =
   "https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1200&q=80";
 
 function Contact() {
+  const [isSending, setIsSending] = useState(false);
+  const [status, setStatus] = useState({ type: "", message: "" });
+
   const services = [
     "Transporte de Carga Pesada",
     "Mantenimiento y Equipos",
     "Proyectos de Infraestructura",
     "Soporte Operativo",
   ];
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setIsSending(true);
+    setStatus({ type: "", message: "" });
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const templateParams = {
+      from_name: formData.get("from_name"),
+      from_email: formData.get("from_email"),
+      phone: formData.get("phone") || "No indicado",
+      service: formData.get("service"),
+      message: formData.get("message"),
+    };
+
+    try {
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_COMPANY_TEMPLATE_ID,
+        templateParams,
+        { publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY }
+      );
+
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_CLIENT_TEMPLATE_ID,
+        templateParams,
+        { publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY }
+      );
+
+      form.reset();
+      setStatus({ type: "success", message: "Solicitud enviada correctamente." });
+    } catch (error) {
+      console.error("EmailJS error:", error);
+      setStatus({ type: "error", message: "No pudimos enviar la solicitud. Intentá nuevamente." });
+    } finally {
+      setIsSending(false);
+    }
+  };
   return (
     <div>
       <div
@@ -117,25 +162,33 @@ function Contact() {
 
             {/* SECCIÓN FORMULARIO (7/12) */}
             <div className="lg:col-span-7 p-10 md:p-16 bg-white/[0.02]">
-              <form className="space-y-8">
+              <form className="space-y-8" onSubmit={handleSubmit}>
                 <div className="grid md:grid-cols-2 gap-8">
                   <GeneralField
                     label="Razón social / nombre"
+                    name="from_name"
+                    required
+                    autoComplete="name"
                     placeholder="Ingrese identificación"
-                    type="email"
+                    type="text"
                   />
                   <GeneralField
                     label="Correo electrónico"
+                    name="from_email"
+                    required
+                    autoComplete="email"
                     placeholder="ejemplo@correo.com"
                     type="email"
                   />
                 </div>
-                <GeneralSelect label="Servicio de interés" options={services} />
+                <GeneralSelect label="Servicio de interés" name="service" options={services} />
                 <div className="flex flex-col gap-2">
                   <label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] ml-1">
                     Especificaciones del requerimiento
                   </label>
                   <textarea
+                    name="message"
+                    required
                     rows="6"
                     className="bg-white/5 border border-white/10 p-4 rounded-lg text-white transition-all resize-none font-medium
                /* Aquí está la magia */
@@ -152,11 +205,17 @@ function Contact() {
                     estrictos protocolos de seguridad industrial y
                     confidencialidad.
                   </p>
+                  {status.message && (
+                    <p className={status.type === "success" ? "text-green-400 text-sm" : "text-red-400 text-sm"}>
+                      {status.message}
+                    </p>
+                  )}
                   <GeneralButton
                     type="submit"
                     className="w-full md:w-auto px-12 py-4 shadow-lg shadow-primary/20 group"
+                    disabled={isSending}
                   >
-                    ENVIAR SOLICITUD
+                    {isSending ? "ENVIANDO..." : "ENVIAR SOLICITUD"}
                     <HiChevronRight className="group-hover:translate-x-1 transition-transform" />
                   </GeneralButton>
                 </div>
