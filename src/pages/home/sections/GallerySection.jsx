@@ -23,10 +23,10 @@ const galleryImages = [
   { id: 2, src: imagen21, category: 'transport' },
   { id: 3, src: imagen9, category: 'maintenance' },
   { id: 4, src: imagen18, category: 'lifting' },
-  { id: 5, src: imagen12, category: 'equipment' },
+  // { id: 5, src: imagen12, category: 'equipment' },
   { id: 6, src: imagen20, category: 'maintenance' },
   { id: 7, src: imagen14, category: 'transport' },
-  { id: 8, src: imagen13, category: 'equipment' },
+  { id: 8, src: imagen12, category: 'equipment' },
 ]
 
 const categoryKeys = ['all', 'lifting', 'transport', 'maintenance', 'equipment']
