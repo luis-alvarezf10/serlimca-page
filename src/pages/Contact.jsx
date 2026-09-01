@@ -180,6 +180,15 @@ function Contact() {
                     placeholder="ejemplo@correo.com"
                     type="email"
                   />
+                  <GeneralField
+                    label="Número telefónico"
+                    name="phone"
+                    required
+                    autoComplete="tel"
+                    inputMode="tel"
+                    placeholder="+58 412 1234567"
+                    type="tel"
+                  />
                 </div>
                 <GeneralSelect label="Servicio de interés" name="service" options={services} />
                 <div className="flex flex-col gap-2">
