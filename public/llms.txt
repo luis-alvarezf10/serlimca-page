@@ -1,0 +1,22 @@
+# SERLIMCA
+
+> Servicios D'LIMA C.A. (SERLIMCA) ofrece transporte de carga pesada, izamiento, mantenimiento de equipos y soporte operativo para la industria petrolera e industrial en Venezuela.
+
+## Sitio web
+
+- [Página de inicio](https://www.serlimca.com/): Presentación general de SERLIMCA y sus capacidades.
+- [Nosotros](https://www.serlimca.com/nosotros): Historia, misión, visión y valores de la empresa.
+- [Servicios](https://www.serlimca.com/servicios): Transporte, izamiento, logística, mantenimiento y reparación de equipos.
+- [Contacto](https://www.serlimca.com/contacto): Formulario y datos de contacto corporativo.
+- [Sitemap](https://www.serlimca.com/sitemap.xml): URLs principales del sitio.
+
+## Información corporativa
+
+- Empresa: Servicios D'LIMA C.A. (SERLIMCA)
+- Ubicación: San José de Guanipa, estado Anzoátegui, Venezuela
+- Teléfono: +58 426 5831206
+- Correo: serlimca@gmail.com
+
+## Uso del contenido
+
+El contenido describe los servicios y la información corporativa pública de SERLIMCA. Para solicitudes comerciales o información actualizada, consultar la página de contacto.
