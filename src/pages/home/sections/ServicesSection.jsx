@@ -9,9 +9,9 @@ import {
 } from "react-icons/hi";
 
 // Assets
-import image1 from '../../../assets/imagen-8.webp';
+import image3 from '../../../assets/imagen-8.webp';
 import image2 from "../../../assets/imagen-9.webp";
-import image3 from "../../../assets/imagen-11.webp";
+import image1 from "../../../assets/imagen-11.webp";
 import image4 from "../../../assets/imagen-4.webp";
 
 // context de language
